@@ -1,0 +1,582 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B75991961DE3546A00B8DB7E /* HWHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B75991951DE3546A00B8DB7E /* HWHomeViewController.m */; };
+		B75991991DE3547900B8DB7E /* HWMessageCenterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B75991981DE3547900B8DB7E /* HWMessageCenterTableViewController.m */; };
+		B759919C1DE3548B00B8DB7E /* HWDiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B759919B1DE3548B00B8DB7E /* HWDiscoverViewController.m */; };
+		B759919F1DE3549A00B8DB7E /* HWProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B759919E1DE3549A00B8DB7E /* HWProfileViewController.m */; };
+		B76926A01DE3396D00EC9088 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B769269F1DE3396D00EC9088 /* main.m */; };
+		B76926A31DE3396D00EC9088 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B76926A21DE3396D00EC9088 /* AppDelegate.m */; };
+		B76926AB1DE3396D00EC9088 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B76926AA1DE3396D00EC9088 /* Assets.xcassets */; };
+		B76926AE1DE3396D00EC9088 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B76926AC1DE3396D00EC9088 /* LaunchScreen.storyboard */; };
+		B76926B91DE3396D00EC9088 /* ____Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = B76926B81DE3396D00EC9088 /* ____Tests.m */; };
+		B76926C41DE3396D00EC9088 /* ____UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B76926C31DE3396D00EC9088 /* ____UITests.m */; };
+		B7DDB2481DE493E9004BCDC5 /* HWTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7DDB2471DE493E9004BCDC5 /* HWTabBarController.m */; };
+		B7F93D7E1DE5CB6D00DE84FA /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F93D7C1DE5CB6D00DE84FA /* TestViewController.m */; };
+		B7F93D7F1DE5CB6D00DE84FA /* TestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7F93D7D1DE5CB6D00DE84FA /* TestViewController.xib */; };
+		B7F93D821DE5D30A00DE84FA /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F93D811DE5D30A00DE84FA /* UIView+Extension.m */; };
+		B7F93D851DE5E54800DE84FA /* HWNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F93D841DE5E54800DE84FA /* HWNavigationController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B76926B51DE3396D00EC9088 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B76926931DE3396D00EC9088 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B769269A1DE3396D00EC9088;
+			remoteInfo = "黑马微博";
+		};
+		B76926C01DE3396D00EC9088 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B76926931DE3396D00EC9088 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B769269A1DE3396D00EC9088;
+			remoteInfo = "黑马微博";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B75991941DE3546A00B8DB7E /* HWHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWHomeViewController.h; sourceTree = "<group>"; };
+		B75991951DE3546A00B8DB7E /* HWHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWHomeViewController.m; sourceTree = "<group>"; };
+		B75991971DE3547900B8DB7E /* HWMessageCenterTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWMessageCenterTableViewController.h; sourceTree = "<group>"; };
+		B75991981DE3547900B8DB7E /* HWMessageCenterTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWMessageCenterTableViewController.m; sourceTree = "<group>"; };
+		B759919A1DE3548B00B8DB7E /* HWDiscoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWDiscoverViewController.h; sourceTree = "<group>"; };
+		B759919B1DE3548B00B8DB7E /* HWDiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWDiscoverViewController.m; sourceTree = "<group>"; };
+		B759919D1DE3549A00B8DB7E /* HWProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWProfileViewController.h; sourceTree = "<group>"; };
+		B759919E1DE3549A00B8DB7E /* HWProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWProfileViewController.m; sourceTree = "<group>"; };
+		B769269B1DE3396D00EC9088 /* 黑马微博.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "黑马微博.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B769269F1DE3396D00EC9088 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B76926A11DE3396D00EC9088 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		B76926A21DE3396D00EC9088 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		B76926AA1DE3396D00EC9088 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B76926AD1DE3396D00EC9088 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B76926AF1DE3396D00EC9088 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B76926B41DE3396D00EC9088 /* 黑马微博Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "黑马微博Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B76926B81DE3396D00EC9088 /* ____Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "____Tests.m"; sourceTree = "<group>"; };
+		B76926BA1DE3396D00EC9088 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B76926BF1DE3396D00EC9088 /* 黑马微博UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "黑马微博UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B76926C31DE3396D00EC9088 /* ____UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "____UITests.m"; sourceTree = "<group>"; };
+		B76926C51DE3396D00EC9088 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B7DDB2461DE493E9004BCDC5 /* HWTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWTabBarController.h; sourceTree = "<group>"; };
+		B7DDB2471DE493E9004BCDC5 /* HWTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWTabBarController.m; sourceTree = "<group>"; };
+		B7F93D7B1DE5CB6D00DE84FA /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
+		B7F93D7C1DE5CB6D00DE84FA /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
+		B7F93D7D1DE5CB6D00DE84FA /* TestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestViewController.xib; sourceTree = "<group>"; };
+		B7F93D801DE5D30A00DE84FA /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
+		B7F93D811DE5D30A00DE84FA /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
+		B7F93D831DE5E54800DE84FA /* HWNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWNavigationController.h; sourceTree = "<group>"; };
+		B7F93D841DE5E54800DE84FA /* HWNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWNavigationController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B76926981DE3396D00EC9088 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B76926B11DE3396D00EC9088 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B76926BC1DE3396D00EC9088 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B76926921DE3396D00EC9088 = {
+			isa = PBXGroup;
+			children = (
+				B769269D1DE3396D00EC9088 /* 黑马微博 */,
+				B76926B71DE3396D00EC9088 /* 黑马微博Tests */,
+				B76926C21DE3396D00EC9088 /* 黑马微博UITests */,
+				B769269C1DE3396D00EC9088 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B769269C1DE3396D00EC9088 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B769269B1DE3396D00EC9088 /* 黑马微博.app */,
+				B76926B41DE3396D00EC9088 /* 黑马微博Tests.xctest */,
+				B76926BF1DE3396D00EC9088 /* 黑马微博UITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B769269D1DE3396D00EC9088 /* 黑马微博 */ = {
+			isa = PBXGroup;
+			children = (
+				B76926D11DE33CB600EC9088 /* Classes */,
+				B76926AA1DE3396D00EC9088 /* Assets.xcassets */,
+				B76926AC1DE3396D00EC9088 /* LaunchScreen.storyboard */,
+				B76926AF1DE3396D00EC9088 /* Info.plist */,
+				B769269E1DE3396D00EC9088 /* Supporting Files */,
+			);
+			path = "黑马微博";
+			sourceTree = "<group>";
+		};
+		B769269E1DE3396D00EC9088 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B769269F1DE3396D00EC9088 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B76926B71DE3396D00EC9088 /* 黑马微博Tests */ = {
+			isa = PBXGroup;
+			children = (
+				B76926B81DE3396D00EC9088 /* ____Tests.m */,
+				B76926BA1DE3396D00EC9088 /* Info.plist */,
+			);
+			path = "黑马微博Tests";
+			sourceTree = "<group>";
+		};
+		B76926C21DE3396D00EC9088 /* 黑马微博UITests */ = {
+			isa = PBXGroup;
+			children = (
+				B76926C31DE3396D00EC9088 /* ____UITests.m */,
+				B76926C51DE3396D00EC9088 /* Info.plist */,
+			);
+			path = "黑马微博UITests";
+			sourceTree = "<group>";
+		};
+		B76926D11DE33CB600EC9088 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				B76926A21DE3396D00EC9088 /* AppDelegate.m */,
+				B75991941DE3546A00B8DB7E /* HWHomeViewController.h */,
+				B75991951DE3546A00B8DB7E /* HWHomeViewController.m */,
+				B75991971DE3547900B8DB7E /* HWMessageCenterTableViewController.h */,
+				B75991981DE3547900B8DB7E /* HWMessageCenterTableViewController.m */,
+				B759919A1DE3548B00B8DB7E /* HWDiscoverViewController.h */,
+				B759919B1DE3548B00B8DB7E /* HWDiscoverViewController.m */,
+				B759919D1DE3549A00B8DB7E /* HWProfileViewController.h */,
+				B759919E1DE3549A00B8DB7E /* HWProfileViewController.m */,
+				B7F93D7B1DE5CB6D00DE84FA /* TestViewController.h */,
+				B7F93D7C1DE5CB6D00DE84FA /* TestViewController.m */,
+				B7F93D831DE5E54800DE84FA /* HWNavigationController.h */,
+				B7F93D841DE5E54800DE84FA /* HWNavigationController.m */,
+				B7F93D7D1DE5CB6D00DE84FA /* TestViewController.xib */,
+				B76926A11DE3396D00EC9088 /* AppDelegate.h */,
+				B7DDB2461DE493E9004BCDC5 /* HWTabBarController.h */,
+				B7DDB2471DE493E9004BCDC5 /* HWTabBarController.m */,
+				B7F93D801DE5D30A00DE84FA /* UIView+Extension.h */,
+				B7F93D811DE5D30A00DE84FA /* UIView+Extension.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B769269A1DE3396D00EC9088 /* 黑马微博 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B76926C81DE3396D00EC9088 /* Build configuration list for PBXNativeTarget "黑马微博" */;
+			buildPhases = (
+				B76926971DE3396D00EC9088 /* Sources */,
+				B76926981DE3396D00EC9088 /* Frameworks */,
+				B76926991DE3396D00EC9088 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "黑马微博";
+			productName = "黑马微博";
+			productReference = B769269B1DE3396D00EC9088 /* 黑马微博.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B76926B31DE3396D00EC9088 /* 黑马微博Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B76926CB1DE3396D00EC9088 /* Build configuration list for PBXNativeTarget "黑马微博Tests" */;
+			buildPhases = (
+				B76926B01DE3396D00EC9088 /* Sources */,
+				B76926B11DE3396D00EC9088 /* Frameworks */,
+				B76926B21DE3396D00EC9088 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B76926B61DE3396D00EC9088 /* PBXTargetDependency */,
+			);
+			name = "黑马微博Tests";
+			productName = "黑马微博Tests";
+			productReference = B76926B41DE3396D00EC9088 /* 黑马微博Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		B76926BE1DE3396D00EC9088 /* 黑马微博UITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B76926CE1DE3396D00EC9088 /* Build configuration list for PBXNativeTarget "黑马微博UITests" */;
+			buildPhases = (
+				B76926BB1DE3396D00EC9088 /* Sources */,
+				B76926BC1DE3396D00EC9088 /* Frameworks */,
+				B76926BD1DE3396D00EC9088 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B76926C11DE3396D00EC9088 /* PBXTargetDependency */,
+			);
+			name = "黑马微博UITests";
+			productName = "黑马微博UITests";
+			productReference = B76926BF1DE3396D00EC9088 /* 黑马微博UITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B76926931DE3396D00EC9088 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0810;
+				ORGANIZATIONNAME = "弓苗苗";
+				TargetAttributes = {
+					B769269A1DE3396D00EC9088 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = VU9KBD35Z4;
+						ProvisioningStyle = Automatic;
+					};
+					B76926B31DE3396D00EC9088 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = VU9KBD35Z4;
+						ProvisioningStyle = Automatic;
+						TestTargetID = B769269A1DE3396D00EC9088;
+					};
+					B76926BE1DE3396D00EC9088 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = VU9KBD35Z4;
+						ProvisioningStyle = Automatic;
+						TestTargetID = B769269A1DE3396D00EC9088;
+					};
+				};
+			};
+			buildConfigurationList = B76926961DE3396D00EC9088 /* Build configuration list for PBXProject "黑马微博" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B76926921DE3396D00EC9088;
+			productRefGroup = B769269C1DE3396D00EC9088 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B769269A1DE3396D00EC9088 /* 黑马微博 */,
+				B76926B31DE3396D00EC9088 /* 黑马微博Tests */,
+				B76926BE1DE3396D00EC9088 /* 黑马微博UITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B76926991DE3396D00EC9088 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B76926AE1DE3396D00EC9088 /* LaunchScreen.storyboard in Resources */,
+				B7F93D7F1DE5CB6D00DE84FA /* TestViewController.xib in Resources */,
+				B76926AB1DE3396D00EC9088 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B76926B21DE3396D00EC9088 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B76926BD1DE3396D00EC9088 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B76926971DE3396D00EC9088 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B7F93D851DE5E54800DE84FA /* HWNavigationController.m in Sources */,
+				B7F93D821DE5D30A00DE84FA /* UIView+Extension.m in Sources */,
+				B75991961DE3546A00B8DB7E /* HWHomeViewController.m in Sources */,
+				B759919F1DE3549A00B8DB7E /* HWProfileViewController.m in Sources */,
+				B76926A31DE3396D00EC9088 /* AppDelegate.m in Sources */,
+				B7DDB2481DE493E9004BCDC5 /* HWTabBarController.m in Sources */,
+				B76926A01DE3396D00EC9088 /* main.m in Sources */,
+				B759919C1DE3548B00B8DB7E /* HWDiscoverViewController.m in Sources */,
+				B7F93D7E1DE5CB6D00DE84FA /* TestViewController.m in Sources */,
+				B75991991DE3547900B8DB7E /* HWMessageCenterTableViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B76926B01DE3396D00EC9088 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B76926B91DE3396D00EC9088 /* ____Tests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B76926BB1DE3396D00EC9088 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B76926C41DE3396D00EC9088 /* ____UITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B76926B61DE3396D00EC9088 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B769269A1DE3396D00EC9088 /* 黑马微博 */;
+			targetProxy = B76926B51DE3396D00EC9088 /* PBXContainerItemProxy */;
+		};
+		B76926C11DE3396D00EC9088 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B769269A1DE3396D00EC9088 /* 黑马微博 */;
+			targetProxy = B76926C01DE3396D00EC9088 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B76926AC1DE3396D00EC9088 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B76926AD1DE3396D00EC9088 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B76926C61DE3396D00EC9088 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		B76926C71DE3396D00EC9088 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B76926C91DE3396D00EC9088 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = VU9KBD35Z4;
+				INFOPLIST_FILE = "黑马微博/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gmm.weibo.----";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		B76926CA1DE3396D00EC9088 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = VU9KBD35Z4;
+				INFOPLIST_FILE = "黑马微博/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gmm.weibo.----";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		B76926CC1DE3396D00EC9088 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = VU9KBD35Z4;
+				INFOPLIST_FILE = "黑马微博Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gmm.weibo.----Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/黑马微博.app/黑马微博";
+			};
+			name = Debug;
+		};
+		B76926CD1DE3396D00EC9088 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = VU9KBD35Z4;
+				INFOPLIST_FILE = "黑马微博Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gmm.weibo.----Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/黑马微博.app/黑马微博";
+			};
+			name = Release;
+		};
+		B76926CF1DE3396D00EC9088 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = VU9KBD35Z4;
+				INFOPLIST_FILE = "黑马微博UITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gmm.weibo.----UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "黑马微博";
+			};
+			name = Debug;
+		};
+		B76926D01DE3396D00EC9088 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = VU9KBD35Z4;
+				INFOPLIST_FILE = "黑马微博UITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gmm.weibo.----UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "黑马微博";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B76926961DE3396D00EC9088 /* Build configuration list for PBXProject "黑马微博" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B76926C61DE3396D00EC9088 /* Debug */,
+				B76926C71DE3396D00EC9088 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B76926C81DE3396D00EC9088 /* Build configuration list for PBXNativeTarget "黑马微博" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B76926C91DE3396D00EC9088 /* Debug */,
+				B76926CA1DE3396D00EC9088 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B76926CB1DE3396D00EC9088 /* Build configuration list for PBXNativeTarget "黑马微博Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B76926CC1DE3396D00EC9088 /* Debug */,
+				B76926CD1DE3396D00EC9088 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B76926CE1DE3396D00EC9088 /* Build configuration list for PBXNativeTarget "黑马微博UITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B76926CF1DE3396D00EC9088 /* Debug */,
+				B76926D01DE3396D00EC9088 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B76926931DE3396D00EC9088 /* Project object */;
+}
