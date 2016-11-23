@@ -24,6 +24,7 @@
     [super pushViewController:viewController animated:animated];
     
     if (self.childViewControllers.count > 1) {
+        // 设置导航栏上的内容
         // 左边的按钮
         UIButton *btnBack = [self getCustomButtonByName:@"navigationbar_back" highlightName:@"navigationbar_back_highlighted"];
         [btnBack addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
@@ -32,6 +33,9 @@
         UIButton *btnMore = [self getCustomButtonByName:@"navigationbar_more" highlightName:@"navigationbar_more_highlighted"];
         [btnMore addTarget:self action:@selector(more) forControlEvents:UIControlEventTouchUpInside];
         viewController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btnMore];
+        
+        // 自动显示和影藏tabbar
+        viewController.hidesBottomBarWhenPushed = YES;
     }
 }
 

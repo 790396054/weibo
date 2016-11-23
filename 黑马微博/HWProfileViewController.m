@@ -24,6 +24,7 @@
 -(void)setting{
     TestViewController *test = [[TestViewController alloc] init];
     test.title = @"测试";
+    
     [self.navigationController pushViewController:test animated:YES];
     
 }
