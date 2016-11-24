@@ -21,12 +21,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Default" highlightedImage="Default" translatesAutoresizingMaskIntoConstraints="NO" id="nkg-lI-ftd">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Default" highlightedImage="Default" translatesAutoresizingMaskIntoConstraints="NO" id="nkg-lI-ftd">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="nkg-lI-ftd" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="WTU-0k-RzA"/>
+                            <constraint firstAttribute="trailing" secondItem="nkg-lI-ftd" secondAttribute="trailing" id="Xe8-qB-y8t"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="nkg-lI-ftd" secondAttribute="bottom" id="nC2-bu-cjj"/>
+                            <constraint firstItem="nkg-lI-ftd" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="rXF-QU-fd9"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>

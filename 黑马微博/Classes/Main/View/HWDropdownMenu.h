@@ -8,14 +8,22 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ 自定义下拉框
+ */
 @interface HWDropdownMenu : UIView
 
+/**
+ 显示一个下拉框
+
+ @return 下拉框
+ */
 +(instancetype)menu;
 
 /**
- 显示
+ 显示下拉框
  */
--(void)show;
+-(void)showFrom:(UIView *)view;
 
 /**
  销毁
@@ -23,7 +31,7 @@
 -(void)dismiss;
 
 /**
- 内容
+ 下拉框中显示的内容
  */
 @property (nonatomic, strong) UIView *content;
 

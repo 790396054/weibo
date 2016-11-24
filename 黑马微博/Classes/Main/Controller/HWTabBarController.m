@@ -22,7 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // 初始化子控制器
+    // 1.初始化子控制器
     HWHomeViewController *home = [[HWHomeViewController alloc] init];
     [self addChildVc:home WithTitle:@"首页" Image:@"tabbar_home" SelectedImage:@"tabbar_home_selected"];
     
@@ -34,6 +34,12 @@
     
     HWProfileViewController *profile = [[HWProfileViewController alloc] init];
     [self addChildVc:profile WithTitle:@"我" Image:@"tabbar_profile" SelectedImage:@"tabbar_profile_selected"];
+    
+    // 2.添加一个按钮到tabbar中
+    UIButton *plusBtn = [[UIButton alloc] init];
+    //plusBtn.backgroundColor
+    
+    //[self.tabBar addSubview:plusBtn];
 }
 
 /**
