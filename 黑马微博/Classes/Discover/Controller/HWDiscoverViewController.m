@@ -7,6 +7,7 @@
 //
 
 #import "HWDiscoverViewController.h"
+#import "HWSearchBar.h"
 
 @interface HWDiscoverViewController ()
 
@@ -17,7 +18,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    UISearchBar *searchBar = [[UISearchBar alloc] init];
+//    UISearchBar *searchBar = [[UISearchBar alloc] init];
+//    searchBar.scopeBarBackgroundImage = [UIImage imageNamed:@"searchbar_textfield_background"];
+//    self.navigationItem.titleView = searchBar;
+
+    // 设置搜索框 HWSearchBar 自定义搜索框
+    HWSearchBar *searchBar = [HWSearchBar searchBar];
+    searchBar.height = 30;
+    searchBar.width = [UIScreen mainScreen].bounds.size.width - 30;
     self.navigationItem.titleView = searchBar;
 }
 

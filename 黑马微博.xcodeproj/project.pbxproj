@@ -23,6 +23,9 @@
 		B7745D4B1DE678A40095E495 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7745D411DE678A40095E495 /* TestViewController.m */; };
 		B7745D4C1DE678A40095E495 /* TestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7745D421DE678A40095E495 /* TestViewController.xib */; };
 		B7745D4F1DE683990095E495 /* UIBarButtonItem+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B7745D4E1DE683990095E495 /* UIBarButtonItem+Extension.m */; };
+		B7745D531DE6C4F30095E495 /* HWSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = B7745D521DE6C4F30095E495 /* HWSearchBar.m */; };
+		B7745D561DE6E5310095E495 /* HWDropdownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = B7745D551DE6E5310095E495 /* HWDropdownMenu.m */; };
+		B7745D591DE6F5A10095E495 /* HWTitleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7745D581DE6F5A10095E495 /* HWTitleTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +79,12 @@
 		B7745D4D1DE683990095E495 /* UIBarButtonItem+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Extension.h"; sourceTree = "<group>"; };
 		B7745D4E1DE683990095E495 /* UIBarButtonItem+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Extension.m"; sourceTree = "<group>"; };
 		B7745D501DE684730095E495 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		B7745D511DE6C4F30095E495 /* HWSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWSearchBar.h; sourceTree = "<group>"; };
+		B7745D521DE6C4F30095E495 /* HWSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWSearchBar.m; sourceTree = "<group>"; };
+		B7745D541DE6E5310095E495 /* HWDropdownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWDropdownMenu.h; sourceTree = "<group>"; };
+		B7745D551DE6E5310095E495 /* HWDropdownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWDropdownMenu.m; sourceTree = "<group>"; };
+		B7745D571DE6F5A10095E495 /* HWTitleTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWTitleTableViewController.h; sourceTree = "<group>"; };
+		B7745D581DE6F5A10095E495 /* HWTitleTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWTitleTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,6 +246,8 @@
 		B7745D241DE678A40095E495 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B7745D571DE6F5A10095E495 /* HWTitleTableViewController.h */,
+				B7745D581DE6F5A10095E495 /* HWTitleTableViewController.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -294,6 +305,10 @@
 		B7745D321DE678A40095E495 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B7745D511DE6C4F30095E495 /* HWSearchBar.h */,
+				B7745D521DE6C4F30095E495 /* HWSearchBar.m */,
+				B7745D541DE6E5310095E495 /* HWDropdownMenu.h */,
+				B7745D551DE6E5310095E495 /* HWDropdownMenu.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -512,13 +527,16 @@
 			files = (
 				B7745D461DE678A40095E495 /* UIView+Extension.m in Sources */,
 				B7745D451DE678A40095E495 /* AppDelegate.m in Sources */,
+				B7745D531DE6C4F30095E495 /* HWSearchBar.m in Sources */,
 				B7745D441DE678A40095E495 /* HWHomeViewController.m in Sources */,
 				B7745D491DE678A40095E495 /* HWMessageCenterTableViewController.m in Sources */,
 				B7745D4B1DE678A40095E495 /* TestViewController.m in Sources */,
 				B7745D481DE678A40095E495 /* HWTabBarController.m in Sources */,
 				B7745D4F1DE683990095E495 /* UIBarButtonItem+Extension.m in Sources */,
 				B7745D431DE678A40095E495 /* HWDiscoverViewController.m in Sources */,
+				B7745D591DE6F5A10095E495 /* HWTitleTableViewController.m in Sources */,
 				B7745D471DE678A40095E495 /* HWNavigationController.m in Sources */,
+				B7745D561DE6E5310095E495 /* HWDropdownMenu.m in Sources */,
 				B7745D4A1DE678A40095E495 /* HWProfileViewController.m in Sources */,
 				B76926A01DE3396D00EC9088 /* main.m in Sources */,
 			);

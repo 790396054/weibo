@@ -40,7 +40,7 @@
  * 添加子控制器
  */
 -(void)addChildVc:(UIViewController *)childVc WithTitle:(NSString *)title Image:(NSString *)image SelectedImage:(NSString *)selectdImage{
-    childVc.view.backgroundColor = HWRandomColor;
+    //childVc.view.backgroundColor = HWRandomColor;
     
 //    childVc.tabBarItem.title = title;
 //    childVc.navigationItem.title = title;
