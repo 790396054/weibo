@@ -1,0 +1,32 @@
+//
+//  PrefixHeader.pch
+//  黑马微博
+//
+//  Created by 弓苗苗 on 2016/11/24.
+//  Copyright © 2016年 弓苗苗. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* PrefixHeader_pch */
+
+#ifdef DEBUG // 开发阶段
+#define HWLog(...) NSLog(__VA_ARGS__)
+#else // 发布阶段
+#define HWLog(...)
+#endif
+
+// 自定义添加全局宏
+// RGB颜色
+#define HWRGBColor(r,g,b) [UIColor colorWithRed:(r) / 255.0 green:(g)/ 255.0 blue:(b)/ 255.0 alpha:1.0]
+
+// 随机色
+#define HWRandomColor HWRGBColor(arc4random_uniform(256),arc4random_uniform(256),arc4random_uniform(256))
+
+// 自定import进来的全局同类的.h
+#import "UIView+Extension.h"
+#import "UIBarButtonItem+Extension.h"

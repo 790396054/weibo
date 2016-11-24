@@ -8,7 +8,6 @@
 
 #import "HWMessageCenterTableViewController.h"
 #import "TestViewController.h"
-#import "UIView+Extension.h"
 
 @interface HWMessageCenterTableViewController ()
 
@@ -18,12 +17,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"写私信" style:UIBarButtonItemStylePlain target:self action:@selector(writeMessage)];
+    HWLog(@"%s",__func__);
+}
+
+-(void)viewWillAppear:(BOOL)animated{
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    [super viewWillAppear:animated];
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.navigationItem.rightBarButtonItem.enabled = YES;
+}
+
+-(void)writeMessage{
+    HWLog(@"%s", __func__);
 }
 
 - (void)didReceiveMemoryWarning {

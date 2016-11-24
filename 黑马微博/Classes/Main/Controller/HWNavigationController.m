@@ -7,7 +7,6 @@
 //
 
 #import "HWNavigationController.h"
-#import "UIView+Extension.h"
 
 @interface HWNavigationController ()
 
@@ -15,9 +14,26 @@
 
 @implementation HWNavigationController
 
+// 类第一次加载的时候调用
++(void)initialize{
+    // 设置整个项目所有item的样式
+    UIBarButtonItem *item = [UIBarButtonItem appearance];
+    
+    // 设置普通主题
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    dict[NSForegroundColorAttributeName] = [UIColor orangeColor];
+    dict[NSFontAttributeName] = [UIFont systemFontOfSize:14];
+    [item setTitleTextAttributes:dict forState:UIControlStateNormal];
+    
+    // 设置不可用状态的主题
+    NSMutableDictionary *disableDict = [NSMutableDictionary dictionary];
+    disableDict[NSForegroundColorAttributeName] = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:0.8];
+    disableDict[NSFontAttributeName] = [UIFont systemFontOfSize:14];
+    [item setTitleTextAttributes:disableDict forState:UIControlStateDisabled];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
 -(void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated{
@@ -25,14 +41,9 @@
     
     if (self.childViewControllers.count > 1) {
         // 设置导航栏上的内容
-        // 左边的按钮
-        UIButton *btnBack = [self getCustomButtonByName:@"navigationbar_back" highlightName:@"navigationbar_back_highlighted"];
-        [btnBack addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
-        viewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btnBack];
-        // 右边的按钮
-        UIButton *btnMore = [self getCustomButtonByName:@"navigationbar_more" highlightName:@"navigationbar_more_highlighted"];
-        [btnMore addTarget:self action:@selector(more) forControlEvents:UIControlEventTouchUpInside];
-        viewController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btnMore];
+        viewController.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(back) image:@"navigationbar_back" highImage:@"navigationbar_back_highlighted"];
+        
+        viewController.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(more) image:@"navigationbar_more" highImage:@"navigationbar_more_highlighted"];
         
         // 自动显示和影藏tabbar
         viewController.hidesBottomBarWhenPushed = YES;
@@ -45,17 +56,6 @@
 
 -(void)more{
     [self popToRootViewControllerAnimated:YES];
-}
-
-// 返回自定义按钮
--(UIButton *)getCustomButtonByName:(NSString *)name highlightName:(NSString *)highlightName{
-    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    // 设置图片
-    [btn setBackgroundImage:[UIImage imageNamed:name] forState:UIControlStateNormal];
-    [btn setBackgroundImage:[UIImage imageNamed:highlightName] forState:UIControlStateHighlighted];
-    // 设置尺寸
-    btn.size = btn.currentBackgroundImage.size;
-    return btn;
 }
 
 @end
