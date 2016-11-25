@@ -8,10 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-/**
- 自定义下拉框
- */
+@class HWDropdownMenu;
+
+@protocol HWDropdownMenuDelegate <NSObject>
+@optional
+-(void)dropDownMenuDidDismiss:(HWDropdownMenu *)menu;
+-(void)dropDownMenuDidShow:(HWDropdownMenu *)menu;
+@end
+
 @interface HWDropdownMenu : UIView
+
+@property (nonatomic, weak) id<HWDropdownMenuDelegate> delegate;
 
 /**
  显示一个下拉框

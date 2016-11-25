@@ -26,6 +26,7 @@
 		B7745D531DE6C4F30095E495 /* HWSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = B7745D521DE6C4F30095E495 /* HWSearchBar.m */; };
 		B7745D561DE6E5310095E495 /* HWDropdownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = B7745D551DE6E5310095E495 /* HWDropdownMenu.m */; };
 		B7745D591DE6F5A10095E495 /* HWTitleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7745D581DE6F5A10095E495 /* HWTitleTableViewController.m */; };
+		B7E368871DE7CDFF00273F1A /* HWTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E368861DE7CDFF00273F1A /* HWTabBar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,8 @@
 		B7745D551DE6E5310095E495 /* HWDropdownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWDropdownMenu.m; sourceTree = "<group>"; };
 		B7745D571DE6F5A10095E495 /* HWTitleTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWTitleTableViewController.h; sourceTree = "<group>"; };
 		B7745D581DE6F5A10095E495 /* HWTitleTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWTitleTableViewController.m; sourceTree = "<group>"; };
+		B7E368851DE7CDFF00273F1A /* HWTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWTabBar.h; sourceTree = "<group>"; };
+		B7E368861DE7CDFF00273F1A /* HWTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWTabBar.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -309,6 +312,8 @@
 				B7745D521DE6C4F30095E495 /* HWSearchBar.m */,
 				B7745D541DE6E5310095E495 /* HWDropdownMenu.h */,
 				B7745D551DE6E5310095E495 /* HWDropdownMenu.m */,
+				B7E368851DE7CDFF00273F1A /* HWTabBar.h */,
+				B7E368861DE7CDFF00273F1A /* HWTabBar.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -536,6 +541,7 @@
 				B7745D431DE678A40095E495 /* HWDiscoverViewController.m in Sources */,
 				B7745D591DE6F5A10095E495 /* HWTitleTableViewController.m in Sources */,
 				B7745D471DE678A40095E495 /* HWNavigationController.m in Sources */,
+				B7E368871DE7CDFF00273F1A /* HWTabBar.m in Sources */,
 				B7745D561DE6E5310095E495 /* HWDropdownMenu.m in Sources */,
 				B7745D4A1DE678A40095E495 /* HWProfileViewController.m in Sources */,
 				B76926A01DE3396D00EC9088 /* main.m in Sources */,

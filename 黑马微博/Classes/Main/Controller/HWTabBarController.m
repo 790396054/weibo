@@ -12,8 +12,9 @@
 #import "HWDiscoverViewController.h"
 #import "HWProfileViewController.h"
 #import "HWNavigationController.h"
+#import "HWTabBar.h"
 
-@interface HWTabBarController ()
+@interface HWTabBarController () <HWTabBarDelegate>
 
 @end
 
@@ -35,19 +36,24 @@
     HWProfileViewController *profile = [[HWProfileViewController alloc] init];
     [self addChildVc:profile WithTitle:@"我" Image:@"tabbar_profile" SelectedImage:@"tabbar_profile_selected"];
     
-    // 2.添加一个按钮到tabbar中
-    UIButton *plusBtn = [[UIButton alloc] init];
-    //plusBtn.backgroundColor
+    // 2.替换掉系统的UITabBarButton
+    HWTabBar *tabbar = [[HWTabBar alloc] init];
+    tabbar.hwDelegate = self;
+    [self setValue:tabbar forKeyPath:@"tabBar"];
     
-    //[self.tabBar addSubview:plusBtn];
+}
+
+#pragma mark - HWTabBarDelegate代理方法
+-(void)tabBarDidClickPlusButton:(HWTabBar *)tabBar{
+    UIViewController *vc = [[UIViewController alloc] init];
+    vc.view.backgroundColor = [UIColor redColor];
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 /**
  * 添加子控制器
  */
 -(void)addChildVc:(UIViewController *)childVc WithTitle:(NSString *)title Image:(NSString *)image SelectedImage:(NSString *)selectdImage{
-    //childVc.view.backgroundColor = HWRandomColor;
-    
 //    childVc.tabBarItem.title = title;
 //    childVc.navigationItem.title = title;
     childVc.title = title;

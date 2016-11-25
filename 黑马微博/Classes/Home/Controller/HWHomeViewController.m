@@ -11,7 +11,7 @@
 #import "HWDropdownMenu.h"
 #import "HWTitleTableViewController.h"
 
-@interface HWHomeViewController ()
+@interface HWHomeViewController () <HWDropdownMenuDelegate>
 
 @end
 
@@ -33,35 +33,37 @@
     
     [button setTitle:@"首页" forState:UIControlStateNormal];
     [button setImage:[UIImage imageNamed:@"navigationbar_arrow_up"] forState:UIControlStateNormal];
+    [button setImage:[UIImage imageNamed:@"navigationbar_arrow_down"] forState:UIControlStateSelected];
     button.imageEdgeInsets = UIEdgeInsetsMake(0, 70, 0, 0);
     button.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 30);
-    
     self.navigationItem.titleView = button;
-    
-    UIButton *btn = [[UIButton alloc] init];
-    btn.width = 100;
-    btn.height = 30;
-    btn.y = 30;
-    btn.x = 80;
-    btn.backgroundColor = [UIColor redColor];
-    [btn addTarget:self action:@selector(titleClick:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:btn];
 }
-
 
 /**
   标题点击
  */
 -(void)titleClick:(UIButton *)from{
     HWDropdownMenu *menu = [HWDropdownMenu menu];
-//    menu.content = [UIButton buttonWithType:UIButtonTypeContactAdd];
-//    menu.content = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 0, 200)];
+    menu.delegate = self;
     HWTitleTableViewController *conte = [[HWTitleTableViewController alloc] init];
+    // 设置宽高
     conte.view.height = 44 * 3;
     conte.view.width = 150;
+    // 设置内容
     menu.contentController = conte;
+    // 显示
     [menu showFrom:from];
-    
+}
+
+#pragma mark - 实现下拉点击的代理方法
+-(void)dropDownMenuDidDismiss:(HWDropdownMenu *)menu{
+    UIButton *button = (UIButton *)self.navigationItem.titleView;
+    button.selected = NO;
+}
+
+-(void)dropDownMenuDidShow:(HWDropdownMenu *)menu{
+    UIButton *button = (UIButton *)self.navigationItem.titleView;
+    button.selected = YES;
 }
 
 -(void)searchFrends{

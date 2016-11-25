@@ -62,6 +62,11 @@
     self.containerView.x = (self.width - self.containerView.width) * 0.5;
     self.containerView.centerX = CGRectGetMidX(newFrame);
     self.containerView.y = CGRectGetMaxY(newFrame);
+    
+    // 通知代理
+    if ([self.delegate respondsToSelector:@selector(dropDownMenuDidShow:)]) {
+        [self.delegate dropDownMenuDidShow:self];
+    }
 }
 
 -(void)setContent:(UIView *)content{
@@ -85,6 +90,11 @@
 
 -(void)dismiss{
     [self removeFromSuperview];
+    
+    // 通知代理
+    if ([self.delegate respondsToSelector:@selector(dropDownMenuDidDismiss:)]) {
+        [self.delegate dropDownMenuDidDismiss:self];
+    }
 }
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
