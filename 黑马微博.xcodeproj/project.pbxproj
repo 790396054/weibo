@@ -27,6 +27,7 @@
 		B7745D561DE6E5310095E495 /* HWDropdownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = B7745D551DE6E5310095E495 /* HWDropdownMenu.m */; };
 		B7745D591DE6F5A10095E495 /* HWTitleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7745D581DE6F5A10095E495 /* HWTitleTableViewController.m */; };
 		B7E368871DE7CDFF00273F1A /* HWTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E368861DE7CDFF00273F1A /* HWTabBar.m */; };
+		B7E3688C1DE811AD00273F1A /* HWNewFeatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E3688B1DE811AD00273F1A /* HWNewFeatureViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +89,8 @@
 		B7745D581DE6F5A10095E495 /* HWTitleTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWTitleTableViewController.m; sourceTree = "<group>"; };
 		B7E368851DE7CDFF00273F1A /* HWTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWTabBar.h; sourceTree = "<group>"; };
 		B7E368861DE7CDFF00273F1A /* HWTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWTabBar.m; sourceTree = "<group>"; };
+		B7E3688A1DE811AD00273F1A /* HWNewFeatureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWNewFeatureViewController.h; sourceTree = "<group>"; };
+		B7E3688B1DE811AD00273F1A /* HWNewFeatureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWNewFeatureViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +180,7 @@
 		B7745D181DE678A40095E495 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				B7E368881DE8119400273F1A /* NewFeature */,
 				B7745D191DE678A40095E495 /* Discover */,
 				B7745D1F1DE678A40095E495 /* Home */,
 				B7745D251DE678A40095E495 /* Main */,
@@ -394,6 +398,23 @@
 			path = Temp;
 			sourceTree = "<group>";
 		};
+		B7E368881DE8119400273F1A /* NewFeature */ = {
+			isa = PBXGroup;
+			children = (
+				B7E368891DE8119400273F1A /* Controller */,
+			);
+			path = NewFeature;
+			sourceTree = "<group>";
+		};
+		B7E368891DE8119400273F1A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B7E3688A1DE811AD00273F1A /* HWNewFeatureViewController.h */,
+				B7E3688B1DE811AD00273F1A /* HWNewFeatureViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -541,6 +562,7 @@
 				B7745D431DE678A40095E495 /* HWDiscoverViewController.m in Sources */,
 				B7745D591DE6F5A10095E495 /* HWTitleTableViewController.m in Sources */,
 				B7745D471DE678A40095E495 /* HWNavigationController.m in Sources */,
+				B7E3688C1DE811AD00273F1A /* HWNewFeatureViewController.m in Sources */,
 				B7E368871DE7CDFF00273F1A /* HWTabBar.m in Sources */,
 				B7745D561DE6E5310095E495 /* HWDropdownMenu.m in Sources */,
 				B7745D4A1DE678A40095E495 /* HWProfileViewController.m in Sources */,
