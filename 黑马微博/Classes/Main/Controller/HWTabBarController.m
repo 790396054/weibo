@@ -40,7 +40,6 @@
     HWTabBar *tabbar = [[HWTabBar alloc] init];
     tabbar.hwDelegate = self;
     [self setValue:tabbar forKeyPath:@"tabBar"];
-    
 }
 
 #pragma mark - HWTabBarDelegate代理方法

@@ -37,6 +37,8 @@
     button.imageEdgeInsets = UIEdgeInsetsMake(0, 70, 0, 0);
     button.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 30);
     self.navigationItem.titleView = button;
+    
+    
 }
 
 /**
