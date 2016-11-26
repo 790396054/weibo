@@ -7,6 +7,7 @@
 //
 
 #import "HWNewFeatureViewController.h"
+#import "HWTabBarController.h"
 
 #define NewFeaturePages 4
 
@@ -77,7 +78,7 @@
     
     // 添加分享按钮
     UIButton *shareBtn = [[UIButton alloc] init];
-    shareBtn.width = 200;
+    shareBtn.width = 180;
     shareBtn.height = 60;
     shareBtn.centerX = imageView.width * 0.5;
     shareBtn.centerY = imageView.height * 0.7;
@@ -86,7 +87,14 @@
     [shareBtn setTitle:@"分享到微博" forState:UIControlStateNormal];
     [shareBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [shareBtn addTarget:self action:@selector(checkBoxClick:) forControlEvents:UIControlEventTouchUpInside];
+    // top left bottom right
+    shareBtn.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
     [imageView addSubview:shareBtn];
+    
+    // 内边距
+//    shareBtn.contentEdgeInsets 内容内边距
+//    shareBtn.tleEdgeInsets 标题内边距
+//    shareBtn.imageEdgeInsets 图片内边距
     
     // 添加开启微博按钮
     UIButton *startBtn = [[UIButton alloc] init];
@@ -116,6 +124,14 @@
  @param button 按钮
  */
 -(void)startWeibo:(UIButton *)button{
-    NSLog(@"开始微博");
+    /**
+     控制器切换的手段：
+     1.push:依赖于UINavigationController, 控制器的切换是可逆的
+     2.modal:控制器切换是可逆的
+     3.切换window 的rootViewController
+     */
+    UIWindow *window = [[UIApplication sharedApplication] keyWindow];
+    window.rootViewController = [[HWTabBarController alloc] init];
+    
 }
 @end

@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "HWTabBarController.h"
 #import "HWNewFeatureViewController.h"
+#import "HWOAuthViewController.h"
 
 @interface AppDelegate ()
 
@@ -25,6 +26,24 @@
 //    self.window.rootViewController = [[HWTabBarController alloc] init];
     self.window.rootViewController = [[HWNewFeatureViewController alloc] init];
     
+    // 读取沙盒中的版本号
+    NSString *key = @"CFBundleVersion";
+    NSString *lastVersion = [[NSUserDefaults standardUserDefaults] objectForKey:key];
+    
+    // 取出当前的版本号
+    NSString *currentVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:key];
+    self.window.rootViewController = [[HWOAuthViewController alloc] init];
+
+    // 判断沙盒中的版本号和当前的版本号
+//    if ([currentVersion isEqualToString:lastVersion]) { // 版本一致
+//        self.window.rootViewController = [[HWTabBarController alloc] init];
+//    }else { // 版本不一致
+//        self.window.rootViewController = [[HWNewFeatureViewController alloc] init];
+//        // 存储当前版本号到沙盒中
+//        [[NSUserDefaults standardUserDefaults] setObject:currentVersion forKey:key];
+//        [[NSUserDefaults standardUserDefaults] synchronize];
+//    }
+//
     // 3.显示窗口
     [self.window makeKeyAndVisible];
     

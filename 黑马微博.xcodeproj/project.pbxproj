@@ -28,6 +28,7 @@
 		B7745D591DE6F5A10095E495 /* HWTitleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7745D581DE6F5A10095E495 /* HWTitleTableViewController.m */; };
 		B7E368871DE7CDFF00273F1A /* HWTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E368861DE7CDFF00273F1A /* HWTabBar.m */; };
 		B7E3688C1DE811AD00273F1A /* HWNewFeatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E3688B1DE811AD00273F1A /* HWNewFeatureViewController.m */; };
+		B7E59E2E1DE93B1A00C67D21 /* HWOAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E59E2D1DE93B1A00C67D21 /* HWOAuthViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,8 @@
 		B7E368861DE7CDFF00273F1A /* HWTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWTabBar.m; sourceTree = "<group>"; };
 		B7E3688A1DE811AD00273F1A /* HWNewFeatureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWNewFeatureViewController.h; sourceTree = "<group>"; };
 		B7E3688B1DE811AD00273F1A /* HWNewFeatureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWNewFeatureViewController.m; sourceTree = "<group>"; };
+		B7E59E2C1DE93B1A00C67D21 /* HWOAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWOAuthViewController.h; sourceTree = "<group>"; };
+		B7E59E2D1DE93B1A00C67D21 /* HWOAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWOAuthViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +183,7 @@
 		B7745D181DE678A40095E495 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				B7E59E2A1DE93B0600C67D21 /* OAuth */,
 				B7E368881DE8119400273F1A /* NewFeature */,
 				B7745D191DE678A40095E495 /* Discover */,
 				B7745D1F1DE678A40095E495 /* Home */,
@@ -415,6 +419,23 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		B7E59E2A1DE93B0600C67D21 /* OAuth */ = {
+			isa = PBXGroup;
+			children = (
+				B7E59E2B1DE93B0600C67D21 /* Controller */,
+			);
+			path = OAuth;
+			sourceTree = "<group>";
+		};
+		B7E59E2B1DE93B0600C67D21 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B7E59E2C1DE93B1A00C67D21 /* HWOAuthViewController.h */,
+				B7E59E2D1DE93B1A00C67D21 /* HWOAuthViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -482,7 +503,7 @@
 				TargetAttributes = {
 					B769269A1DE3396D00EC9088 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = VU9KBD35Z4;
+						DevelopmentTeam = S2TFHBVX2A;
 						ProvisioningStyle = Automatic;
 					};
 					B76926B31DE3396D00EC9088 = {
@@ -563,6 +584,7 @@
 				B7745D591DE6F5A10095E495 /* HWTitleTableViewController.m in Sources */,
 				B7745D471DE678A40095E495 /* HWNavigationController.m in Sources */,
 				B7E3688C1DE811AD00273F1A /* HWNewFeatureViewController.m in Sources */,
+				B7E59E2E1DE93B1A00C67D21 /* HWOAuthViewController.m in Sources */,
 				B7E368871DE7CDFF00273F1A /* HWTabBar.m in Sources */,
 				B7745D561DE6E5310095E495 /* HWDropdownMenu.m in Sources */,
 				B7745D4A1DE678A40095E495 /* HWProfileViewController.m in Sources */,
@@ -705,7 +727,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = VU9KBD35Z4;
+				DEVELOPMENT_TEAM = S2TFHBVX2A;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/黑马微博/PrefixHeader.pch";
 				INFOPLIST_FILE = "黑马微博/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -718,7 +740,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = VU9KBD35Z4;
+				DEVELOPMENT_TEAM = S2TFHBVX2A;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/黑马微博/PrefixHeader.pch";
 				INFOPLIST_FILE = "黑马微博/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
