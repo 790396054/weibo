@@ -13,8 +13,9 @@
 +(instancetype)accountWithDict:(NSDictionary *)dict{
     HWAccount *account = [[HWAccount alloc] init];
     account.access_token = dict[@"access_token"];
-    account.expires_in = dict[@"access_token"];
+    account.expires_in = dict[@"expires_in"];
     account.uid = dict[@"uid"];
+    account.create_time = [NSDate date];
     return account;
 }
 
@@ -22,10 +23,11 @@
  当一个对象要归档进沙盒时,就会调用这个方法
  目的：在这个方法中说明这个对象的那些属性要存进沙盒
  */
--(void)encodeWithCoder:(NSCoder *)enoder{
-    [enoder encodeObject:self.access_token forKey:@"access_token"];
-    [enoder encodeObject:self.expires_in forKey:@"expires_in"];
-    [enoder encodeObject:self.uid forKey:@"uid"];
+-(void)encodeWithCoder:(NSCoder *)encoder{
+    [encoder encodeObject:self.access_token forKey:@"access_token"];
+    [encoder encodeObject:self.expires_in forKey:@"expires_in"];
+    [encoder encodeObject:self.uid forKey:@"uid"];
+    [encoder encodeObject:self.create_time forKey:@"create_time"];
 }
 
 /**
@@ -37,6 +39,7 @@
         self.access_token = [decoder decodeObjectForKey:@"access_token"];
         self.expires_in = [decoder decodeObjectForKey:@"expires_in"];
         self.uid = [decoder decodeObjectForKey:@"uid"];
+        self.create_time = [decoder decodeObjectForKey:@"create_time"];
     }
     return self;
 }

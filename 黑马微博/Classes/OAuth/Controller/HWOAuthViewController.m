@@ -12,6 +12,7 @@
 #import "HWAccount.h"
 #import "HWNewFeatureViewController.h"
 #import "MBProgressHUD+MJ.h"
+#import "HWAccountTool.h"
 
 @interface HWOAuthViewController ()<UIWebViewDelegate>
 
@@ -77,13 +78,10 @@
          
      }
     success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
-        NSString *doc = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-        HWLog(@"请求成功,%@", doc);
-        NSString *path = [doc stringByAppendingPathComponent:@"account.archiver"];
         // 将返回的账号字典数据 --> 模型，存进沙盒
         HWAccount *account = [HWAccount accountWithDict:responseObject];
         // 自定义对象的存储必须用NSKeyedArchiver，不在有什么writeToFile方法
-        [NSKeyedArchiver archiveRootObject:account toFile:path];
+        [HWAccountTool saveAccount:account];
         
         // 读取沙盒中的版本号
         NSString *key = @"CFBundleVersion";

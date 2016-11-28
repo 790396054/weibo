@@ -19,5 +19,8 @@
 /**授权用户的UID。*/
 @property (nonatomic,copy) NSString *uid;
 
+/**access token 创建时间（获取时间）*/
+@property (nonatomic, strong) NSDate *create_time;
+
 +(instancetype)accountWithDict:(NSDictionary *)dict;
 @end

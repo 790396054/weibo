@@ -17,6 +17,7 @@
 		B75952321DEBCE10008318BF /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = B759522E1DEBCE10008318BF /* MBProgressHUD+MJ.m */; };
 		B75952331DEBCE10008318BF /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B759522F1DEBCE10008318BF /* MBProgressHUD.bundle */; };
 		B75952341DEBCE10008318BF /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = B75952311DEBCE10008318BF /* MBProgressHUD.m */; };
+		B75952381DEBD83A008318BF /* HWAccountTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B75952371DEBD83A008318BF /* HWAccountTool.m */; };
 		B76926A01DE3396D00EC9088 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B769269F1DE3396D00EC9088 /* main.m */; };
 		B76926AB1DE3396D00EC9088 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B76926AA1DE3396D00EC9088 /* Assets.xcassets */; };
 		B76926AE1DE3396D00EC9088 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B76926AC1DE3396D00EC9088 /* LaunchScreen.storyboard */; };
@@ -79,6 +80,8 @@
 		B759522F1DEBCE10008318BF /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
 		B75952301DEBCE10008318BF /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		B75952311DEBCE10008318BF /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		B75952361DEBD83A008318BF /* HWAccountTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWAccountTool.h; sourceTree = "<group>"; };
+		B75952371DEBD83A008318BF /* HWAccountTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWAccountTool.m; sourceTree = "<group>"; };
 		B769269B1DE3396D00EC9088 /* 黑马微博.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "黑马微博.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B769269F1DE3396D00EC9088 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B76926AA1DE3396D00EC9088 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -190,6 +193,15 @@
 				B75952311DEBCE10008318BF /* MBProgressHUD.m */,
 			);
 			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		B75952351DEBD82C008318BF /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				B75952361DEBD83A008318BF /* HWAccountTool.h */,
+				B75952371DEBD83A008318BF /* HWAccountTool.m */,
+			);
+			path = Tool;
 			sourceTree = "<group>";
 		};
 		B76926921DE3396D00EC9088 = {
@@ -495,6 +507,7 @@
 		B7E59E2A1DE93B0600C67D21 /* OAuth */ = {
 			isa = PBXGroup;
 			children = (
+				B75952351DEBD82C008318BF /* Tool */,
 				B75952281DEBC8DB008318BF /* Model */,
 				B7E59E2B1DE93B0600C67D21 /* Controller */,
 			);
@@ -673,6 +686,7 @@
 				B7745D4A1DE678A40095E495 /* HWProfileViewController.m in Sources */,
 				B76926A01DE3396D00EC9088 /* main.m in Sources */,
 				B75952261DEBB842008318BF /* AFURLSessionManager.m in Sources */,
+				B75952381DEBD83A008318BF /* HWAccountTool.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

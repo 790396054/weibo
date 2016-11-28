@@ -11,6 +11,7 @@
 #import "HWNewFeatureViewController.h"
 #import "HWOAuthViewController.h"
 #import "HWAccount.h"
+#import "HWAccountTool.h"
 
 @interface AppDelegate ()
 
@@ -24,11 +25,9 @@
     self.window.frame = [UIScreen mainScreen].bounds;
     
     // 2.设置根控制器
-    // 获取账户的沙盒路径
-    NSString *path = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"account.archiver"];
-//    NSDictionary *account = [NSDictionary dictionaryWithContentsOfFile:path];
-    HWAccount *account = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
-    HWLog(@"account = %@",account);
+    // 获取账户信息
+    HWAccount *account = [HWAccountTool account];
+    
     if (account) { // 账户存在，之前已经登录过
         // 读取沙盒中的版本号
         NSString *key = @"CFBundleVersion";
