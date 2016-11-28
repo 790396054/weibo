@@ -13,6 +13,10 @@
 		B75952241DEBB842008318BF /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = B759521C1DEBB842008318BF /* AFURLRequestSerialization.m */; };
 		B75952251DEBB842008318BF /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = B759521E1DEBB842008318BF /* AFURLResponseSerialization.m */; };
 		B75952261DEBB842008318BF /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B75952201DEBB842008318BF /* AFURLSessionManager.m */; };
+		B759522B1DEBC8EF008318BF /* HWAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = B759522A1DEBC8EF008318BF /* HWAccount.m */; };
+		B75952321DEBCE10008318BF /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = B759522E1DEBCE10008318BF /* MBProgressHUD+MJ.m */; };
+		B75952331DEBCE10008318BF /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B759522F1DEBCE10008318BF /* MBProgressHUD.bundle */; };
+		B75952341DEBCE10008318BF /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = B75952311DEBCE10008318BF /* MBProgressHUD.m */; };
 		B76926A01DE3396D00EC9088 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B769269F1DE3396D00EC9088 /* main.m */; };
 		B76926AB1DE3396D00EC9088 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B76926AA1DE3396D00EC9088 /* Assets.xcassets */; };
 		B76926AE1DE3396D00EC9088 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B76926AC1DE3396D00EC9088 /* LaunchScreen.storyboard */; };
@@ -68,6 +72,13 @@
 		B759521E1DEBB842008318BF /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
 		B759521F1DEBB842008318BF /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
 		B75952201DEBB842008318BF /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
+		B75952291DEBC8EF008318BF /* HWAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWAccount.h; sourceTree = "<group>"; };
+		B759522A1DEBC8EF008318BF /* HWAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWAccount.m; sourceTree = "<group>"; };
+		B759522D1DEBCE10008318BF /* MBProgressHUD+MJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+MJ.h"; sourceTree = "<group>"; };
+		B759522E1DEBCE10008318BF /* MBProgressHUD+MJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+MJ.m"; sourceTree = "<group>"; };
+		B759522F1DEBCE10008318BF /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
+		B75952301DEBCE10008318BF /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		B75952311DEBCE10008318BF /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		B769269B1DE3396D00EC9088 /* 黑马微博.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "黑马微博.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B769269F1DE3396D00EC9088 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B76926AA1DE3396D00EC9088 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -158,6 +169,27 @@
 				B75952201DEBB842008318BF /* AFURLSessionManager.m */,
 			);
 			path = AFNetworking;
+			sourceTree = "<group>";
+		};
+		B75952281DEBC8DB008318BF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B75952291DEBC8EF008318BF /* HWAccount.h */,
+				B759522A1DEBC8EF008318BF /* HWAccount.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B759522C1DEBCE10008318BF /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				B759522D1DEBCE10008318BF /* MBProgressHUD+MJ.h */,
+				B759522E1DEBCE10008318BF /* MBProgressHUD+MJ.m */,
+				B759522F1DEBCE10008318BF /* MBProgressHUD.bundle */,
+				B75952301DEBCE10008318BF /* MBProgressHUD.h */,
+				B75952311DEBCE10008318BF /* MBProgressHUD.m */,
+			);
+			path = MBProgressHUD;
 			sourceTree = "<group>";
 		};
 		B76926921DE3396D00EC9088 = {
@@ -341,6 +373,7 @@
 		B7745D301DE678A40095E495 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				B759522C1DEBCE10008318BF /* MBProgressHUD */,
 				B75952131DEBB842008318BF /* AFNetworking */,
 			);
 			path = Lib;
@@ -462,6 +495,7 @@
 		B7E59E2A1DE93B0600C67D21 /* OAuth */ = {
 			isa = PBXGroup;
 			children = (
+				B75952281DEBC8DB008318BF /* Model */,
 				B7E59E2B1DE93B0600C67D21 /* Controller */,
 			);
 			path = OAuth;
@@ -586,6 +620,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B76926AE1DE3396D00EC9088 /* LaunchScreen.storyboard in Resources */,
+				B75952331DEBCE10008318BF /* MBProgressHUD.bundle in Resources */,
 				B7745D4C1DE678A40095E495 /* TestViewController.xib in Resources */,
 				B76926AB1DE3396D00EC9088 /* Assets.xcassets in Resources */,
 			);
@@ -614,11 +649,14 @@
 			files = (
 				B7745D461DE678A40095E495 /* UIView+Extension.m in Sources */,
 				B7745D451DE678A40095E495 /* AppDelegate.m in Sources */,
+				B759522B1DEBC8EF008318BF /* HWAccount.m in Sources */,
 				B7745D531DE6C4F30095E495 /* HWSearchBar.m in Sources */,
 				B75952211DEBB842008318BF /* AFHTTPSessionManager.m in Sources */,
 				B75952251DEBB842008318BF /* AFURLResponseSerialization.m in Sources */,
+				B75952321DEBCE10008318BF /* MBProgressHUD+MJ.m in Sources */,
 				B7745D441DE678A40095E495 /* HWHomeViewController.m in Sources */,
 				B75952221DEBB842008318BF /* AFNetworkReachabilityManager.m in Sources */,
+				B75952341DEBCE10008318BF /* MBProgressHUD.m in Sources */,
 				B7745D491DE678A40095E495 /* HWMessageCenterTableViewController.m in Sources */,
 				B7745D4B1DE678A40095E495 /* TestViewController.m in Sources */,
 				B7745D481DE678A40095E495 /* HWTabBarController.m in Sources */,

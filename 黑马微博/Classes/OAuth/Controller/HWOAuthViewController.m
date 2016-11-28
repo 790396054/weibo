@@ -8,6 +8,10 @@
 
 #import "HWOAuthViewController.h"
 #import "AFNetworking.h"
+#import "HWTabBarController.h"
+#import "HWAccount.h"
+#import "HWNewFeatureViewController.h"
+#import "MBProgressHUD+MJ.h"
 
 @interface HWOAuthViewController ()<UIWebViewDelegate>
 
@@ -30,7 +34,6 @@
     
     webView.delegate = self;
     [webView loadRequest:request];
-    
 }
 
 -(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
@@ -42,11 +45,15 @@
         // 截取 code 后面的参数值
         NSUInteger fromIndex = range.location + range.length;
         NSString *code = [urlStr substringFromIndex:fromIndex];
+        
+        // 利用 code 换取 access token
         [self requestAccessToketWithCode:code];
+        
+        // 禁止加载回调地址
+        return NO;
     }
     return YES;
 }
-
 
 /**
  获取 AccessToken
@@ -65,11 +72,52 @@
     [param setObject:@"http://www.baidu.com" forKey:@"redirect_uri"];
     
     // 3.发送 post 请求
-    [mgr POST:@"https://api.weibo.com/oauth2/access_token" parameters:param success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        HWLog(@"请求成功,%@", responseObject);
+    [mgr POST:@"https://api.weibo.com/oauth2/access_token" parameters:param
+     progress:^(NSProgress * _Nonnull uploadProgress) {
+         
+     }
+    success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
+        NSString *doc = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+        HWLog(@"请求成功,%@", doc);
+        NSString *path = [doc stringByAppendingPathComponent:@"account.archiver"];
+        // 将返回的账号字典数据 --> 模型，存进沙盒
+        HWAccount *account = [HWAccount accountWithDict:responseObject];
+        // 自定义对象的存储必须用NSKeyedArchiver，不在有什么writeToFile方法
+        [NSKeyedArchiver archiveRootObject:account toFile:path];
+        
+        // 读取沙盒中的版本号
+        NSString *key = @"CFBundleVersion";
+        NSString *lastVersion = [[NSUserDefaults standardUserDefaults] objectForKey:key];
+        
+        // 取出当前的版本号
+        NSString *currentVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:key];
+        UIWindow *window = [[UIApplication sharedApplication] keyWindow];
+        //判断沙盒中的版本号和当前的版本号
+        if ([currentVersion isEqualToString:lastVersion]) { // 版本一致
+            window.rootViewController = [[HWTabBarController alloc] init];
+        }else { // 版本不一致
+            window.rootViewController = [[HWNewFeatureViewController alloc] init];
+            // 存储当前版本号到沙盒中
+            [[NSUserDefaults standardUserDefaults] setObject:currentVersion forKey:key];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        }
+        [MBProgressHUD hideHUD];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        HWLog(@"请求失败，%@", error);
+        //HWLog(@"请求失败，%@", error);
+        [MBProgressHUD hideHUD];
     }];
+}
+
+-(void)webViewDidStartLoad:(UIWebView *)webView{
+    [MBProgressHUD showMessage:@"正在加载中..."];
+}
+
+-(void)webViewDidFinishLoad:(UIWebView *)webView{
+    [MBProgressHUD hideHUD];
+}
+
+-(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
+    [MBProgressHUD hideHUD];
 }
 
 @end
