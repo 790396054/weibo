@@ -7,7 +7,7 @@
 // 账户的工具类，操作账户的存取，判断账户是否过期等操作
 
 #import <Foundation/Foundation.h>
-@class HWAccount;
+#import "HWAccount.h"
 
 @interface HWAccountTool : NSObject
 

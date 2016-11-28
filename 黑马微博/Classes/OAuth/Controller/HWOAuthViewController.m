@@ -8,9 +8,6 @@
 
 #import "HWOAuthViewController.h"
 #import "AFNetworking.h"
-#import "HWTabBarController.h"
-#import "HWAccount.h"
-#import "HWNewFeatureViewController.h"
 #import "MBProgressHUD+MJ.h"
 #import "HWAccountTool.h"
 
@@ -78,30 +75,16 @@
          
      }
     success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
+        [MBProgressHUD hideHUD];
         // 将返回的账号字典数据 --> 模型，存进沙盒
         HWAccount *account = [HWAccount accountWithDict:responseObject];
         // 自定义对象的存储必须用NSKeyedArchiver，不在有什么writeToFile方法
         [HWAccountTool saveAccount:account];
         
-        // 读取沙盒中的版本号
-        NSString *key = @"CFBundleVersion";
-        NSString *lastVersion = [[NSUserDefaults standardUserDefaults] objectForKey:key];
-        
-        // 取出当前的版本号
-        NSString *currentVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:key];
+        // 切换控制器
         UIWindow *window = [[UIApplication sharedApplication] keyWindow];
-        //判断沙盒中的版本号和当前的版本号
-        if ([currentVersion isEqualToString:lastVersion]) { // 版本一致
-            window.rootViewController = [[HWTabBarController alloc] init];
-        }else { // 版本不一致
-            window.rootViewController = [[HWNewFeatureViewController alloc] init];
-            // 存储当前版本号到沙盒中
-            [[NSUserDefaults standardUserDefaults] setObject:currentVersion forKey:key];
-            [[NSUserDefaults standardUserDefaults] synchronize];
-        }
-        [MBProgressHUD hideHUD];
+        [window switchRootViewController];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        //HWLog(@"请求失败，%@", error);
         [MBProgressHUD hideHUD];
     }];
 }

@@ -30,3 +30,4 @@
 // 自定import进来的全局同类的.h
 #import "UIView+Extension.h"
 #import "UIBarButtonItem+Extension.h"
+#import "UIWindow+Extension.h"

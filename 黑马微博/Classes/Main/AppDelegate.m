@@ -7,10 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "HWTabBarController.h"
-#import "HWNewFeatureViewController.h"
 #import "HWOAuthViewController.h"
-#import "HWAccount.h"
 #import "HWAccountTool.h"
 
 @interface AppDelegate ()
@@ -27,25 +24,10 @@
     // 2.设置根控制器
     // 获取账户信息
     HWAccount *account = [HWAccountTool account];
-    
     if (account) { // 账户存在，之前已经登录过
-        // 读取沙盒中的版本号
-        NSString *key = @"CFBundleVersion";
-        NSString *lastVersion = [[NSUserDefaults standardUserDefaults] objectForKey:key];
-        
-        // 取出当前的版本号
-        NSString *currentVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:key];
-        
-        //判断沙盒中的版本号和当前的版本号
-        if ([currentVersion isEqualToString:lastVersion]) { // 版本一致
-            self.window.rootViewController = [[HWTabBarController alloc] init];
-        }else { // 版本不一致
-            self.window.rootViewController = [[HWNewFeatureViewController alloc] init];
-            // 存储当前版本号到沙盒中
-            [[NSUserDefaults standardUserDefaults] setObject:currentVersion forKey:key];
-            [[NSUserDefaults standardUserDefaults] synchronize];
-        }
-    } else { // 账户不存在，之前没有登录
+        // 切换跟控制器
+        [self.window switchRootViewController];
+    } else {
         self.window.rootViewController = [[HWOAuthViewController alloc] init];
     }
     
