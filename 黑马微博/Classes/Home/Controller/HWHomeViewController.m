@@ -13,16 +13,27 @@
 #import "HWAccountTool.h"
 #import "AFNetworking.h"
 #import "HWTitleButton.h"
+#import "UIImageView+WebCache.h"
+#import "HWUser.h"
+#import "HWStatus.h"
+#import "MJExtension.h"
 
 @interface HWHomeViewController () <HWDropdownMenuDelegate>
 
 /**
- 微博数组，里面放的每一个字典都是一条微博
+ 微博数组，里面放的每一个模型都是一条微博
  */
-@property (nonatomic, strong) NSArray *statuses;
+@property (nonatomic, strong) NSMutableArray *statuses;
 @end
 
 @implementation HWHomeViewController
+
+-(NSMutableArray *)statuses{
+    if (_statuses == nil) {
+        _statuses = [NSMutableArray array];
+    }
+    return _statuses;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -32,25 +43,46 @@
     // 设置用户信息（用户昵称）
     [self setUserInfo];
     // 获取用户关注的人的最新微博
-    [self loadViewNewsWeibo];
+//    [self loadViewNewsWeibo];
+    // 集成刷新控件
+    [self setupRefresh];
 }
 
 /**
- 获取最新的微博数据
+ 集成刷新控件
  */
--(void)loadViewNewsWeibo{
+-(void)setupRefresh{
+    // 添加刷新控件
+    UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
+    [refresh addTarget:self action:@selector(refreshStatus:) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:refresh];
+    
+    // 马上进入刷新状态（仅仅是显示刷新状态，并不会触发UIControlEventValueChanged事件）
+    [refresh beginRefreshing];
+    // 马上加载数据
+    [self refreshStatus:refresh];
+}
+
+-(void)refreshStatus:(UIRefreshControl *)control{
     AFHTTPSessionManager *mgr = [AFHTTPSessionManager manager];
     
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
     HWAccount *account = [HWAccountTool account];
+    HWStatus *status = [self.statuses firstObject];
     param[@"access_token"] = account.access_token;
-//    param[@"count"] = @1;
+    param[@"since_id"] = status.idstr;
     
     [mgr GET:@"https://api.weibo.com/2/statuses/friends_timeline.json" parameters:param progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        self.statuses = responseObject[@"statuses"];
-//        HWLog(@"%@",self.statuses);
+        // 字典转模型
+        NSArray *array = [HWStatus objectArrayWithKeyValuesArray:responseObject[@"statuses"]];
+        NSRange range = NSMakeRange(0, array.count);
+        NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:range];
+        [self.statuses insertObjects:array atIndexes:indexSet];
         // 刷新表格
         [self.tableView reloadData];
+        NSLog(@"%@",array);
+        // 取消刷新加载图标
+        [control endRefreshing];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
     }];
@@ -70,11 +102,11 @@
     // 发送请求
     [mgr GET:@"https://api.weibo.com/2/users/show.json" parameters:param progress:nil success:^(NSURLSessionDataTask * _Nonnull task,NSDictionary *responseObject) {
         UIButton *titleBtn = (UIButton *)self.navigationItem.titleView;
-        NSString *name = responseObject[@"name"];
-        [titleBtn setTitle:name forState:UIControlStateNormal];
+        HWUser *user = [HWUser objectWithKeyValues: responseObject];
+        [titleBtn setTitle:user.name forState:UIControlStateNormal];
         
         // 存储昵称
-        account.name = name;
+        account.name = user.name;
         [HWAccountTool saveAccount:account];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
 //        HWLog(@"失败%@", error);
@@ -161,13 +193,15 @@
     }
     
     // 取出这行对应的微博字典
-    NSDictionary *weibo = self.statuses[indexPath.row];
+    HWStatus *status = self.statuses[indexPath.row];
     // 取出这条微博的作者
-    NSDictionary *user = weibo[@"user"];
-    cell.textLabel.text = user[@"name"];
+    HWUser *user = status.user;
+    cell.textLabel.text = user.name;
     // 设置微博的文字
-    cell.detailTextLabel.text = weibo[@"text"];
-    HWLog(@"%@",weibo[@"text"]);
+    cell.detailTextLabel.text = status.text;
+    // 设置头像
+    UIImage *placeholder = [UIImage imageNamed:@"avatar_default_small"];
+    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:user.profile_image_url] placeholderImage:placeholder];
     return cell;
 }
 
