@@ -17,6 +17,7 @@
 #import "HWUser.h"
 #import "HWStatus.h"
 #import "MJExtension.h"
+#import "HWLoadFooterView.h"
 
 @interface HWHomeViewController () <HWDropdownMenuDelegate>
 
@@ -42,16 +43,24 @@
     [self setUpNav];
     // 设置用户信息（用户昵称）
     [self setUserInfo];
-    // 获取用户关注的人的最新微博
-//    [self loadViewNewsWeibo];
-    // 集成刷新控件
-    [self setupRefresh];
+    // 集成下拉刷新控件
+    [self setupDownRefresh];
+    // 集成上拉加载刷新控件
+    [self setupUpRefresh];
 }
 
 /**
- 集成刷新控件
+ 集成上拉加载刷新控件
  */
--(void)setupRefresh{
+-(void)setupUpRefresh{
+    self.tableView.tableFooterView = [HWLoadFooterView footer];
+    
+}
+
+/**
+ 集成下拉刷新控件
+ */
+-(void)setupDownRefresh{
     // 添加刷新控件
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
     [refresh addTarget:self action:@selector(refreshStatus:) forControlEvents:UIControlEventValueChanged];
@@ -63,6 +72,11 @@
     [self refreshStatus:refresh];
 }
 
+/**
+ 刷新数据
+
+ @param control 刷新控件
+ */
 -(void)refreshStatus:(UIRefreshControl *)control{
     AFHTTPSessionManager *mgr = [AFHTTPSessionManager manager];
     
@@ -80,11 +94,52 @@
         [self.statuses insertObjects:array atIndexes:indexSet];
         // 刷新表格
         [self.tableView reloadData];
-        NSLog(@"%@",array);
         // 取消刷新加载图标
         [control endRefreshing];
+        // 显示最新的微博数量
+        [self showNewsStatusCount:array.count];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
+    }];
+}
+
+/**
+  显示最新的微博数量
+
+ @param count 微博数量
+ */
+-(void)showNewsStatusCount:(NSUInteger)count{
+    // 1.创建一个 label
+    UILabel *label = [[UILabel alloc] init];
+    label.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"timeline_new_status_background"]];
+    label.width = [UIScreen mainScreen].bounds.size.width;
+    label.height = 35;
+    
+    // 2.设置其他属性
+    label.font = [UIFont systemFontOfSize:16];
+    label.textColor = [UIColor whiteColor];
+    label.textAlignment = NSTextAlignmentCenter;
+    if (count == 0) {
+        label.text = @"没有最新的微博，稍后再试";
+    } else {
+        label.text = [NSString stringWithFormat:@"共有最新的%ld条微博",count];
+    }
+    
+    // 3.添加到导航控制器的 view 中，并且是在导航栏的下面
+    label.y = 64 - label.height;
+    [self.navigationController.view insertSubview:label belowSubview:self.navigationController.navigationBar];
+    // 4.执行动画
+    [UIView animateWithDuration:1.0 animations:^{
+//        label.y += label.height;
+        label.transform = CGAffineTransformMakeTranslation(0, label.height);
+    } completion:^(BOOL finished) {
+        // UIViewAnimationOptionCurveLinear 匀速运动
+        [UIView animateWithDuration:1.0 delay:1.0 options:UIViewAnimationOptionCurveLinear animations:^{
+//            label.y -= label.height;
+            label.transform = CGAffineTransformIdentity;
+        } completion:^(BOOL finished) {
+            [label removeFromSuperview];
+        }];
     }];
 }
 

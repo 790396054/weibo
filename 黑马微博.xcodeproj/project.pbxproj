@@ -69,6 +69,8 @@
 		B7745D531DE6C4F30095E495 /* HWSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = B7745D521DE6C4F30095E495 /* HWSearchBar.m */; };
 		B7745D561DE6E5310095E495 /* HWDropdownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = B7745D551DE6E5310095E495 /* HWDropdownMenu.m */; };
 		B7745D591DE6F5A10095E495 /* HWTitleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7745D581DE6F5A10095E495 /* HWTitleTableViewController.m */; };
+		B78FD9CB1DED1D98003F4AB9 /* HWLoadFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = B78FD9CA1DED1D98003F4AB9 /* HWLoadFooterView.m */; };
+		B78FD9CD1DED1DA8003F4AB9 /* HWLoadFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B78FD9CC1DED1DA8003F4AB9 /* HWLoadFooterView.xib */; };
 		B7E368871DE7CDFF00273F1A /* HWTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E368861DE7CDFF00273F1A /* HWTabBar.m */; };
 		B7E3688C1DE811AD00273F1A /* HWNewFeatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E3688B1DE811AD00273F1A /* HWNewFeatureViewController.m */; };
 		B7E59E2E1DE93B1A00C67D21 /* HWOAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E59E2D1DE93B1A00C67D21 /* HWOAuthViewController.m */; };
@@ -218,6 +220,9 @@
 		B7745D551DE6E5310095E495 /* HWDropdownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWDropdownMenu.m; sourceTree = "<group>"; };
 		B7745D571DE6F5A10095E495 /* HWTitleTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWTitleTableViewController.h; sourceTree = "<group>"; };
 		B7745D581DE6F5A10095E495 /* HWTitleTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWTitleTableViewController.m; sourceTree = "<group>"; };
+		B78FD9C91DED1D98003F4AB9 /* HWLoadFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWLoadFooterView.h; sourceTree = "<group>"; };
+		B78FD9CA1DED1D98003F4AB9 /* HWLoadFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWLoadFooterView.m; sourceTree = "<group>"; };
+		B78FD9CC1DED1DA8003F4AB9 /* HWLoadFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HWLoadFooterView.xib; sourceTree = "<group>"; };
 		B7E368851DE7CDFF00273F1A /* HWTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWTabBar.h; sourceTree = "<group>"; };
 		B7E368861DE7CDFF00273F1A /* HWTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWTabBar.m; sourceTree = "<group>"; };
 		B7E3688A1DE811AD00273F1A /* HWNewFeatureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWNewFeatureViewController.h; sourceTree = "<group>"; };
@@ -516,6 +521,9 @@
 				B7745D581DE6F5A10095E495 /* HWTitleTableViewController.m */,
 				B759523E1DEC21AA008318BF /* HWTitleButton.h */,
 				B759523F1DEC21AA008318BF /* HWTitleButton.m */,
+				B78FD9C91DED1D98003F4AB9 /* HWLoadFooterView.h */,
+				B78FD9CA1DED1D98003F4AB9 /* HWLoadFooterView.m */,
+				B78FD9CC1DED1DA8003F4AB9 /* HWLoadFooterView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -812,6 +820,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B76926AE1DE3396D00EC9088 /* LaunchScreen.storyboard in Resources */,
+				B78FD9CD1DED1DA8003F4AB9 /* HWLoadFooterView.xib in Resources */,
 				B75952331DEBCE10008318BF /* MBProgressHUD.bundle in Resources */,
 				B7745D4C1DE678A40095E495 /* TestViewController.xib in Resources */,
 				B76926AB1DE3396D00EC9088 /* Assets.xcassets in Resources */,
@@ -845,6 +854,7 @@
 				B73F23EA1DEC545800CF028D /* SDWebImagePrefetcher.m in Sources */,
 				B73F24171DEC686700CF028D /* MJIvar.m in Sources */,
 				B73F24151DEC686700CF028D /* MJConst.m in Sources */,
+				B78FD9CB1DED1D98003F4AB9 /* HWLoadFooterView.m in Sources */,
 				B73F24141DEC686700CF028D /* MJArgument.m in Sources */,
 				B759522B1DEBC8EF008318BF /* HWAccount.m in Sources */,
 				B73F23E81DEC545800CF028D /* SDWebImageDownloaderOperation.m in Sources */,
