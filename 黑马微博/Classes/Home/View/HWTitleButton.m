@@ -23,14 +23,13 @@
 }
 
 -(void)layoutSubviews{
-    
     [super layoutSubviews];
     
     // 1.计算 labelView 的 frame
     self.titleLabel.x = self.imageView.x;
     
     // 2.计算imageView的 frame
-    self.imageView.x = CGRectGetMaxX(self.titleLabel.frame) + 2;
+    self.imageView.x = CGRectGetMaxX(self.titleLabel.frame) + 10;
 }
 
 -(void)setTitle:(NSString *)title forState:(UIControlState)state{

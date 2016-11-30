@@ -18,22 +18,24 @@
 #import "HWStatus.h"
 #import "MJExtension.h"
 #import "HWLoadFooterView.h"
+#import "HWStatusCell.h"
+#import "HWStatusFrame.h"
 
 @interface HWHomeViewController () <HWDropdownMenuDelegate>
 
 /**
  微博数组，里面放的每一个模型都是一条微博
  */
-@property (nonatomic, strong) NSMutableArray *statuses;
+@property (nonatomic, strong) NSMutableArray *statuseFrames;
 @end
 
 @implementation HWHomeViewController
 
--(NSMutableArray *)statuses{
-    if (_statuses == nil) {
-        _statuses = [NSMutableArray array];
+-(NSMutableArray *)statuseFrames{
+    if (_statuseFrames == nil) {
+        _statuseFrames = [NSMutableArray array];
     }
-    return _statuses;
+    return _statuseFrames;
 }
 
 - (void)viewDidLoad {
@@ -48,15 +50,15 @@
     // 集成上拉加载刷新控件
     [self setupUpRefresh];
     // 获得未读数
-//    [NSTimer scheduledTimerWithTimeInterval:60 target:self selector:@selector(setupUnreadCount) userInfo:nil repeats:YES];
-//    
-//    float version = [[[UIDevice currentDevice] systemVersion] floatValue];
-//    
-//    if(version >= 8.0) {
-//        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge categories:nil];
-//        
-//        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
-//    }
+    [NSTimer scheduledTimerWithTimeInterval:120 target:self selector:@selector(setupUnreadCount) userInfo:nil repeats:YES];
+    
+    float version = [[[UIDevice currentDevice] systemVersion] floatValue];
+    
+    if(version >= 8.0) {
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge categories:nil];
+        
+        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+    }
 }
 
 /**
@@ -82,7 +84,7 @@
             [UIApplication sharedApplication].applicationIconBadgeNumber = [status intValue];
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        HWLog(@"error:%@",error);
+        
     }];
 }
 
@@ -90,8 +92,9 @@
  集成上拉加载刷新控件
  */
 -(void)setupUpRefresh{
-    self.tableView.tableFooterView = [HWLoadFooterView footer];
-    
+    HWLoadFooterView *footer = [HWLoadFooterView footer];
+    footer.hidden = YES;
+    self.tableView.tableFooterView = footer;
 }
 
 /**
@@ -109,6 +112,16 @@
     [self refreshStatus:refresh];
 }
 
+-(NSArray *)statusChangeStatusFrame:(NSArray *)statuses{
+    NSMutableArray *frameArray = [NSMutableArray array];
+    for (HWStatus *status in statuses) {
+        HWStatusFrame *statusFrame = [[HWStatusFrame alloc] init];
+        statusFrame.status = status;
+        [frameArray addObject:statusFrame];
+    }
+    return frameArray;
+}
+
 /**
  刷新数据
 
@@ -119,16 +132,17 @@
     
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
     HWAccount *account = [HWAccountTool account];
-    HWStatus *status = [self.statuses firstObject];
+    HWStatusFrame *statusFrame = [self.statuseFrames firstObject];
     param[@"access_token"] = account.access_token;
-    param[@"since_id"] = status.idstr;
+    param[@"since_id"] = statusFrame.status.idstr;
     
     [mgr GET:@"https://api.weibo.com/2/statuses/friends_timeline.json" parameters:param progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         // 字典转模型
         NSArray *array = [HWStatus objectArrayWithKeyValuesArray:responseObject[@"statuses"]];
-        NSRange range = NSMakeRange(0, array.count);
+        NSArray *statusFrame = [self statusChangeStatusFrame:array];
+        NSRange range = NSMakeRange(0, statusFrame.count);
         NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:range];
-        [self.statuses insertObjects:array atIndexes:indexSet];
+        [self.statuseFrames insertObjects:statusFrame atIndexes:indexSet];
         // 刷新表格
         [self.tableView reloadData];
         // 取消刷新加载图标
@@ -136,8 +150,46 @@
         // 显示最新的微博数量
         [self showNewsStatusCount:array.count];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
+        // 结束刷新
+        [control endRefreshing];
     }];
+}
+
+/**
+ 加载更多的微博数据
+ */
+-(void)loadMoreStatus{
+    // 1.请求管理者
+    AFHTTPSessionManager *mgr = [AFHTTPSessionManager manager];
+    
+    // 2.拼接请求参数
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    HWAccount *account = [HWAccountTool account];
+    param[@"access_token"] = account.access_token;
+    // 取出最后面的微博（最新的微博，id 最大的微博）
+    HWStatusFrame *lastStatusFrame = [self.statuseFrames lastObject];
+    if (lastStatusFrame) {
+        // 若指定此参数，则返回ID 小于或等于 max_id 的微博，默认为0
+        // id 这种数据一般是比较大的，一般转成整数的话，最好的 long long 类型
+        long long maxId = lastStatusFrame.status.idstr.longLongValue - 1;
+        param[@"max_id"] = @(maxId);
+    }
+    // 3.发送请求
+    [mgr GET:@"https://api.weibo.com/2/statuses/friends_timeline.json" parameters:param progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
+        // 字典转模型
+        NSArray *newStatus = [HWStatus objectArrayWithKeyValuesArray:responseObject[@"statuses"]];
+        
+        // 将更多的微博数据，添加到总数组的最后面，
+        [self.statuseFrames addObjectsFromArray:[self statusChangeStatusFrame:newStatus]];
+        // 刷新表格
+        [self.tableView reloadData];
+        // 结束刷新（隐藏footer）
+        self.tableView.tableFooterView.hidden = YES;
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        // 结束刷新
+        self.tableView.tableFooterView.hidden = YES;
+    }];
+    
 }
 
 /**
@@ -205,23 +257,8 @@
         account.name = user.name;
         [HWAccountTool saveAccount:account];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//        HWLog(@"失败%@", error);
+
     }];
-    
-//    NSURLSession *session = [NSURLSession sharedSession];
-//    
-//    NSString *strURL = [NSString stringWithFormat:@"https://api.weibo.com/2/users/show.json?access_token=%@&uid=%@",account.access_token,account.uid];
-//    NSURL *url = [NSURL URLWithString:strURL];
-//    NSURLSessionDataTask *task = [session dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-//       NSMutableDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
-//        NSLog(@"%@",dict);
-//        UIButton *titleBtn = (UIButton *)self.navigationItem.titleView;
-//        NSString *name = dict[@"name"];
-//        [titleBtn setTitle:name forState:UIControlStateNormal];
-//    }];
-//    
-//    // 开启任务
-//    [task resume];
 }
 
 /**
@@ -261,6 +298,9 @@
     button.selected = NO;
 }
 
+/**
+ 显示下拉菜单
+ */
 -(void)dropDownMenuDidShow:(HWDropdownMenu *)menu{
     UIButton *button = (UIButton *)self.navigationItem.titleView;
     button.selected = YES;
@@ -277,28 +317,57 @@
 #pragma mark - Table view data source
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.statuses.count;
+    return self.statuseFrames.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *ID = @"cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    HWStatusCell *cell = [HWStatusCell cellWithTableView:tableView];
     
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
+//    // 取出这行对应的微博字典
+//    HWStatus *status = self.statuses[indexPath.row];
+//    // 取出这条微博的作者
+//    HWUser *user = status.user;
+//    cell.textLabel.text = user.name;
+//    // 设置微博的文字
+//    cell.detailTextLabel.text = status.text;
+//    // 设置头像
+//    UIImage *placeholder = [UIImage imageNamed:@"avatar_default_small"];
+//    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:user.profile_image_url] placeholderImage:placeholder];
+    cell.statusFrame = self.statuseFrames[indexPath.row];
+    
+    return cell;
+}
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    // 如果 tableView 还没有数据，就直接返回
+    if (self.statuseFrames.count == 0 || self.tableView.tableFooterView.hidden == NO) {
+        return;
     }
     
-    // 取出这行对应的微博字典
-    HWStatus *status = self.statuses[indexPath.row];
-    // 取出这条微博的作者
-    HWUser *user = status.user;
-    cell.textLabel.text = user.name;
-    // 设置微博的文字
-    cell.detailTextLabel.text = status.text;
-    // 设置头像
-    UIImage *placeholder = [UIImage imageNamed:@"avatar_default_small"];
-    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:user.profile_image_url] placeholderImage:placeholder];
-    return cell;
+    CGFloat offsetY = scrollView.contentOffset.y;
+    // 当最后一个 cell 完全显示在眼前时，contentOffset 的 y 值
+    CGFloat judgeOffsetY = scrollView.contentSize.height + scrollView.contentInset.bottom - scrollView.height - self.tableView.tableFooterView.height;
+    
+   // CGFloat judgeOffsetY1 = scrollView.contentSize.height + scrollView.contentInset.bottom - scrollView.height - self.tableView.tableFooterView.height;
+    if (offsetY >= judgeOffsetY) { // 最后一个 cell 完全进入视线内
+        // 显示footer
+        self.tableView.tableFooterView.hidden = NO;
+        // 加载更多微博数据
+        [self loadMoreStatus];
+        NSLog(@"加载更多");
+    }
+    /**
+     contentInset: 除具体内容以外的边框尺寸
+     contetnSize: 里面的具体内容（hander,cell,footer），除掉 contentInset以外的尺寸
+     contetnOffset: 
+     1.他可以用来判断 scrollView 滚动到什么位置
+     2.指 scrollView 的内容超出了scrollView顶部的距离（除掉contentInset以外的尺寸）
+     */
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    HWStatusFrame *statusframe = self.statuseFrames[indexPath.row];
+    return statusframe.cellHeight;
 }
 
 @end

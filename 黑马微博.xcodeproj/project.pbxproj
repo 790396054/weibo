@@ -71,6 +71,8 @@
 		B7745D591DE6F5A10095E495 /* HWTitleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7745D581DE6F5A10095E495 /* HWTitleTableViewController.m */; };
 		B78FD9CB1DED1D98003F4AB9 /* HWLoadFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = B78FD9CA1DED1D98003F4AB9 /* HWLoadFooterView.m */; };
 		B78FD9CD1DED1DA8003F4AB9 /* HWLoadFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B78FD9CC1DED1DA8003F4AB9 /* HWLoadFooterView.xib */; };
+		B7B7BFD71DEEBF1C00FF0FAA /* HWStatusCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B7BFD61DEEBF1C00FF0FAA /* HWStatusCell.m */; };
+		B7B7BFDA1DEEC67900FF0FAA /* HWStatusFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B7BFD91DEEC67900FF0FAA /* HWStatusFrame.m */; };
 		B7E368871DE7CDFF00273F1A /* HWTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E368861DE7CDFF00273F1A /* HWTabBar.m */; };
 		B7E3688C1DE811AD00273F1A /* HWNewFeatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E3688B1DE811AD00273F1A /* HWNewFeatureViewController.m */; };
 		B7E59E2E1DE93B1A00C67D21 /* HWOAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E59E2D1DE93B1A00C67D21 /* HWOAuthViewController.m */; };
@@ -223,6 +225,10 @@
 		B78FD9C91DED1D98003F4AB9 /* HWLoadFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWLoadFooterView.h; sourceTree = "<group>"; };
 		B78FD9CA1DED1D98003F4AB9 /* HWLoadFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWLoadFooterView.m; sourceTree = "<group>"; };
 		B78FD9CC1DED1DA8003F4AB9 /* HWLoadFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HWLoadFooterView.xib; sourceTree = "<group>"; };
+		B7B7BFD51DEEBF1C00FF0FAA /* HWStatusCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWStatusCell.h; sourceTree = "<group>"; };
+		B7B7BFD61DEEBF1C00FF0FAA /* HWStatusCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWStatusCell.m; sourceTree = "<group>"; };
+		B7B7BFD81DEEC67900FF0FAA /* HWStatusFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWStatusFrame.h; sourceTree = "<group>"; };
+		B7B7BFD91DEEC67900FF0FAA /* HWStatusFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWStatusFrame.m; sourceTree = "<group>"; };
 		B7E368851DE7CDFF00273F1A /* HWTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWTabBar.h; sourceTree = "<group>"; };
 		B7E368861DE7CDFF00273F1A /* HWTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWTabBar.m; sourceTree = "<group>"; };
 		B7E3688A1DE811AD00273F1A /* HWNewFeatureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWNewFeatureViewController.h; sourceTree = "<group>"; };
@@ -303,6 +309,8 @@
 				B73F23F71DEC5DC400CF028D /* HWUser.m */,
 				B73F23F91DEC5DDB00CF028D /* HWStatus.h */,
 				B73F23FA1DEC5DDB00CF028D /* HWStatus.m */,
+				B7B7BFD81DEEC67900FF0FAA /* HWStatusFrame.h */,
+				B7B7BFD91DEEC67900FF0FAA /* HWStatusFrame.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -524,6 +532,8 @@
 				B78FD9C91DED1D98003F4AB9 /* HWLoadFooterView.h */,
 				B78FD9CA1DED1D98003F4AB9 /* HWLoadFooterView.m */,
 				B78FD9CC1DED1DA8003F4AB9 /* HWLoadFooterView.xib */,
+				B7B7BFD51DEEBF1C00FF0FAA /* HWStatusCell.h */,
+				B7B7BFD61DEEBF1C00FF0FAA /* HWStatusCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -855,6 +865,7 @@
 				B73F24171DEC686700CF028D /* MJIvar.m in Sources */,
 				B73F24151DEC686700CF028D /* MJConst.m in Sources */,
 				B78FD9CB1DED1D98003F4AB9 /* HWLoadFooterView.m in Sources */,
+				B7B7BFD71DEEBF1C00FF0FAA /* HWStatusCell.m in Sources */,
 				B73F24141DEC686700CF028D /* MJArgument.m in Sources */,
 				B759522B1DEBC8EF008318BF /* HWAccount.m in Sources */,
 				B73F23E81DEC545800CF028D /* SDWebImageDownloaderOperation.m in Sources */,
@@ -899,6 +910,7 @@
 				B75952231DEBB842008318BF /* AFSecurityPolicy.m in Sources */,
 				B73F23E71DEC545800CF028D /* SDWebImageDownloader.m in Sources */,
 				B7745D561DE6E5310095E495 /* HWDropdownMenu.m in Sources */,
+				B7B7BFDA1DEEC67900FF0FAA /* HWStatusFrame.m in Sources */,
 				B73F23E31DEC545800CF028D /* NSData+ImageContentType.m in Sources */,
 				B7745D4A1DE678A40095E495 /* HWProfileViewController.m in Sources */,
 				B76926A01DE3396D00EC9088 /* main.m in Sources */,
