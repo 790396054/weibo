@@ -47,6 +47,43 @@
     [self setupDownRefresh];
     // 集成上拉加载刷新控件
     [self setupUpRefresh];
+    // 获得未读数
+//    [NSTimer scheduledTimerWithTimeInterval:60 target:self selector:@selector(setupUnreadCount) userInfo:nil repeats:YES];
+//    
+//    float version = [[[UIDevice currentDevice] systemVersion] floatValue];
+//    
+//    if(version >= 8.0) {
+//        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge categories:nil];
+//        
+//        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+//    }
+}
+
+/**
+ 获得未读数
+ */
+-(void)setupUnreadCount{
+    AFHTTPSessionManager *mgr = [AFHTTPSessionManager manager];
+    
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    HWAccount *account = [HWAccountTool account];
+    dict[@"access_token"] = account.access_token;
+    dict[@"uid"] = account.uid;
+    
+    [mgr GET:@"https://rm.api.weibo.com/2/remind/unread_count.json" parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        HWLog(@"success:%@",responseObject);
+        // 设置未读数
+        NSString *status = [responseObject[@"status"] description];
+        if ([status isEqualToString:@"0"]) {
+            self.tabBarItem.badgeValue = nil;
+            [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+        } else {
+            self.tabBarItem.badgeValue = status;
+            [UIApplication sharedApplication].applicationIconBadgeNumber = [status intValue];
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        HWLog(@"error:%@",error);
+    }];
 }
 
 /**
@@ -109,6 +146,10 @@
  @param count 微博数量
  */
 -(void)showNewsStatusCount:(NSUInteger)count{
+    // 刷新成功，清空未读数
+    self.tabBarItem.badgeValue = nil;
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+    
     // 1.创建一个 label
     UILabel *label = [[UILabel alloc] init];
     label.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"timeline_new_status_background"]];
