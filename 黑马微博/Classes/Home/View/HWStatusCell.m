@@ -11,6 +11,7 @@
 #import "HWUser.h"
 #import "HWStatus.h"
 #import "UIImageView+WebCache.h"
+#import "HWPhoto.h"
 
 @interface HWStatusCell()
 /**原创微博*/
@@ -142,7 +143,14 @@
     
     /**图片*/
     self.photoView.frame = statusFrame.photoViewF;
-    self.photoView.backgroundColor = [UIColor greenColor];
+//    self.photoView.backgroundColor = [UIColor greenColor];
+    if (status.pic_urls.count) {
+        HWPhoto *photo = status.pic_urls[0];
+        [self.photoView sd_setImageWithURL:[NSURL URLWithString:photo.thumbnail_pic]];
+        self.photoView.hidden = NO;
+    } else {
+        self.photoView.hidden = YES;
+    }
     
     /**原创微博整体*/
     self.originalView.frame = statusFrame.originalViewF;
