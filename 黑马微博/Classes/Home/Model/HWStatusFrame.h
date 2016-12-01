@@ -18,6 +18,8 @@
 #define HWStatusCellSourceFont HWStatusCellTimeFont
 // 正文字体
 #define HWStatusCellContentFont [UIFont systemFontOfSize:14]
+// 转发微博字体
+#define HWStatusCellRetweetContentFont [UIFont systemFontOfSize:13]
 
 @class HWStatus;
 
@@ -41,6 +43,16 @@
 @property (nonatomic, assign) CGRect contentLabelF;
 /**图片*/
 @property (nonatomic, assign) CGRect photoViewF;
+
+/**转发微博整体*/
+@property (nonatomic, assign) CGRect retweetViewF;
+/**转发微博正文+昵称*/
+@property (nonatomic, assign) CGRect retweetContentLabelF;
+/**转发微博配图*/
+@property (nonatomic, assign) CGRect retweetPhotoViewF;
+
+/** 底部工具条*/
+@property (nonatomic, assign) CGRect toolbarViewF;
 
 /**cell 的高度*/
 @property (nonatomic, assign) CGFloat cellHeight;

@@ -75,7 +75,7 @@
     
     /**图片*/
     CGFloat originH = 0;
-    if (status.pic_urls) { // 有配图
+    if (status.pic_urls.count) { // 有配图
         CGFloat photoX = iconX;
         CGFloat photoY = CGRectGetMaxY(self.contentLabelF) + HWStatusCellMargin;
         CGFloat photoW = 100;
@@ -91,7 +91,50 @@
     CGFloat originW = cellWidth;
     self.originalViewF = CGRectMake(originX, originY, originW, originH);
     
-    /**cell 的高度*/
-    self.cellHeight = CGRectGetMaxY(self.originalViewF);
+    // 转发微博
+    HWStatus *retweetStatus = status.retweeted_status;
+    CGFloat toolbarY = 0; // 底部工具条的 y 值
+    if (retweetStatus) { // 有转发微博
+        /**转发微博正文+昵称*/
+        CGFloat retweetContentX = HWStatusCellMargin;
+        CGFloat retweetContentY = HWStatusCellMargin;
+        NSString *retweetContetn = [NSString stringWithFormat:@"@%@: %@",retweetStatus.user.name, retweetStatus.text];
+        CGSize retweetContetnSize = [self sizeWithText:retweetContetn font:HWStatusCellRetweetContentFont maxWidth:maxWidth];
+        self.retweetContentLabelF = (CGRect){{retweetContentX, retweetContentY}, retweetContetnSize};
+        
+        /**转发微博配图*/
+        CGFloat retweetH = 0;
+        if (retweetStatus.pic_urls.count) { // 转发微博有配图
+            CGFloat retweetPhotoX = iconX;
+            CGFloat retweetPhotoY = CGRectGetMaxY(self.retweetContentLabelF) + HWStatusCellMargin;
+            CGFloat retweetPhotoW = 100;
+            CGFloat retweetPhotoH = 100;
+            self.retweetPhotoViewF = CGRectMake(retweetPhotoX, retweetPhotoY, retweetPhotoW, retweetPhotoH);
+            retweetH = CGRectGetMaxY(self.retweetPhotoViewF) + HWStatusCellMargin;
+        } else { // 转发微博无配图
+            retweetH = CGRectGetMaxY(self.retweetContentLabelF) + HWStatusCellMargin;
+        }
+        
+        /**转发微博整体*/
+        CGFloat retweetX = 0;
+        CGFloat retweetY = CGRectGetMaxY(self.originalViewF);
+        CGFloat retweetW = cellWidth;
+        self.retweetViewF = CGRectMake(retweetX, retweetY, retweetW, retweetH);
+        
+        /**底部工具条*/
+        toolbarY = CGRectGetMaxY(self.retweetViewF);
+    } else { // 没有转发微博
+        /**底部工具条*/
+        toolbarY = CGRectGetMaxY(self.originalViewF);
+    }
+    
+    /**底部工具条*/
+    CGFloat toolbarX = 0;
+    CGFloat toolbarW = cellWidth;
+    CGFloat toolbarH = 44;
+    self.toolbarViewF = CGRectMake(toolbarX, toolbarY, toolbarW, toolbarH);
+    
+    /**cell的高度*/
+    self.cellHeight = CGRectGetMaxY(self.toolbarViewF);
 }
 @end

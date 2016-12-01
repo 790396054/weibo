@@ -22,4 +22,6 @@
 @property (nonatomic, copy) NSString *source;
 /**微博配图ID。多图时返回多图ID，用来拼接图片url。用返回字段thumbnail_pic的地址配上该返回字段的图片ID，即可得到多个图片url*/
 @property (nonatomic, strong) NSArray *pic_urls;
+/**转发微博*/
+@property (nonatomic, strong) HWStatus *retweeted_status;
 @end

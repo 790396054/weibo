@@ -50,7 +50,7 @@
     // 集成上拉加载刷新控件
     [self setupUpRefresh];
     // 获得未读数
-    [NSTimer scheduledTimerWithTimeInterval:120 target:self selector:@selector(setupUnreadCount) userInfo:nil repeats:YES];
+    [NSTimer scheduledTimerWithTimeInterval:5 * 60 target:self selector:@selector(setupUnreadCount) userInfo:nil repeats:YES];
     
     float version = [[[UIDevice currentDevice] systemVersion] floatValue];
     
