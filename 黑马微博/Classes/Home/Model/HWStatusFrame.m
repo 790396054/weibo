@@ -10,8 +10,6 @@
 #import "HWUser.h"
 #import "HWStatus.h"
 
-#define HWStatusCellMargin 10
-
 @implementation HWStatusFrame
 
 -(CGSize)sizeWithText:(NSString *)text font:(UIFont *)font{
@@ -131,10 +129,10 @@
     /**底部工具条*/
     CGFloat toolbarX = 0;
     CGFloat toolbarW = cellWidth;
-    CGFloat toolbarH = 44;
+    CGFloat toolbarH = 36;
     self.toolbarViewF = CGRectMake(toolbarX, toolbarY, toolbarW, toolbarH);
     
     /**cell的高度*/
-    self.cellHeight = CGRectGetMaxY(self.toolbarViewF);
+    self.cellHeight = CGRectGetMaxY(self.toolbarViewF) + HWStatusCellHeight;
 }
 @end

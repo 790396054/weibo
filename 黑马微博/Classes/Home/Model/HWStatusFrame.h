@@ -20,6 +20,10 @@
 #define HWStatusCellContentFont [UIFont systemFontOfSize:14]
 // 转发微博字体
 #define HWStatusCellRetweetContentFont [UIFont systemFontOfSize:13]
+// 行间距
+#define HWStatusCellMargin 10
+// cell 之间的间距
+#define HWStatusCellHeight 15
 
 @class HWStatus;
 

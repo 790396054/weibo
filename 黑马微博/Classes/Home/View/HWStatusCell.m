@@ -12,6 +12,7 @@
 #import "HWStatus.h"
 #import "UIImageView+WebCache.h"
 #import "HWPhoto.h"
+#import "HWStatusToolBar.h"
 
 @interface HWStatusCell()
 /**原创微博*/
@@ -62,6 +63,12 @@
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
+        self.backgroundColor = [UIColor clearColor];
+//        self.selectionStyle = UITableViewCellSelectionStyleNone;
+        UIView *bg = [[UIView alloc] init];
+        bg.backgroundColor = [UIColor orangeColor];
+        self.selectedBackgroundView = bg;
+        
         // 初始化原创微博控件
         [self initOriginStatusCell];
         
@@ -160,7 +167,7 @@
 -(void)initReweetStatusCell{
     /**转发微博整体*/
     UIView *retweetView = [[UIView alloc] init];
-    retweetView.backgroundColor = HWRGBColor(245, 245, 245);
+    retweetView.backgroundColor = HWRGBColor(247, 247, 247);
     [self.contentView addSubview:retweetView];
     self.retweetView = retweetView;
     
@@ -185,7 +192,7 @@
     UIView *originalView = [[UIView alloc] init];
     [self.contentView addSubview:originalView];
     self.originalView = originalView;
-//    self.originalView.backgroundColor = [UIColor greenColor];
+    self.originalView.backgroundColor = [UIColor whiteColor];
     
     /**用户头像*/
     UIImageView *iconView = [[UIImageView alloc] init];
@@ -234,8 +241,7 @@
  */
 -(void)initToolbarViewCell{
     // 底部工具条
-    UIView *toolbarView = [[UIView alloc] init];
-    toolbarView.backgroundColor = [UIColor greenColor];
+    HWStatusToolBar *toolbarView = [HWStatusToolBar statusToolBar];
     [self.contentView addSubview:toolbarView];
     self.toolbarView = toolbarView;
 }

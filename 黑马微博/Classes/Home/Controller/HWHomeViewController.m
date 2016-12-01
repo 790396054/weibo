@@ -41,6 +41,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.tableView.backgroundColor = HWRGBColor(211, 211, 211);
+    self.tableView.contentInset = UIEdgeInsetsMake(HWStatusCellHeight, 0, 0, 0);
+    
     // 设置导航栏
     [self setUpNav];
     // 设置用户信息（用户昵称）
@@ -322,19 +325,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     HWStatusCell *cell = [HWStatusCell cellWithTableView:tableView];
-    
-//    // 取出这行对应的微博字典
-//    HWStatus *status = self.statuses[indexPath.row];
-//    // 取出这条微博的作者
-//    HWUser *user = status.user;
-//    cell.textLabel.text = user.name;
-//    // 设置微博的文字
-//    cell.detailTextLabel.text = status.text;
-//    // 设置头像
-//    UIImage *placeholder = [UIImage imageNamed:@"avatar_default_small"];
-//    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:user.profile_image_url] placeholderImage:placeholder];
+    // 取出这行对应的微博字典
     cell.statusFrame = self.statuseFrames[indexPath.row];
-    
     return cell;
 }
 
