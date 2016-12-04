@@ -7,6 +7,7 @@
 //
 
 #import "HWStatusToolBar.h"
+#import "HWStatus.h"
 
 @interface HWStatusToolBar()
 
@@ -101,13 +102,26 @@
 
 -(void)setStatus:(HWStatus *)status{
     _status = status;
-    
     // 转发
-    
+    [self setupBtnTitleCount:status.reposts_count btn:self.repostBtn title:@"转发"];
     // 评论
-    
+    [self setupBtnTitleCount:status.comments_count btn:self.commentBtn title:@"评论"];
     // 点赞
-    
+    [self setupBtnTitleCount:status.attitudes_count btn:self.attitudeBtn title:@"赞"];
+}
+
+-(void)setupBtnTitleCount:(int)count btn:(UIButton *)btn title:(NSString *)title{
+    if (count) {
+        if (count > 10000) {
+            double wan = count / 10000.0;
+            title = [NSString stringWithFormat:@"%.1f万",wan];
+            title = [title stringByReplacingOccurrencesOfString:@".0" withString:@""];
+        } else{
+            title = [NSString stringWithFormat:@"%d",count];
+        }
+    }
+    [btn setTitle:title forState:UIControlStateNormal];
+
 }
 
 @end

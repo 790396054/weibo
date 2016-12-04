@@ -41,7 +41,7 @@
 @property (nonatomic, weak) UIImageView *retweetPhotoView;
 
 /**底部工具条*/
-@property (nonatomic, weak) UIView *toolbarView;
+@property (nonatomic, weak) HWStatusToolBar *toolbarView;
 @end
 
 @implementation HWStatusCell
@@ -159,6 +159,7 @@
     
     /**底部工具条*/
     self.toolbarView.frame = statusFrame.toolbarViewF;
+    self.toolbarView.status = status;
 }
 
 /**
