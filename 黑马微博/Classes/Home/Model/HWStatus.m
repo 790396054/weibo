@@ -41,7 +41,7 @@
     
     fmt.dateFormat = @"EEE MMM dd HH:mm:ss Z yyyy";
     // 微博创建时间
-    _created_at = @"Sun Dec 19 14:05:03 +0800 2016";
+//    _created_at = @"Sun Dec 19 14:05:03 +0800 2016";
     NSDate *createDate = [fmt dateFromString:_created_at];
     
     // 当前时间
@@ -54,11 +54,11 @@
     NSDateComponents *cmps = [cal components:unit fromDate:createDate toDate:now options:0];
     
     NSString *timeStr = @"";
-    if ([self isYear:createDate]) { // 今年
-        if([self isYestoday:createDate]){ // 昨天
+    if ([createDate isYear]) { // 今年
+        if([createDate isYestoday]){ // 昨天
             fmt.dateFormat = @"昨天 HH:mm";
             timeStr = [fmt stringFromDate:createDate];
-        }else if([self isToday:createDate]){ // 今天
+        }else if([createDate isToday]){ // 今天
             if(cmps.hour >= 1){ // xx小时前
                 timeStr = [NSString stringWithFormat:@"%ld小时前",(long)cmps.hour];
             } else if(cmps.minute >= 1){ // xx分钟前
@@ -77,43 +77,19 @@
     return timeStr;
 }
 
-/**
- 判断某个时间是否为今年
- */
--(BOOL)isYear:(NSDate *)date{
-    NSCalendar *cal = [NSCalendar currentCalendar];
-    // 比较两个日期差值
-    NSDateComponents *cmps = [cal components:NSCalendarUnitYear fromDate:date toDate:[NSDate date] options:0];
-    return cmps.year == 0;
-}
-
-/**
- 判断某个时间是否为昨天
- */
--(BOOL)isYestoday:(NSDate *)date{
-    NSDate *now = [NSDate date];
-    NSCalendar *cal = [NSCalendar currentCalendar];
-    NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
-    fmt.dateFormat = @"yyyy-MM-dd";
-    
-    NSString *nowStr = [fmt stringFromDate:now];
-    NSString *dateStr = [fmt stringFromDate: date];
-    NSCalendarUnit unit = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay;
-    NSDateComponents *cmps = [cal components:unit fromDate:[fmt dateFromString:dateStr] toDate:[fmt dateFromString:nowStr] options:0];
-    
-    return cmps.year == 0 && cmps.month == 0 && cmps.day == 1;
-}
-
-/**
- 判断某个时间是否是今天
- */
--(BOOL)isToday:(NSDate *)date{
-    NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
-    fmt.dateFormat = @"yyyy-MM-dd";
-    
-    NSString *dateStr = [fmt stringFromDate:date];
-    NSString *nowStr = [fmt stringFromDate:[NSDate date]];
-    
-    return [dateStr isEqualToString:nowStr];
+// 设置来源
+// source == <a href="http://app.weibo.com/t/feed/2XeFoT" rel="nofollow">小米MIX概念手机</a>
+-(void)setSource:(NSString *)source{
+    // 截取字符串
+    NSRange range = {0,0};
+    range.location = [source rangeOfString:@">"].location + 1;
+    range.length = [source rangeOfString:@"</"].location - range.location;
+    if (source.length >= range.location) {
+        _source =  [source substringWithRange:range];
+        _source = [NSString stringWithFormat:@"来自 %@",_source];
+    }else {
+        _source = @"来自 未知来源";
+    }
+    HWLog(@"%@",source);
 }
 @end

@@ -108,13 +108,19 @@
     }
     
     /**时间*/
-    self.timeLabel.frame = statusFrame.timeLabelF;
-//    self.timeLabel.text = @"2016-12-01";
-    self.timeLabel.text = status.created_at;
+    NSString *time = status.created_at;
+    CGFloat timeX = statusFrame.nameLabelF.origin.x;
+    CGFloat timeY = CGRectGetMaxY(statusFrame.nameLabelF) + HWStatusCellMargin;
+    CGSize timeSize = [time sizeWithFont:HWStatusCellTimeFont];
+    self.timeLabel.frame = (CGRect){{timeX, timeY}, timeSize};
+    self.timeLabel.textColor = [UIColor orangeColor];
+    self.timeLabel.text = time;
     
     /**来源*/
-    self.sourceLabel.frame = statusFrame.sourceLabelF;
-//    self.sourceLabel.text = @"来自上古神机 MIX";
+    CGFloat sourceX = CGRectGetMaxX(self.timeLabel.frame) + HWStatusCellMargin;
+    CGFloat sourceY = timeY;
+    CGSize sourceSize = [status.source sizeWithFont:HWStatusCellSourceFont];
+    self.sourceLabel.frame = (CGRect){{sourceX, sourceY}, sourceSize};
     self.sourceLabel.text = status.source;
     
     /**正文*/
