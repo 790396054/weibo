@@ -131,8 +131,7 @@
     /**图片*/
     if (status.pic_urls.count) {
         self.photosView.frame = statusFrame.photosViewF;
-        HWPhoto *photo = status.pic_urls[0];
-#warning TODO 设置图片
+        self.photosView.photos = status.pic_urls;
         self.photosView.hidden = NO;
     } else {
         self.photosView.hidden = YES;
@@ -155,8 +154,7 @@
         if (retweetStatus.pic_urls.count) {
             self.retweetPhotosView.hidden = NO;
             self.retweetPhotosView.frame = statusFrame.retweetPhotosViewF;
-            HWPhoto *retweetPhoto = retweetStatus.pic_urls[0];
-#warning TODO 设置图片
+            self.retweetPhotosView.photos = retweetStatus.pic_urls;
         } else {
             self.retweetPhotosView.hidden = YES;
         }

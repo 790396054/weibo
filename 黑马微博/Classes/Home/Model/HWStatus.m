@@ -90,6 +90,6 @@
     }else {
         _source = @"来自 未知来源";
     }
-    HWLog(@"%@",source);
+   // HWLog(@"%@",source);
 }
 @end

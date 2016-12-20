@@ -9,5 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @interface HWStatusPhotosView : UIView
+/**
+ 图片集合
+ */
+@property (nonatomic, strong) NSArray *photos;
+/**
+ 根据图片的个数计算配图的大小
+ */
++(CGSize)sizeWithCount:(NSUInteger)count;
 
 @end

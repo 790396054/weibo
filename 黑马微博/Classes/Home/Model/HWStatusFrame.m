@@ -9,28 +9,9 @@
 #import "HWStatusFrame.h"
 #import "HWUser.h"
 #import "HWStatus.h"
-
-#define HWStatusPhotoWH 70
-#define HWStatusPhotoMargin 10
+#import "HWStatusPhotosView.h"
 
 @implementation HWStatusFrame
-
-/**
- 根据图片的个数计算配图的大小
- */
--(CGSize)photosSizeWithCount:(NSUInteger)count{
-    // 最大列数(一行最多有多少列)
-    int maxCol = 3;
-    // 列数
-    NSUInteger cols = (count >= maxCol) ? maxCol : count;
-    CGFloat photosW = cols * HWStatusPhotoWH + (cols - 1) * HWStatusPhotoMargin;
-    
-    // 行数
-    NSUInteger rows = (count + maxCol - 1) / maxCol;
-    CGFloat photosH = rows * HWStatusPhotoWH + (rows - 1) * HWStatusPhotoMargin;
-    
-    return CGSizeMake(200, 100);
-}
 
 -(void)setStatus:(HWStatus *)status{
     _status = status;
@@ -85,7 +66,7 @@
     if (status.pic_urls.count) { // 有配图
         CGFloat photosX = iconX;
         CGFloat photosY = CGRectGetMaxY(self.contentLabelF) + HWStatusCellMargin;
-        CGSize photosSize = [self photosSizeWithCount:status.pic_urls.count];
+        CGSize photosSize = [HWStatusPhotosView sizeWithCount:status.pic_urls.count];
         self.photosViewF = (CGRect){{photosX, photosY}, photosSize};
         originH = CGRectGetMaxY(self.photosViewF) + HWStatusCellMargin;
     } else { // 无配图
@@ -114,7 +95,7 @@
         if (retweetStatus.pic_urls.count) { // 转发微博有配图
             CGFloat retweetPhotosX = iconX;
             CGFloat retweetPhotosY = CGRectGetMaxY(self.retweetContentLabelF) + HWStatusCellMargin;
-            CGSize retweetPhotosSize = [self photosSizeWithCount:retweetStatus.pic_urls.count];
+            CGSize retweetPhotosSize = [HWStatusPhotosView sizeWithCount:retweetStatus.pic_urls.count];
             self.retweetPhotosViewF = (CGRect){{retweetPhotosX, retweetPhotosY}, retweetPhotosSize};
             
             retweetH = CGRectGetMaxY(self.retweetPhotosViewF) + HWStatusCellMargin;

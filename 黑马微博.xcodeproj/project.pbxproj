@@ -39,6 +39,7 @@
 		B73F241C1DEC686700CF028D /* NSObject+MJCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = B73F240F1DEC686700CF028D /* NSObject+MJCoding.m */; };
 		B73F241D1DEC686700CF028D /* NSObject+MJKeyValue.m in Sources */ = {isa = PBXBuildFile; fileRef = B73F24111DEC686700CF028D /* NSObject+MJKeyValue.m */; };
 		B73F241E1DEC686700CF028D /* NSObject+MJMember.m in Sources */ = {isa = PBXBuildFile; fileRef = B73F24131DEC686700CF028D /* NSObject+MJMember.m */; };
+		B745A71B1E0994110038850F /* HWStatusPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = B745A71A1E0994110038850F /* HWStatusPhotoView.m */; };
 		B75952211DEBB842008318BF /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B75952151DEBB842008318BF /* AFHTTPSessionManager.m */; };
 		B75952221DEBB842008318BF /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B75952181DEBB842008318BF /* AFNetworkReachabilityManager.m */; };
 		B75952231DEBB842008318BF /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = B759521A1DEBB842008318BF /* AFSecurityPolicy.m */; };
@@ -167,6 +168,8 @@
 		B73F24111DEC686700CF028D /* NSObject+MJKeyValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MJKeyValue.m"; sourceTree = "<group>"; };
 		B73F24121DEC686700CF028D /* NSObject+MJMember.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+MJMember.h"; sourceTree = "<group>"; };
 		B73F24131DEC686700CF028D /* NSObject+MJMember.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MJMember.m"; sourceTree = "<group>"; };
+		B745A7191E0994110038850F /* HWStatusPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWStatusPhotoView.h; sourceTree = "<group>"; };
+		B745A71A1E0994110038850F /* HWStatusPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWStatusPhotoView.m; sourceTree = "<group>"; };
 		B75952141DEBB842008318BF /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
 		B75952151DEBB842008318BF /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPSessionManager.m; sourceTree = "<group>"; };
 		B75952161DEBB842008318BF /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
@@ -555,6 +558,8 @@
 				B7CECCAA1DF0025600E925DB /* HWStatusToolBar.m */,
 				B71C37CF1E07E6AF00F59AEC /* HWStatusPhotosView.h */,
 				B71C37D01E07E6AF00F59AEC /* HWStatusPhotosView.m */,
+				B745A7191E0994110038850F /* HWStatusPhotoView.h */,
+				B745A71A1E0994110038850F /* HWStatusPhotoView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -812,7 +817,6 @@
 				TargetAttributes = {
 					B769269A1DE3396D00EC9088 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = S2TFHBVX2A;
 						ProvisioningStyle = Automatic;
 					};
 					B76926B31DE3396D00EC9088 = {
@@ -913,6 +917,7 @@
 				B75952221DEBB842008318BF /* AFNetworkReachabilityManager.m in Sources */,
 				B73F23E51DEC545800CF028D /* SDWebImageCompat.m in Sources */,
 				B75952341DEBCE10008318BF /* MBProgressHUD.m in Sources */,
+				B745A71B1E0994110038850F /* HWStatusPhotoView.m in Sources */,
 				B73F23EC1DEC545800CF028D /* UIImage+GIF.m in Sources */,
 				B71C37D11E07E6AF00F59AEC /* HWStatusPhotosView.m in Sources */,
 				B73F23E91DEC545800CF028D /* SDWebImageManager.m in Sources */,
@@ -1088,7 +1093,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = S2TFHBVX2A;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/黑马微博/PrefixHeader.pch";
 				INFOPLIST_FILE = "黑马微博/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
@@ -1102,7 +1108,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = S2TFHBVX2A;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/黑马微博/PrefixHeader.pch";
 				INFOPLIST_FILE = "黑马微博/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
