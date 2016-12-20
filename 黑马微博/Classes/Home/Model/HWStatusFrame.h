@@ -46,14 +46,14 @@
 /**正文*/
 @property (nonatomic, assign) CGRect contentLabelF;
 /**图片*/
-@property (nonatomic, assign) CGRect photoViewF;
+@property (nonatomic, assign) CGRect photosViewF;
 
 /**转发微博整体*/
 @property (nonatomic, assign) CGRect retweetViewF;
 /**转发微博正文+昵称*/
 @property (nonatomic, assign) CGRect retweetContentLabelF;
 /**转发微博配图*/
-@property (nonatomic, assign) CGRect retweetPhotoViewF;
+@property (nonatomic, assign) CGRect retweetPhotosViewF;
 
 /** 底部工具条*/
 @property (nonatomic, assign) CGRect toolbarViewF;

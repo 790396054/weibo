@@ -13,6 +13,7 @@
 #import "UIImageView+WebCache.h"
 #import "HWPhoto.h"
 #import "HWStatusToolBar.h"
+#import "HWStatusPhotosView.h"
 
 @interface HWStatusCell()
 /**原创微博*/
@@ -31,14 +32,14 @@
 /**正文*/
 @property (nonatomic, weak) UILabel *contentLabel;
 /**图片*/
-@property (nonatomic, weak) UIImageView *photoView;
+@property (nonatomic, weak) HWStatusPhotosView *photosView;
 
 /**转发微博整体*/
 @property (nonatomic, weak) UIView *retweetView;
 /**转发微博正文+昵称*/
 @property (nonatomic, weak) UILabel *retweetContentLabel;
 /**转发微博配图*/
-@property (nonatomic, weak) UIImageView *retweetPhotoView;
+@property (nonatomic, weak) HWStatusPhotosView *retweetPhotosView;
 
 /**底部工具条*/
 @property (nonatomic, weak) HWStatusToolBar *toolbarView;
@@ -129,12 +130,12 @@
     
     /**图片*/
     if (status.pic_urls.count) {
-        self.photoView.frame = statusFrame.photoViewF;
+        self.photosView.frame = statusFrame.photosViewF;
         HWPhoto *photo = status.pic_urls[0];
-        [self.photoView sd_setImageWithURL:[NSURL URLWithString:photo.thumbnail_pic] placeholderImage:[UIImage imageNamed:@"timeline_image_placeholder"]];
-        self.photoView.hidden = NO;
+#warning TODO 设置图片
+        self.photosView.hidden = NO;
     } else {
-        self.photoView.hidden = YES;
+        self.photosView.hidden = YES;
     }
     
     /**原创微博整体*/
@@ -152,12 +153,12 @@
         
         /**转发微博配图*/
         if (retweetStatus.pic_urls.count) {
-            self.retweetPhotoView.hidden = NO;
-            self.retweetPhotoView.frame = statusFrame.retweetPhotoViewF;
+            self.retweetPhotosView.hidden = NO;
+            self.retweetPhotosView.frame = statusFrame.retweetPhotosViewF;
             HWPhoto *retweetPhoto = retweetStatus.pic_urls[0];
-            [self.retweetPhotoView sd_setImageWithURL:[NSURL URLWithString:retweetPhoto.thumbnail_pic] placeholderImage:[UIImage imageNamed:@"timeline_image_placeholder"]];
+#warning TODO 设置图片
         } else {
-            self.retweetPhotoView.hidden = YES;
+            self.retweetPhotosView.hidden = YES;
         }
     } else { // 无转发微博（原创微博）
         self.retweetView.hidden = YES;
@@ -186,9 +187,9 @@
     self.retweetContentLabel = retweetContentLabel;
     
     /**转发微博配图*/
-    UIImageView *retweetPhotoView = [[UIImageView alloc] init];
-    [retweetView addSubview:retweetPhotoView];
-    self.retweetPhotoView = retweetPhotoView;
+    HWStatusPhotosView *retweetPhotosView = [[HWStatusPhotosView alloc] init];
+    [retweetView addSubview:retweetPhotosView];
+    self.retweetPhotosView = retweetPhotosView;
 }
 
 /**
@@ -238,9 +239,9 @@
     self.contentLabel = contentLabel;
     
     /**图片*/
-    UIImageView *photoView = [[UIImageView alloc] init];
-    [originalView addSubview:photoView];
-    self.photoView = photoView;
+    HWStatusPhotosView *photosView = [[HWStatusPhotosView alloc] init];
+    [originalView addSubview:photosView];
+    self.photosView = photosView;
 }
 
 /**
