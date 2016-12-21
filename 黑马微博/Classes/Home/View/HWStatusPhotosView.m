@@ -8,7 +8,6 @@
 
 #import "HWStatusPhotosView.h"
 #import "HWPhoto.h"
-#import "UIImageView+WebCache.h"
 #import "HWStatusPhotoView.h"
 
 #define HWStatusPhotoWH 110
@@ -39,10 +38,8 @@
         HWStatusPhotoView *photoView = self.subviews[i];
         
         if (i < photoCount) { // 显示
-            HWPhoto *photo = photos[i];
+            photoView.photo = photos[i];
             photoView.hidden = NO;
-            // 设置图片
-            [photoView sd_setImageWithURL:[NSURL URLWithString: photo.thumbnail_pic] placeholderImage:[UIImage imageNamed:@"timeline_image_placeholder"]];
         } else { // 影藏
             photoView.hidden = YES;
             
