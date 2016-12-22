@@ -14,13 +14,14 @@
 #import "HWPhoto.h"
 #import "HWStatusToolBar.h"
 #import "HWStatusPhotosView.h"
+#import "HWIconView.h"
 
 @interface HWStatusCell()
 /**原创微博*/
 /**原创微博整体*/
 @property (nonatomic, weak) UIView *originalView;
 /**用户头像*/
-@property (nonatomic, weak) UIImageView *iconView;
+@property (nonatomic, weak) HWIconView *iconView;
 /**用户昵称*/
 @property (nonatomic, weak) UILabel *nameLabel;
 /**会员标识图片*/
@@ -90,7 +91,7 @@
     
     /**用户头像*/
     self.iconView.frame = statusFrame.iconViewF;
-    [self.iconView sd_setImageWithURL:[NSURL URLWithString:user.profile_image_url] placeholderImage:[UIImage imageNamed:@"avatar_default_small"]];
+    self.iconView.user = user;
     
     /**用户昵称*/
     self.nameLabel.frame = statusFrame.nameLabelF;
@@ -201,7 +202,7 @@
     self.originalView.backgroundColor = [UIColor whiteColor];
     
     /**用户头像*/
-    UIImageView *iconView = [[UIImageView alloc] init];
+    HWIconView *iconView = [[HWIconView alloc] init];
     [originalView addSubview:iconView];
     self.iconView = iconView;
     

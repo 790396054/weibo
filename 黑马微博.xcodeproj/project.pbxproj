@@ -54,6 +54,10 @@
 		B759523B1DEC01C7008318BF /* UIWindow+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B759523A1DEC01C7008318BF /* UIWindow+Extension.m */; };
 		B759523D1DEC0C23008318BF /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = B759523C1DEC0C23008318BF /* Foundation+Log.m */; };
 		B75952401DEC21AA008318BF /* HWTitleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B759523F1DEC21AA008318BF /* HWTitleButton.m */; };
+		B765EE5D1E0B5AC200735CAA /* HWComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B765EE5C1E0B5AC200735CAA /* HWComposeViewController.m */; };
+		B765EE601E0B5B1000735CAA /* HWIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = B765EE5F1E0B5B1000735CAA /* HWIconView.m */; };
+		B765EE631E0B7D9F00735CAA /* HWTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = B765EE621E0B7D9F00735CAA /* HWTextView.m */; };
+		B765EE671E0BBDE200735CAA /* HWComposeToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = B765EE661E0BBDE200735CAA /* HWComposeToolBar.m */; };
 		B76926A01DE3396D00EC9088 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B769269F1DE3396D00EC9088 /* main.m */; };
 		B76926AB1DE3396D00EC9088 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B76926AA1DE3396D00EC9088 /* Assets.xcassets */; };
 		B76926AE1DE3396D00EC9088 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B76926AC1DE3396D00EC9088 /* LaunchScreen.storyboard */; };
@@ -197,6 +201,14 @@
 		B759523C1DEC0C23008318BF /* Foundation+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Foundation+Log.m"; sourceTree = "<group>"; };
 		B759523E1DEC21AA008318BF /* HWTitleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWTitleButton.h; sourceTree = "<group>"; };
 		B759523F1DEC21AA008318BF /* HWTitleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWTitleButton.m; sourceTree = "<group>"; };
+		B765EE5B1E0B5AC200735CAA /* HWComposeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWComposeViewController.h; sourceTree = "<group>"; };
+		B765EE5C1E0B5AC200735CAA /* HWComposeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWComposeViewController.m; sourceTree = "<group>"; };
+		B765EE5E1E0B5B1000735CAA /* HWIconView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWIconView.h; sourceTree = "<group>"; };
+		B765EE5F1E0B5B1000735CAA /* HWIconView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWIconView.m; sourceTree = "<group>"; };
+		B765EE611E0B7D9F00735CAA /* HWTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWTextView.h; sourceTree = "<group>"; };
+		B765EE621E0B7D9F00735CAA /* HWTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWTextView.m; sourceTree = "<group>"; };
+		B765EE651E0BBDE200735CAA /* HWComposeToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWComposeToolBar.h; sourceTree = "<group>"; };
+		B765EE661E0BBDE200735CAA /* HWComposeToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWComposeToolBar.m; sourceTree = "<group>"; };
 		B769269B1DE3396D00EC9088 /* 黑马微博.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "黑马微博.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B769269F1DE3396D00EC9088 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B76926AA1DE3396D00EC9088 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -416,6 +428,34 @@
 			path = Tool;
 			sourceTree = "<group>";
 		};
+		B765EE591E0B5A8500735CAA /* Compose */ = {
+			isa = PBXGroup;
+			children = (
+				B765EE641E0BBDC800735CAA /* View */,
+				B765EE5A1E0B5A8500735CAA /* Controller */,
+			);
+			path = Compose;
+			sourceTree = "<group>";
+		};
+		B765EE5A1E0B5A8500735CAA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B765EE5B1E0B5AC200735CAA /* HWComposeViewController.h */,
+				B765EE5C1E0B5AC200735CAA /* HWComposeViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		B765EE641E0BBDC800735CAA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B765EE651E0BBDE200735CAA /* HWComposeToolBar.h */,
+				B765EE661E0BBDE200735CAA /* HWComposeToolBar.m */,
+			);
+			name = View;
+			path = Controller/View;
+			sourceTree = "<group>";
+		};
 		B76926921DE3396D00EC9088 = {
 			isa = PBXGroup;
 			children = (
@@ -478,6 +518,7 @@
 		B7745D181DE678A40095E495 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				B765EE591E0B5A8500735CAA /* Compose */,
 				B7E59E2A1DE93B0600C67D21 /* OAuth */,
 				B7E368881DE8119400273F1A /* NewFeature */,
 				B7745D191DE678A40095E495 /* Discover */,
@@ -634,6 +675,10 @@
 				B7745D551DE6E5310095E495 /* HWDropdownMenu.m */,
 				B7E368851DE7CDFF00273F1A /* HWTabBar.h */,
 				B7E368861DE7CDFF00273F1A /* HWTabBar.m */,
+				B765EE5E1E0B5B1000735CAA /* HWIconView.h */,
+				B765EE5F1E0B5B1000735CAA /* HWIconView.m */,
+				B765EE611E0B7D9F00735CAA /* HWTextView.h */,
+				B765EE621E0B7D9F00735CAA /* HWTextView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -812,12 +857,12 @@
 		B76926931DE3396D00EC9088 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "弓苗苗";
 				TargetAttributes = {
 					B769269A1DE3396D00EC9088 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 5EKBF8G528;
+						DevelopmentTeam = S2TFHBVX2A;
 						ProvisioningStyle = Automatic;
 					};
 					B76926B31DE3396D00EC9088 = {
@@ -906,8 +951,10 @@
 				B73F24191DEC686700CF028D /* MJMethod.m in Sources */,
 				B75952211DEBB842008318BF /* AFHTTPSessionManager.m in Sources */,
 				B75952251DEBB842008318BF /* AFURLResponseSerialization.m in Sources */,
+				B765EE5D1E0B5AC200735CAA /* HWComposeViewController.m in Sources */,
 				B73F23F81DEC5DC400CF028D /* HWUser.m in Sources */,
 				B73F241E1DEC686700CF028D /* NSObject+MJMember.m in Sources */,
+				B765EE671E0BBDE200735CAA /* HWComposeToolBar.m in Sources */,
 				B73F23EE1DEC545800CF028D /* UIImage+WebP.m in Sources */,
 				B73F241A1DEC686700CF028D /* MJType.m in Sources */,
 				B73F23E61DEC545800CF028D /* SDWebImageDecoder.m in Sources */,
@@ -924,6 +971,7 @@
 				B73F23E91DEC545800CF028D /* SDWebImageManager.m in Sources */,
 				B7745D491DE678A40095E495 /* HWMessageCenterTableViewController.m in Sources */,
 				B7745D4B1DE678A40095E495 /* TestViewController.m in Sources */,
+				B765EE631E0B7D9F00735CAA /* HWTextView.m in Sources */,
 				B73F23FB1DEC5DDB00CF028D /* HWStatus.m in Sources */,
 				B7745D481DE678A40095E495 /* HWTabBarController.m in Sources */,
 				B7745D4F1DE683990095E495 /* UIBarButtonItem+Extension.m in Sources */,
@@ -945,6 +993,7 @@
 				B7E368871DE7CDFF00273F1A /* HWTabBar.m in Sources */,
 				B75952231DEBB842008318BF /* AFSecurityPolicy.m in Sources */,
 				B73F23E71DEC545800CF028D /* SDWebImageDownloader.m in Sources */,
+				B765EE601E0B5B1000735CAA /* HWIconView.m in Sources */,
 				B7745D561DE6E5310095E495 /* HWDropdownMenu.m in Sources */,
 				B7B7BFDA1DEEC67900FF0FAA /* HWStatusFrame.m in Sources */,
 				B73F23E31DEC545800CF028D /* NSData+ImageContentType.m in Sources */,
@@ -1020,6 +1069,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -1067,6 +1117,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -1095,7 +1146,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 5EKBF8G528;
+				DEVELOPMENT_TEAM = S2TFHBVX2A;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/黑马微博/PrefixHeader.pch";
 				INFOPLIST_FILE = "黑马微博/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
@@ -1110,7 +1161,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 5EKBF8G528;
+				DEVELOPMENT_TEAM = S2TFHBVX2A;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/黑马微博/PrefixHeader.pch";
 				INFOPLIST_FILE = "黑马微博/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
