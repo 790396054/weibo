@@ -63,6 +63,7 @@
 		B76926AE1DE3396D00EC9088 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B76926AC1DE3396D00EC9088 /* LaunchScreen.storyboard */; };
 		B76926B91DE3396D00EC9088 /* ____Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = B76926B81DE3396D00EC9088 /* ____Tests.m */; };
 		B76926C41DE3396D00EC9088 /* ____UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B76926C31DE3396D00EC9088 /* ____UITests.m */; };
+		B76A2BAB1E0CB99000AB24DF /* HWComposePhotosView.m in Sources */ = {isa = PBXBuildFile; fileRef = B76A2BAA1E0CB99000AB24DF /* HWComposePhotosView.m */; };
 		B7745D431DE678A40095E495 /* HWDiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7745D1C1DE678A40095E495 /* HWDiscoverViewController.m */; };
 		B7745D441DE678A40095E495 /* HWHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7745D221DE678A40095E495 /* HWHomeViewController.m */; };
 		B7745D451DE678A40095E495 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B7745D271DE678A40095E495 /* AppDelegate.m */; };
@@ -220,6 +221,8 @@
 		B76926BF1DE3396D00EC9088 /* 黑马微博UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "黑马微博UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B76926C31DE3396D00EC9088 /* ____UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "____UITests.m"; sourceTree = "<group>"; };
 		B76926C51DE3396D00EC9088 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B76A2BA91E0CB99000AB24DF /* HWComposePhotosView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWComposePhotosView.h; sourceTree = "<group>"; };
+		B76A2BAA1E0CB99000AB24DF /* HWComposePhotosView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWComposePhotosView.m; sourceTree = "<group>"; };
 		B7745D1B1DE678A40095E495 /* HWDiscoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWDiscoverViewController.h; sourceTree = "<group>"; };
 		B7745D1C1DE678A40095E495 /* HWDiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWDiscoverViewController.m; sourceTree = "<group>"; };
 		B7745D211DE678A40095E495 /* HWHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWHomeViewController.h; sourceTree = "<group>"; };
@@ -451,6 +454,8 @@
 			children = (
 				B765EE651E0BBDE200735CAA /* HWComposeToolBar.h */,
 				B765EE661E0BBDE200735CAA /* HWComposeToolBar.m */,
+				B76A2BA91E0CB99000AB24DF /* HWComposePhotosView.h */,
+				B76A2BAA1E0CB99000AB24DF /* HWComposePhotosView.m */,
 			);
 			name = View;
 			path = Controller/View;
@@ -999,6 +1004,7 @@
 				B73F23E31DEC545800CF028D /* NSData+ImageContentType.m in Sources */,
 				B7745D4A1DE678A40095E495 /* HWProfileViewController.m in Sources */,
 				B76926A01DE3396D00EC9088 /* main.m in Sources */,
+				B76A2BAB1E0CB99000AB24DF /* HWComposePhotosView.m in Sources */,
 				B75952261DEBB842008318BF /* AFURLSessionManager.m in Sources */,
 				B73F241C1DEC686700CF028D /* NSObject+MJCoding.m in Sources */,
 				B73F241D1DEC686700CF028D /* NSObject+MJKeyValue.m in Sources */,

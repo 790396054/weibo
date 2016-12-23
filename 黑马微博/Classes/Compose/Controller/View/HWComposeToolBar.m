@@ -52,7 +52,7 @@
 
 -(void)btn:(UIButton *)btn{
     if ([self.delegate respondsToSelector:@selector(composeToolBar:type:)]) {
-        [self.delegate composeToolBar:self type:btn.tag];
+        [self.delegate composeToolBar:self type:(HWComposeToolBarClickType)btn.tag];
     }
 }
 

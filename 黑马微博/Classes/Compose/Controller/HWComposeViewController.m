@@ -12,12 +12,15 @@
 #import "AFNetworking.h"
 #import "MBProgressHUD+MJ.h"
 #import "HWComposeToolBar.h"
+#import "HWComposePhotosView.h"
 
-@interface HWComposeViewController ()<UITextViewDelegate>
+@interface HWComposeViewController ()<UITextViewDelegate, HWComposeToolBarDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 /**输入控件*/
 @property (nonatomic, weak) HWTextView *textView;
-/**工具条*/
+/**键盘上方的工具条*/
 @property (nonatomic, weak) HWComposeToolBar *toolbar;
+/**照片（添加微博的照片控件）*/
+@property (nonatomic, weak) HWComposePhotosView *photosView;
 @end
 
 @implementation HWComposeViewController
@@ -34,6 +37,8 @@
     [self setupTextView];
     // 添加工具条
     [self setupToolbar];
+    // 添加相册控件
+    [self setupPhotosView];
 }
 
 -(void)dealloc{
@@ -41,6 +46,19 @@
 }
 
 #pragma mark - 初始化方法
+
+/**
+ 添加相册
+ */
+-(void)setupPhotosView{
+    HWComposePhotosView *photosView = [[HWComposePhotosView alloc] init];
+    photosView.width = self.view.width;
+    photosView.height = self.view.height; // 高度随便填写，只要相册中的照片能看到即可
+    photosView.y = 100;
+    [self.textView addSubview:photosView];
+    self.photosView = photosView;
+}
+
 /**
  * 添加工具条
  */
@@ -50,8 +68,9 @@
     toolbar.height = 44;
     toolbar.y = self.view.height - toolbar.height;
     [self.view addSubview:toolbar];
+    toolbar.delegate = self;
     self.toolbar = toolbar;
-    // inputAccessoryView 设置显示在键盘顶部的内容 
+    // inputAccessoryView 设置显示在键盘顶部的内容
 //    self.textView.inputAccessoryView = toolbar;
     // inputView 设置键盘
     //self.textView.inputView = [UIButton buttonWithType:UIButtonTypeContactAdd];
@@ -70,12 +89,18 @@
     [self.view addSubview:textView];
     self.textView = textView;
     // 成为第一响应者（能输入文本的控件一旦成为第一响应者，就会叫出键盘）
-    [textView becomeFirstResponder];
+    //[textView becomeFirstResponder];
     
     // 文字改变的通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textDidChange) name:UITextViewTextDidChangeNotification object:textView];
     // 键盘改变的通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    [self.textView becomeFirstResponder];
 }
 
 /**
@@ -121,12 +146,48 @@
  * 发送
  */
 -(void)send{
-    AFHTTPSessionManager *mgr = [AFHTTPSessionManager manager];
+    if (self.photosView.photos.count) {
+        [self sendWithImage];
+    } else {
+        [self sendWithoutImage];
+    }
+    
+    [self.view endEditing:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
+// 发送图片微博
+-(void)sendWithImage{
+    AFHTTPSessionManager *mgr = [AFHTTPSessionManager manager];
+    
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
     param[@"access_token"] = [HWAccountTool account].access_token;
     param[@"status"] = self.textView.text;
+    
+    [mgr POST:@"https://api.weibo.com/2/statuses/upload.json" parameters:param constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        // 拼接文件数据
+        UIImage *image = [self.photosView.photos firstObject];
+        NSData *data = UIImageJPEGRepresentation(image, 1.0);
+        [formData appendPartWithFileData:data name:@"pic" fileName:@"test.jpg" mimeType:@"image/jpeg"];
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [MBProgressHUD showSuccess:@"发送成功"];
+        HWLog(@"发送成功");
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [MBProgressHUD showError:@"发送失败"];
+        HWLog(@"发送失败");
+    }];
+}
 
+// 发送文字微博
+-(void)sendWithoutImage{
+    AFHTTPSessionManager *mgr = [AFHTTPSessionManager manager];
+    
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"access_token"] = [HWAccountTool account].access_token;
+    param[@"status"] = self.textView.text;
+    
     [mgr POST:@"https://api.weibo.com/2/statuses/update.json" parameters:param progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         HWLog(@"发送成功");
         [MBProgressHUD showSuccess:@"发送成功"];
@@ -134,8 +195,6 @@
         HWLog(@"发送失败");
         [MBProgressHUD showError:@"发送失败"];
     }];
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 /**
@@ -166,7 +225,9 @@
     CGRect keyFrame = [userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
     [UIView animateWithDuration:duration animations:^{
         self.toolbar.y = keyFrame.origin.y - self.toolbar.height;
+        
     }];
+    HWLog(@"%@",NSStringFromCGRect(keyFrame));
 }
 
 #pragma mark - UITextViewDelegate
@@ -174,5 +235,56 @@
     [self.view endEditing:YES];
 }
 
+#pragma mark - HWComposeToolBarDelegate
+-(void)composeToolBar:(HWComposeToolBar *)toolBar type:(HWComposeToolBarClickType)buttonType{
+    switch (buttonType) {
+        case HWComposeToolBarCamera: // 拍照
+            [self openCaera];
+            break;
+        case HWComposeToolBarPicture: // 相册
+            [self openPicture];
+            break;
+        case HWComposeToolBarMention: // @
+            HWLog(@"@");
+            break;
+        case HWComposeToolBarTrend: // #
+            HWLog(@"#");
+            break;
+        case HWComposeToolBarEmoticon: // 表情
+            HWLog(@"表情");
+            break;
+        default:
+            break;
+    }
+}
+
+#pragma mark - 其他方法
+// 打开相机
+-(void)openCaera{
+    [self openImagePicker:UIImagePickerControllerSourceTypeCamera];
+}
+
+// 打开相册
+-(void)openPicture{
+    [self openImagePicker:UIImagePickerControllerSourceTypePhotoLibrary];
+}
+
+-(void)openImagePicker:(UIImagePickerControllerSourceType)type{
+    if (![UIImagePickerController isSourceTypeAvailable:type]) return;
+    
+    UIImagePickerController *ipc = [[UIImagePickerController alloc] init];
+    ipc.sourceType = type;
+    ipc.delegate = self;
+    [self presentViewController:ipc animated:YES completion:nil];
+}
+
+#pragma mark - UIImagePickerControllerDelegate
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
+    HWLog(@"%@", info);
+    UIImage *image = info[UIImagePickerControllerOriginalImage];
+    [self.photosView addPhoto:image];
+    
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
 
 @end
