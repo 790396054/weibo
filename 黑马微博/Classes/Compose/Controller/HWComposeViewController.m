@@ -13,6 +13,7 @@
 #import "MBProgressHUD+MJ.h"
 #import "HWComposeToolBar.h"
 #import "HWComposePhotosView.h"
+#import "HWEmotionKeyboard.h"
 
 @interface HWComposeViewController ()<UITextViewDelegate, HWComposeToolBarDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 /**输入控件*/
@@ -21,6 +22,10 @@
 @property (nonatomic, weak) HWComposeToolBar *toolbar;
 /**照片（添加微博的照片控件）*/
 @property (nonatomic, weak) HWComposePhotosView *photosView;
+/**表情键盘*/
+@property (nonatomic, weak) HWEmotionKeyboard *emotionKeyboard;
+/**是否正在切换键盘*/
+@property (nonatomic, assign) BOOL isSwitchKeyboard;
 @end
 
 @implementation HWComposeViewController
@@ -88,8 +93,6 @@
     textView.delegate = self;
     [self.view addSubview:textView];
     self.textView = textView;
-    // 成为第一响应者（能输入文本的控件一旦成为第一响应者，就会叫出键盘）
-    //[textView becomeFirstResponder];
     
     // 文字改变的通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textDidChange) name:UITextViewTextDidChangeNotification object:textView];
@@ -208,6 +211,9 @@
  * 键盘的frame 发生改变时调用（显示、隐藏）
  */
 -(void)keyboardWillChangeFrame:(NSNotification *)notification{
+    
+    if(self.isSwitchKeyboard) return; // 正在切换键盘，直接返回
+    
     /**
      notification.userInfo = {
      // 键盘弹出/隐藏后的 frame
@@ -227,7 +233,6 @@
         self.toolbar.y = keyFrame.origin.y - self.toolbar.height;
         
     }];
-    HWLog(@"%@",NSStringFromCGRect(keyFrame));
 }
 
 #pragma mark - UITextViewDelegate
@@ -252,6 +257,7 @@
             break;
         case HWComposeToolBarEmoticon: // 表情
             HWLog(@"表情");
+            [self setupEmtionKeyboard];
             break;
         default:
             break;
@@ -259,6 +265,34 @@
 }
 
 #pragma mark - 其他方法
+-(void)setupEmtionKeyboard{
+    if (self.textView.inputView == nil) { // 当前是系统键盘，弹出自定义键盘
+        HWEmotionKeyboard *emotionKeyboard = [[HWEmotionKeyboard alloc] init];
+        self.emotionKeyboard = emotionKeyboard;
+        emotionKeyboard.width = self.view.width;
+        emotionKeyboard.height = 216;
+        self.textView.inputView = emotionKeyboard;
+        HWLog(@"%@", self.textView.inputView);
+    } else { // 弹出系统键盘
+        self.textView.inputView = nil;
+    }
+    
+    self.isSwitchKeyboard = YES;
+    
+    // 退出键盘
+    [self.textView endEditing:YES];
+//    [self.view endEditing:YES];
+//    [self.view.window endEditing:YES];
+//    [self.textView.resignFirstResponder];
+    
+    // 弹出键盘
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.textView becomeFirstResponder];
+        self.isSwitchKeyboard = NO;
+    });
+
+}
+
 // 打开相机
 -(void)openCaera{
     [self openImagePicker:UIImagePickerControllerSourceTypeCamera];
