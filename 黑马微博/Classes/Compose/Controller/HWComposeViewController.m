@@ -34,7 +34,7 @@
 -(HWEmotionKeyboard *)emotionKeyboard{
     if (_emotionKeyboard == nil) {
         _emotionKeyboard = [[HWEmotionKeyboard alloc] init];
-        _emotionKeyboard.height = 216;
+        _emotionKeyboard.height = 316;
     }
     return _emotionKeyboard;
 }
@@ -221,7 +221,7 @@
  */
 -(void)keyboardWillChangeFrame:(NSNotification *)notification{
     
-    if(self.isSwitchKeyboard) return; // 正在切换键盘，直接返回
+    //if(self.isSwitchKeyboard) return; // 正在切换键盘，直接返回
     
     /**
      notification.userInfo = {

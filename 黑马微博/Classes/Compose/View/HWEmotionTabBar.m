@@ -45,11 +45,6 @@
     [btn setTitle:title forState:UIControlStateNormal];
     [btn setTitle:title forState:UIControlStateDisabled];
     
-    // 设置“默认”按钮
-    if (buttonType == HWEmotionTabbarButtonTypeDefault) {
-        [self btnClick:btn];
-    }
-    
     // 设置背景图
     NSString *image = @"compose_emotion_table_mid";
     NSString *highImage = @"compose_emotion_table_mid_selected";
@@ -78,6 +73,13 @@
         btn.x = i * btn.width;
         btn.y = 0;
     }
+}
+
+-(void)setDelegate:(id<HWEmotionTabbarDelegate>)delegate{
+    _delegate = delegate;
+    
+    // 选择“默认”按钮
+    [self btnClick:[self viewWithTag:HWEmotionTabbarButtonTypeDefault]];
 }
 
 /**

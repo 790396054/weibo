@@ -17,6 +17,7 @@
 		B71EB23A1E10CD6A00604A51 /* HWEmotionListView.m in Sources */ = {isa = PBXBuildFile; fileRef = B71EB2321E10CD6A00604A51 /* HWEmotionListView.m */; };
 		B71EB23B1E10CD6A00604A51 /* HWEmotionTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = B71EB2341E10CD6A00604A51 /* HWEmotionTabBar.m */; };
 		B71EB23C1E10CD6A00604A51 /* HWEmotionTabbarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B71EB2361E10CD6A00604A51 /* HWEmotionTabbarButton.m */; };
+		B71EB2411E10EAC700604A51 /* HWEmotion.m in Sources */ = {isa = PBXBuildFile; fileRef = B71EB2401E10EAC700604A51 /* HWEmotion.m */; };
 		B73F23E21DEC545800CF028D /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B73F23C21DEC545800CF028D /* MKAnnotationView+WebCache.m */; };
 		B73F23E31DEC545800CF028D /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = B73F23C41DEC545800CF028D /* NSData+ImageContentType.m */; };
 		B73F23E41DEC545800CF028D /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B73F23C61DEC545800CF028D /* SDImageCache.m */; };
@@ -131,6 +132,8 @@
 		B71EB2341E10CD6A00604A51 /* HWEmotionTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWEmotionTabBar.m; sourceTree = "<group>"; };
 		B71EB2351E10CD6A00604A51 /* HWEmotionTabbarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWEmotionTabbarButton.h; sourceTree = "<group>"; };
 		B71EB2361E10CD6A00604A51 /* HWEmotionTabbarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWEmotionTabbarButton.m; sourceTree = "<group>"; };
+		B71EB23F1E10EAC700604A51 /* HWEmotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWEmotion.h; sourceTree = "<group>"; };
+		B71EB2401E10EAC700604A51 /* HWEmotion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWEmotion.m; sourceTree = "<group>"; };
 		B73F23C11DEC545800CF028D /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		B73F23C21DEC545800CF028D /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
 		B73F23C31DEC545800CF028D /* NSData+ImageContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ImageContentType.h"; sourceTree = "<group>"; };
@@ -331,6 +334,8 @@
 		B71EB23E1E10CD8700604A51 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B71EB23F1E10EAC700604A51 /* HWEmotion.h */,
+				B71EB2401E10EAC700604A51 /* HWEmotion.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1021,6 +1026,7 @@
 				B73F24181DEC686700CF028D /* MJMember.m in Sources */,
 				B759523D1DEC0C23008318BF /* Foundation+Log.m in Sources */,
 				B73F24161DEC686700CF028D /* MJFoundation.m in Sources */,
+				B71EB2411E10EAC700604A51 /* HWEmotion.m in Sources */,
 				B71EB2381E10CD6A00604A51 /* HWComposeToolBar.m in Sources */,
 				B7C51B251DEF2EB200BCC3B8 /* HWPhoto.m in Sources */,
 				B7745D471DE678A40095E495 /* HWNavigationController.m in Sources */,

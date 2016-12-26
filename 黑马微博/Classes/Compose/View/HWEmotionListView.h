@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface HWEmotionListView : UIView
-
+/** 表情（里面存放的是HWEmotion模型）*/
+@property (nonatomic, strong) NSArray *emotions;
 @end
