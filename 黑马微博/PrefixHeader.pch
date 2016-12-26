@@ -33,3 +33,4 @@
 #import "UIWindow+Extension.h"
 #import "NSDate+Extension.h"
 #import "NSString+Extension.h"
+#import "NSString+Emoji.h"

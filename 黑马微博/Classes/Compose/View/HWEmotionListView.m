@@ -7,9 +7,7 @@
 //
 
 #import "HWEmotionListView.h"
-
-// 表情的每一页的个数
-#define HWEmotionsPageSize 20
+#import "HWEmotionPageView.h"
 
 @interface HWEmotionListView() <UIScrollViewDelegate>
 @property (nonatomic, weak) UIScrollView *scrollView;
@@ -25,6 +23,7 @@
         // 1. 创建 UIScrollView
         UIScrollView *scrollView = [[UIScrollView alloc] init];
         [self addSubview:scrollView];
+        scrollView.backgroundColor = [UIColor whiteColor];
         scrollView.delegate = self;
         // 设置单页滚动
         scrollView.pagingEnabled = YES;
@@ -63,7 +62,7 @@
     // 3. 设置 scrollView内部每一页的尺寸
     NSUInteger count = self.scrollView.subviews.count;
     for (int i = 0; i < count; i++) {
-        UIView *pageView = self.scrollView.subviews[i];
+        HWEmotionPageView *pageView = self.scrollView.subviews[i];
         pageView.height = self.scrollView.height;
         pageView.width = self.scrollView.width;
         pageView.x = pageView.width * i;
@@ -77,12 +76,24 @@
 // 根据emotions,创建对应个数的表情
 -(void)setEmotions:(NSArray *)emotions{
     _emotions = emotions;
+    NSUInteger count = (emotions.count + HWEmotionsPageSize - 1) / HWEmotionsPageSize;
     // 1.设置页数
-    self.pageControl.numberOfPages = (emotions.count + HWEmotionsPageSize - 1) / HWEmotionsPageSize;
+    self.pageControl.numberOfPages = count;
     // 2.创建用来显示每一页表情的控件
-    for (int i = 0; i < self.pageControl.numberOfPages; i++) {
-        UIView *pageView = [[UIView alloc] init];
-        pageView.backgroundColor = HWRandomColor;
+    for (int i = 0; i < count; i++) {
+        HWEmotionPageView *pageView = [[HWEmotionPageView alloc] init];
+        // 计算这一页的表情范围
+        NSRange range;
+        range.location = i * HWEmotionsPageSize;
+        NSUInteger length = emotions.count - range.location;
+        
+        if (length >= HWEmotionsPageSize) {
+            range.length = HWEmotionsPageSize;
+        } else {
+            range.length = length;
+        }
+        // 设置这一页的表情
+        pageView.emotions = [emotions subarrayWithRange:range];
         [self.scrollView addSubview:pageView];
     }
 }

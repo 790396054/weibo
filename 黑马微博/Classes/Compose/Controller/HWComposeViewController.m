@@ -34,7 +34,7 @@
 -(HWEmotionKeyboard *)emotionKeyboard{
     if (_emotionKeyboard == nil) {
         _emotionKeyboard = [[HWEmotionKeyboard alloc] init];
-        _emotionKeyboard.height = 316;
+        _emotionKeyboard.height = 250;
     }
     return _emotionKeyboard;
 }

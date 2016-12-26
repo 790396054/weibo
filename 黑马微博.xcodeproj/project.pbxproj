@@ -48,6 +48,8 @@
 		B73F241D1DEC686700CF028D /* NSObject+MJKeyValue.m in Sources */ = {isa = PBXBuildFile; fileRef = B73F24111DEC686700CF028D /* NSObject+MJKeyValue.m */; };
 		B73F241E1DEC686700CF028D /* NSObject+MJMember.m in Sources */ = {isa = PBXBuildFile; fileRef = B73F24131DEC686700CF028D /* NSObject+MJMember.m */; };
 		B745A71B1E0994110038850F /* HWStatusPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = B745A71A1E0994110038850F /* HWStatusPhotoView.m */; };
+		B7533F751E115A080076D432 /* HWEmotionPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7533F741E115A080076D432 /* HWEmotionPageView.m */; };
+		B7533F781E116B0F0076D432 /* NSString+Emoji.m in Sources */ = {isa = PBXBuildFile; fileRef = B7533F771E116B0F0076D432 /* NSString+Emoji.m */; };
 		B75952211DEBB842008318BF /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B75952151DEBB842008318BF /* AFHTTPSessionManager.m */; };
 		B75952221DEBB842008318BF /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B75952181DEBB842008318BF /* AFNetworkReachabilityManager.m */; };
 		B75952231DEBB842008318BF /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = B759521A1DEBB842008318BF /* AFSecurityPolicy.m */; };
@@ -196,6 +198,10 @@
 		B73F24131DEC686700CF028D /* NSObject+MJMember.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MJMember.m"; sourceTree = "<group>"; };
 		B745A7191E0994110038850F /* HWStatusPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWStatusPhotoView.h; sourceTree = "<group>"; };
 		B745A71A1E0994110038850F /* HWStatusPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWStatusPhotoView.m; sourceTree = "<group>"; };
+		B7533F731E115A080076D432 /* HWEmotionPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWEmotionPageView.h; sourceTree = "<group>"; };
+		B7533F741E115A080076D432 /* HWEmotionPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWEmotionPageView.m; sourceTree = "<group>"; };
+		B7533F761E116B0F0076D432 /* NSString+Emoji.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Emoji.h"; sourceTree = "<group>"; };
+		B7533F771E116B0F0076D432 /* NSString+Emoji.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Emoji.m"; sourceTree = "<group>"; };
 		B75952141DEBB842008318BF /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
 		B75952151DEBB842008318BF /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPSessionManager.m; sourceTree = "<group>"; };
 		B75952161DEBB842008318BF /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
@@ -327,6 +333,8 @@
 				B71EB2341E10CD6A00604A51 /* HWEmotionTabBar.m */,
 				B71EB2351E10CD6A00604A51 /* HWEmotionTabbarButton.h */,
 				B71EB2361E10CD6A00604A51 /* HWEmotionTabbarButton.m */,
+				B7533F731E115A080076D432 /* HWEmotionPageView.h */,
+				B7533F741E115A080076D432 /* HWEmotionPageView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -662,6 +670,8 @@
 		B7745D281DE678A40095E495 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				B7533F761E116B0F0076D432 /* NSString+Emoji.h */,
+				B7533F771E116B0F0076D432 /* NSString+Emoji.m */,
 				B759523C1DEC0C23008318BF /* Foundation+Log.m */,
 				B7745D291DE678A40095E495 /* UIView+Extension.h */,
 				B7745D2A1DE678A40095E495 /* UIView+Extension.m */,
@@ -1024,6 +1034,7 @@
 				B75952241DEBB842008318BF /* AFURLRequestSerialization.m in Sources */,
 				B73F241B1DEC686700CF028D /* MJTypeEncoding.m in Sources */,
 				B73F24181DEC686700CF028D /* MJMember.m in Sources */,
+				B7533F781E116B0F0076D432 /* NSString+Emoji.m in Sources */,
 				B759523D1DEC0C23008318BF /* Foundation+Log.m in Sources */,
 				B73F24161DEC686700CF028D /* MJFoundation.m in Sources */,
 				B71EB2411E10EAC700604A51 /* HWEmotion.m in Sources */,
@@ -1036,6 +1047,7 @@
 				B71C37CE1E07D46500F59AEC /* NSString+Extension.m in Sources */,
 				B73F23F01DEC545800CF028D /* UIImageView+WebCache.m in Sources */,
 				B7E59E2E1DE93B1A00C67D21 /* HWOAuthViewController.m in Sources */,
+				B7533F751E115A080076D432 /* HWEmotionPageView.m in Sources */,
 				B7E368871DE7CDFF00273F1A /* HWTabBar.m in Sources */,
 				B75952231DEBB842008318BF /* AFSecurityPolicy.m in Sources */,
 				B73F23E71DEC545800CF028D /* SDWebImageDownloader.m in Sources */,
