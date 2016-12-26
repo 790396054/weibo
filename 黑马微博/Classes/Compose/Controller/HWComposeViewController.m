@@ -23,12 +23,21 @@
 /**照片（添加微博的照片控件）*/
 @property (nonatomic, weak) HWComposePhotosView *photosView;
 /**表情键盘*/
-@property (nonatomic, weak) HWEmotionKeyboard *emotionKeyboard;
+@property (nonatomic, strong) HWEmotionKeyboard *emotionKeyboard;
 /**是否正在切换键盘*/
 @property (nonatomic, assign) BOOL isSwitchKeyboard;
 @end
 
 @implementation HWComposeViewController
+
+#pragma mark - 加载资源
+-(HWEmotionKeyboard *)emotionKeyboard{
+    if (_emotionKeyboard == nil) {
+        _emotionKeyboard = [[HWEmotionKeyboard alloc] init];
+        _emotionKeyboard.height = 216;
+    }
+    return _emotionKeyboard;
+}
 
 #pragma mark - 系统方法
 - (void)viewDidLoad {
@@ -266,14 +275,13 @@
 
 #pragma mark - 其他方法
 -(void)setupEmtionKeyboard{
-    if (self.textView.inputView == nil) { // 当前是系统键盘，弹出自定义键盘
-        HWEmotionKeyboard *emotionKeyboard = [[HWEmotionKeyboard alloc] init];
-        self.emotionKeyboard = emotionKeyboard;
-        emotionKeyboard.width = self.view.width;
-        emotionKeyboard.height = 216;
-        self.textView.inputView = emotionKeyboard;
-        HWLog(@"%@", self.textView.inputView);
+    if (self.textView.inputView == nil) { // 当前是系统键盘，弹出自定义表情键盘
+        self.textView.inputView = self.emotionKeyboard;
+        // 显示键盘图标
+        self.toolbar.showKeyboardButton = YES;
     } else { // 弹出系统键盘
+        // 显示表情图标
+        self.toolbar.showKeyboardButton = NO;
         self.textView.inputView = nil;
     }
     
