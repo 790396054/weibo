@@ -12,7 +12,10 @@
 #import "HWEmotionButton.h"
 
 @interface HWEmotionPageView()
+/** 点击表情后弹出的放大镜*/
 @property (nonatomic, strong) HWEmotionPopView *popView;
+/** 删除按钮*/
+@property (nonatomic, weak) UIButton *deleteButton;
 @end
 
 @implementation HWEmotionPageView
@@ -22,6 +25,19 @@
         _popView = [HWEmotionPopView popView];
     }
     return _popView;
+}
+
+- (instancetype)initWithFrame:(CGRect)frame{
+    self = [super initWithFrame:frame];
+    if (self) {
+        UIButton *deleteButton = [[UIButton alloc] init];
+        [deleteButton setImage:[UIImage imageNamed:@"compose_emotion_delete"] forState:UIControlStateNormal];
+        [deleteButton setImage:[UIImage imageNamed:@"compose_emotion_delete_highlighted"] forState:UIControlStateHighlighted];
+        [deleteButton addTarget:self action:@selector(deleteClick) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:deleteButton];
+        self.deleteButton = deleteButton;
+    }
+    return self;
 }
 
 -(void)setEmotions:(NSArray *)emotions{
@@ -45,17 +61,36 @@
     int padding = 15; // 内边距
     CGFloat btnWidth = (self.width - 2 * padding) / HWEmotionMaxCols;
     CGFloat btnHeight = (self.height - padding) / HWEmotionMaxRows;
-    for (int i = 0; i < self.subviews.count; i++) {
-        UIButton *btn = self.subviews[i];
+    
+    for (int i = 0; i < self.emotions.count; i++) {
+        UIButton *btn = self.subviews[i + 1];
         btn.width = btnWidth;
         btn.height = btnHeight;
         btn.x = padding + (i % HWEmotionMaxCols) * btnWidth;
         btn.y = padding + (i / HWEmotionMaxCols) * btnHeight;
     }
+    
+    // 删除按钮
+    self.deleteButton.frame = CGRectMake(self.width - padding - btnWidth, self.height - btnHeight, btnWidth, btnHeight);
 }
 
 #pragma mark - 监听按钮点击
+/**
+ 监听删除按钮点击
+ */
+-(void)deleteClick{
+    // 发出通知
+//    NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
+//    userInfo[@""] = @"";
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"" object:nil userInfo:userInfo];
+}
+
+/**
+ 监听表情按钮点击
+ @param btn 按钮
+ */
 -(void)btnClick:(HWEmotionButton *)btn{
+    HWLog(@"%@",NSStringFromCGRect(self.deleteButton.frame));
     // 赋值
     self.popView.emotion = btn.emotion;
     

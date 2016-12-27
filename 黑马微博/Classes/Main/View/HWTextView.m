@@ -28,7 +28,6 @@
  文字改变时调用
  */
 -(void)textChange{
-    
     // 重绘（会重新调用drawRect方法）
     [self setNeedsDisplay];
 }
@@ -61,6 +60,12 @@
 
 -(void)setText:(NSString *)text{
     [super setText:text];
+    
+    [self setNeedsDisplay];
+}
+
+-(void)setAttributedText:(NSAttributedString *)attributedText{
+    [super setAttributedText:attributedText];
     
     [self setNeedsDisplay];
 }

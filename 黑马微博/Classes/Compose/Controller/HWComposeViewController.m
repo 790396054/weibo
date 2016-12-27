@@ -8,7 +8,7 @@
 
 #import "HWComposeViewController.h"
 #import "HWAccountTool.h"
-#import "HWTextView.h"
+#import "HWEmotionTextView.h"
 #import "AFNetworking.h"
 #import "MBProgressHUD+MJ.h"
 #import "HWComposeToolBar.h"
@@ -18,7 +18,7 @@
 
 @interface HWComposeViewController ()<UITextViewDelegate, HWComposeToolBarDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 /**输入控件*/
-@property (nonatomic, weak) HWTextView *textView;
+@property (nonatomic, weak) HWEmotionTextView *textView;
 /**键盘上方的工具条*/
 @property (nonatomic, weak) HWComposeToolBar *toolbar;
 /**照片（添加微博的照片控件）*/
@@ -95,7 +95,7 @@
  * 添加输入控件
  */
 -(void)setupTextView{
-    HWTextView *textView = [[HWTextView alloc] init];
+    HWEmotionTextView *textView = [[HWEmotionTextView alloc] init];
     textView.frame = self.view.bounds;
     textView.alwaysBounceVertical = YES;
     textView.font = [UIFont systemFontOfSize:18];
@@ -156,12 +156,8 @@
  */
 -(void)emotionSelected:(NSNotification *)notification{
     HWEmotion *emotion = notification.userInfo[SelectedEmotion];
-    if (emotion.code) { // Emoji
-        // self.textView insertText 将文字插入到光标所在的位置
-        [self.textView insertText:emotion.code.emoji];
-    } else if(emotion.png){ // 其他表情
-        
-    }
+    // 添加表情
+    [self.textView insertEmotion:emotion];
 }
 /**
  * 取消

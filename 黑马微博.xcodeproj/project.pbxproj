@@ -91,6 +91,8 @@
 		B7B214081E12016000DB4FA3 /* HWEmotionPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B214071E12016000DB4FA3 /* HWEmotionPopView.m */; };
 		B7B2140A1E1201C500DB4FA3 /* HWEmotionPopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7B214091E1201C500DB4FA3 /* HWEmotionPopView.xib */; };
 		B7B2140D1E120E0400DB4FA3 /* HWEmotionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B2140C1E120E0400DB4FA3 /* HWEmotionButton.m */; };
+		B7B214101E1246DA00DB4FA3 /* HWEmotionTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B2140F1E1246DA00DB4FA3 /* HWEmotionTextView.m */; };
+		B7B214131E124B5000DB4FA3 /* UITextView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B214121E124B5000DB4FA3 /* UITextView+Extension.m */; };
 		B7B7BFD71DEEBF1C00FF0FAA /* HWStatusCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B7BFD61DEEBF1C00FF0FAA /* HWStatusCell.m */; };
 		B7B7BFDA1DEEC67900FF0FAA /* HWStatusFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B7BFD91DEEC67900FF0FAA /* HWStatusFrame.m */; };
 		B7C51B251DEF2EB200BCC3B8 /* HWPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = B7C51B241DEF2EB200BCC3B8 /* HWPhoto.m */; };
@@ -285,6 +287,10 @@
 		B7B214091E1201C500DB4FA3 /* HWEmotionPopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HWEmotionPopView.xib; sourceTree = "<group>"; };
 		B7B2140B1E120E0400DB4FA3 /* HWEmotionButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWEmotionButton.h; sourceTree = "<group>"; };
 		B7B2140C1E120E0400DB4FA3 /* HWEmotionButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWEmotionButton.m; sourceTree = "<group>"; };
+		B7B2140E1E1246DA00DB4FA3 /* HWEmotionTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWEmotionTextView.h; sourceTree = "<group>"; };
+		B7B2140F1E1246DA00DB4FA3 /* HWEmotionTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWEmotionTextView.m; sourceTree = "<group>"; };
+		B7B214111E124B5000DB4FA3 /* UITextView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+Extension.h"; sourceTree = "<group>"; };
+		B7B214121E124B5000DB4FA3 /* UITextView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+Extension.m"; sourceTree = "<group>"; };
 		B7B7BFD51DEEBF1C00FF0FAA /* HWStatusCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWStatusCell.h; sourceTree = "<group>"; };
 		B7B7BFD61DEEBF1C00FF0FAA /* HWStatusCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWStatusCell.m; sourceTree = "<group>"; };
 		B7B7BFD81DEEC67900FF0FAA /* HWStatusFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWStatusFrame.h; sourceTree = "<group>"; };
@@ -348,6 +354,8 @@
 				B7B214091E1201C500DB4FA3 /* HWEmotionPopView.xib */,
 				B7B2140B1E120E0400DB4FA3 /* HWEmotionButton.h */,
 				B7B2140C1E120E0400DB4FA3 /* HWEmotionButton.m */,
+				B7B2140E1E1246DA00DB4FA3 /* HWEmotionTextView.h */,
+				B7B2140F1E1246DA00DB4FA3 /* HWEmotionTextView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -696,6 +704,8 @@
 				B71C37CA1E07C29E00F59AEC /* NSDate+Extension.m */,
 				B71C37CC1E07D46500F59AEC /* NSString+Extension.h */,
 				B71C37CD1E07D46500F59AEC /* NSString+Extension.m */,
+				B7B214111E124B5000DB4FA3 /* UITextView+Extension.h */,
+				B7B214121E124B5000DB4FA3 /* UITextView+Extension.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -1005,6 +1015,7 @@
 				B7745D451DE678A40095E495 /* AppDelegate.m in Sources */,
 				B73F23EA1DEC545800CF028D /* SDWebImagePrefetcher.m in Sources */,
 				B73F24171DEC686700CF028D /* MJIvar.m in Sources */,
+				B7B214101E1246DA00DB4FA3 /* HWEmotionTextView.m in Sources */,
 				B73F24151DEC686700CF028D /* MJConst.m in Sources */,
 				B78FD9CB1DED1D98003F4AB9 /* HWLoadFooterView.m in Sources */,
 				B7B7BFD71DEEBF1C00FF0FAA /* HWStatusCell.m in Sources */,
@@ -1040,6 +1051,7 @@
 				B73F23E91DEC545800CF028D /* SDWebImageManager.m in Sources */,
 				B7745D491DE678A40095E495 /* HWMessageCenterTableViewController.m in Sources */,
 				B71EB23B1E10CD6A00604A51 /* HWEmotionTabBar.m in Sources */,
+				B7B214131E124B5000DB4FA3 /* UITextView+Extension.m in Sources */,
 				B7745D4B1DE678A40095E495 /* TestViewController.m in Sources */,
 				B765EE631E0B7D9F00735CAA /* HWTextView.m in Sources */,
 				B73F23FB1DEC5DDB00CF028D /* HWStatus.m in Sources */,
