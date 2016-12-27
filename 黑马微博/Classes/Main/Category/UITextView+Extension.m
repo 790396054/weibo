@@ -11,6 +11,10 @@
 @implementation UITextView (Extension)
 
 -(void)insertAttributeText:(NSAttributedString *)text{
+    [self insertAttributeText:text settingBlock:nil];
+}
+
+-(void)insertAttributeText:(NSAttributedString *)text settingBlock:(void (^)(NSMutableAttributedString *))settingBlock{
     NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] init];
     // 拼接之前的文字
     [attrStr appendAttributedString:self.attributedText];
@@ -19,9 +23,10 @@
     NSUInteger loc = self.selectedRange.location;
     [attrStr insertAttributedString:text atIndex:loc];
     
-    // 设置字体
-    [attrStr addAttribute:NSFontAttributeName value:self.font range:NSMakeRange(0, attrStr.length)];
-
+    if(settingBlock){
+        settingBlock(attrStr);
+    }
+    
     self.attributedText = attrStr;
     
     // 移动光标

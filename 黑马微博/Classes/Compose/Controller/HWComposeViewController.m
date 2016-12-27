@@ -111,6 +111,9 @@
     
     // 表情选中的通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(emotionSelected:) name:HWEmotionDidSelectedNotification object:nil];
+    
+    // 删除表情的通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deleteEmotion) name:HWEmotionDidDeleteNotification object:nil];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -150,6 +153,12 @@
 }
 
 #pragma mark - 监听方法
+/**
+ 删除表情的回调方法
+ */
+-(void)deleteEmotion{
+    [self.textView deleteBackward];
+}
 
 /**
  表情选中的回调方法

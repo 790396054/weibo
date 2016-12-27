@@ -23,7 +23,10 @@
         attach.image = [UIImage imageNamed:emotion.png];
         NSAttributedString *imageStr = [NSAttributedString attributedStringWithAttachment:attach];
         
-        [self insertAttributeText:imageStr];
+        [self insertAttributeText:imageStr settingBlock:^(NSMutableAttributedString *attributedText) {
+            // 设置字体
+            [attributedText addAttribute:NSFontAttributeName value:self.font range:NSMakeRange(0, attributedText.length)];
+        }];
     }
 }
 

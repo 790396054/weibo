@@ -30,6 +30,7 @@
 // 表情通知
 #define HWEmotionDidSelectedNotification @"HWEmotionDidSelectedNotification"
 #define SelectedEmotion @"SelectedEmotion"
+#define HWEmotionDidDeleteNotification @"HWEmotionDidDeleteNotification"
 
 // 自定import进来的全局同类的.h
 #import "UIView+Extension.h"

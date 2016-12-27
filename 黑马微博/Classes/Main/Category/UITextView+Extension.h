@@ -14,4 +14,5 @@
  将属性文字插入到光标所在的位置
  */
 -(void)insertAttributeText:(NSAttributedString *)text;
+-(void)insertAttributeText:(NSAttributedString *)text settingBlock:(void(^)(NSMutableAttributedString * attributedText))settingBlock;
 @end

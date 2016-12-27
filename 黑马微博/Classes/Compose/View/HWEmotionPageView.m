@@ -80,9 +80,7 @@
  */
 -(void)deleteClick{
     // 发出通知
-//    NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
-//    userInfo[@""] = @"";
-//    [[NSNotificationCenter defaultCenter] postNotificationName:@"" object:nil userInfo:userInfo];
+    [[NSNotificationCenter defaultCenter] postNotificationName:HWEmotionDidDeleteNotification object:nil];
 }
 
 /**
