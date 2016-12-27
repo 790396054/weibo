@@ -27,6 +27,10 @@
 // 随机色
 #define HWRandomColor HWRGBColor(arc4random_uniform(256),arc4random_uniform(256),arc4random_uniform(256))
 
+// 表情通知
+#define HWEmotionDidSelectedNotification @"HWEmotionDidSelectedNotification"
+#define SelectedEmotion @"SelectedEmotion"
+
 // 自定import进来的全局同类的.h
 #import "UIView+Extension.h"
 #import "UIBarButtonItem+Extension.h"

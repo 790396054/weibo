@@ -14,6 +14,7 @@
 #import "HWComposeToolBar.h"
 #import "HWComposePhotosView.h"
 #import "HWEmotionKeyboard.h"
+#import "HWEmotion.h"
 
 @interface HWComposeViewController ()<UITextViewDelegate, HWComposeToolBarDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 /**输入控件*/
@@ -107,6 +108,9 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textDidChange) name:UITextViewTextDidChangeNotification object:textView];
     // 键盘改变的通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
+    
+    // 表情选中的通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(emotionSelected:) name:HWEmotionDidSelectedNotification object:nil];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -146,6 +150,19 @@
 }
 
 #pragma mark - 监听方法
+
+/**
+ 表情选中的回调方法
+ */
+-(void)emotionSelected:(NSNotification *)notification{
+    HWEmotion *emotion = notification.userInfo[SelectedEmotion];
+    if (emotion.code) { // Emoji
+        // self.textView insertText 将文字插入到光标所在的位置
+        [self.textView insertText:emotion.code.emoji];
+    } else if(emotion.png){ // 其他表情
+        
+    }
+}
 /**
  * 取消
  */
@@ -265,7 +282,6 @@
             HWLog(@"#");
             break;
         case HWComposeToolBarEmoticon: // 表情
-            HWLog(@"表情");
             [self setupEmtionKeyboard];
             break;
         default:
