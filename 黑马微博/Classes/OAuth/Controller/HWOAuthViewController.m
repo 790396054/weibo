@@ -7,7 +7,7 @@
 //
 
 #import "HWOAuthViewController.h"
-#import "AFNetworking.h"
+#import "HWHttpTool.h"
 #import "MBProgressHUD+MJ.h"
 #import "HWAccountTool.h"
 
@@ -17,12 +17,10 @@
 
 @implementation HWOAuthViewController
 
-// 账号信息
-NSString * const HWAppKey = @"374623624";
-NSString * const HWClientSecret = @"c44b15aa490bbf3ca18ba5a84e8032e0";
-NSString * const HWRedirectUri = @"http://www.baidu.com";
-
 - (void)viewDidLoad {
+    
+    [[UIDevice currentDevice] systemVersion];
+    
     [super viewDidLoad];
     
     // 1.创建一个 UIWebView
@@ -64,9 +62,7 @@ NSString * const HWRedirectUri = @"http://www.baidu.com";
  @param code request accessToken
  */
 -(void)requestAccessToketWithCode:(NSString *)code{
-    // 1. 创立 manager
-    AFHTTPSessionManager *mgr = [AFHTTPSessionManager manager];
-    // 2.拼接请求参数
+    // 1.拼接请求参数
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
     [param setObject:HWAppKey forKey:@"client_id"];
     [param setObject:HWClientSecret forKey:@"client_secret"];
@@ -75,21 +71,17 @@ NSString * const HWRedirectUri = @"http://www.baidu.com";
     [param setObject:HWRedirectUri forKey:@"redirect_uri"];
     
     // 3.发送 post 请求
-    [mgr POST:@"https://api.weibo.com/oauth2/access_token" parameters:param
-     progress:^(NSProgress * _Nonnull uploadProgress) {
-         
-     }
-    success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
+    [HWHttpTool post:@"https://api.weibo.com/oauth2/access_token" params:param success:^(id json) {
         [MBProgressHUD hideHUD];
         // 将返回的账号字典数据 --> 模型，存进沙盒
-        HWAccount *account = [HWAccount accountWithDict:responseObject];
+        HWAccount *account = [HWAccount accountWithDict:json];
         // 自定义对象的存储必须用NSKeyedArchiver，不在有什么writeToFile方法
         [HWAccountTool saveAccount:account];
         
         // 切换控制器
         UIWindow *window = [[UIApplication sharedApplication] keyWindow];
         [window switchRootViewController];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } failure:^(NSError *error) {
         [MBProgressHUD hideHUD];
     }];
 }
