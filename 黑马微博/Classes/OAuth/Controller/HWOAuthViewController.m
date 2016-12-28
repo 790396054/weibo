@@ -17,6 +17,11 @@
 
 @implementation HWOAuthViewController
 
+// 账号信息
+NSString * const HWAppKey = @"374623624";
+NSString * const HWClientSecret = @"c44b15aa490bbf3ca18ba5a84e8032e0";
+NSString * const HWRedirectUri = @"http://www.baidu.com";
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -26,7 +31,7 @@
     [self.view addSubview:webView];
     
     // 2.用 WebView 加载登录页面
-    NSString *urlStr = @"https://api.weibo.com/oauth2/authorize?client_id=374623624&redirect_uri=http://www.baidu.com";
+    NSString *urlStr = [NSString stringWithFormat:@"https://api.weibo.com/oauth2/authorize?client_id=%@&redirect_uri=%@",HWAppKey, HWRedirectUri];
     NSURL *url = [NSURL URLWithString:urlStr];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
@@ -63,11 +68,11 @@
     AFHTTPSessionManager *mgr = [AFHTTPSessionManager manager];
     // 2.拼接请求参数
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
-    [param setObject:@"374623624" forKey:@"client_id"];
-    [param setObject:@"c44b15aa490bbf3ca18ba5a84e8032e0" forKey:@"client_secret"];
+    [param setObject:HWAppKey forKey:@"client_id"];
+    [param setObject:HWClientSecret forKey:@"client_secret"];
     [param setObject:@"authorization_code" forKey:@"grant_type"];
     [param setObject:code forKey:@"code"];
-    [param setObject:@"http://www.baidu.com" forKey:@"redirect_uri"];
+    [param setObject:HWRedirectUri forKey:@"redirect_uri"];
     
     // 3.发送 post 请求
     [mgr POST:@"https://api.weibo.com/oauth2/access_token" parameters:param
