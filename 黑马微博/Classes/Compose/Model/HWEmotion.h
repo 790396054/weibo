@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface HWEmotion : NSObject
+@interface HWEmotion : NSObject<NSCoding>
 /** 表情的文字描述 */
 @property (nonatomic, copy) NSString *chs;
 /** 表情的png 图片名 */

@@ -36,6 +36,7 @@
         // 2. 创建 UIPageControl
         UIPageControl *pageControl = [[UIPageControl alloc] init];
         [self addSubview:pageControl];
+//        pageControl.hidesForSinglePage = YES;
         pageControl.backgroundColor = [UIColor whiteColor];
         self.pageControl = pageControl;
         // 设置内部的原点图片
@@ -76,6 +77,10 @@
 // 根据emotions,创建对应个数的表情
 -(void)setEmotions:(NSArray *)emotions{
     _emotions = emotions;
+    
+    // 删除之前的控件
+    [self.scrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    
     NSUInteger count = (emotions.count + HWEmotionsPageSize - 1) / HWEmotionsPageSize;
     // 1.设置页数
     self.pageControl.numberOfPages = count;
@@ -96,6 +101,8 @@
         pageView.emotions = [emotions subarrayWithRange:range];
         [self.scrollView addSubview:pageView];
     }
+    
+    [self setNeedsLayout];
 }
 
 #pragma mark - scrollViewDelegate

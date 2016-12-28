@@ -11,6 +11,7 @@
 #import "HWEmotionTabBar.h"
 #import "HWEmotion.h"
 #import "MJExtension.h"
+#import "HWEmotionTool.h"
 
 @interface HWEmotionKeyboard() <HWEmotionTabbarDelegate>
 /** 容纳表情内容的控件*/
@@ -30,6 +31,8 @@
 -(HWEmotionListView *)recentListView{
     if (_recentListView == nil) {
         _recentListView = [[HWEmotionListView alloc] init];
+        // 加载沙盒中的数据
+        self.recentListView.emotions = [HWEmotionTool recentEmotions];
     }
     return _recentListView;
 }
@@ -76,8 +79,17 @@
         [self addSubview: tabbar];
         tabbar.delegate = self;
         self.tabbar = tabbar;
-}
+        
+        // 3.监听表情选中的通知
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(emotionSelected) name:HWEmotionDidSelectedNotification object:nil];
+
+    }
     return self;
+}
+
+// 表情的通知
+-(void)emotionSelected{
+    self.recentListView.emotions = [HWEmotionTool recentEmotions];
 }
 
 -(void)layoutSubviews{
@@ -108,7 +120,6 @@
     // 根据按钮类型，切换 contentView 上面的listview
     switch (buttonType) {
         case HWEmotionTabbarButtonTypeRecent: // 最近
-            HWLog(@"最近");
             [self.contentView addSubview:self.recentListView];
             break;
         case HWEmotionTabbarButtonTypeDefault:{ // 默认
@@ -126,6 +137,10 @@
     }
     // 重新计算子控件的 frame（setNeedsLayout内部会在恰当的时刻，重新调用layoutSubviews方法,重新布局子控件）
     [self setNeedsLayout];
+}
+
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

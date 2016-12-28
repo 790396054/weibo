@@ -10,6 +10,7 @@
 #import "HWEmotion.h"
 #import "HWEmotionPopView.h"
 #import "HWEmotionButton.h"
+#import "HWEmotionTool.h"
 
 @interface HWEmotionPageView()
 /** 点击表情后弹出的放大镜*/
@@ -148,6 +149,10 @@
 
 // 发出通知
 -(void)sendNotification:(HWEmotionButton *)btn{
+    // 存储最近使用的表情
+    [HWEmotionTool addRecentEmotion:btn.emotion];
+    
+    // 发通知
     NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
     userInfo[SelectedEmotion] = btn.emotion;
     [[NSNotificationCenter defaultCenter] postNotificationName:HWEmotionDidSelectedNotification object:nil userInfo:userInfo];
