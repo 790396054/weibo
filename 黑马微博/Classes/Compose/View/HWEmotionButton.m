@@ -52,9 +52,9 @@
 /**
  这个方法在initWithCoder方法调用完毕后调用
  */
--(void)awakeFromNib{
-    
-}
+//-(void)awakeFromNib{
+//    
+//}
 
 -(void)setEmotion:(HWEmotion *)emotion{
     _emotion = emotion;

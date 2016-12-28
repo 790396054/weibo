@@ -19,9 +19,20 @@
     return [[[NSBundle mainBundle] loadNibNamed:@"HWEmotionPopView" owner:nil options:nil] lastObject];
 }
 
--(void)setEmotion:(HWEmotion *)emotion{
-    _emotion = emotion;
+-(void)popBtnFrom:(HWEmotionButton *)button{
+    if(button == nil) return;
     
-    self.emotionBtn.emotion = emotion;
+    // 赋值
+    self.emotionBtn.emotion = button.emotion;
+    
+    // 取得最上面的 window
+    UIWindow *window = [[UIApplication sharedApplication].windows lastObject];
+    [window addSubview:self];
+    
+    // 计算出被点击的按钮在 window 中的 frame(转换坐标系)
+    CGRect btnFrame = [button convertRect:button.bounds toView:window];
+    
+    self.y = CGRectGetMidY(btnFrame) - self.height;
+    self.centerX = CGRectGetMidX(btnFrame);
 }
 @end

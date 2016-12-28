@@ -7,9 +7,9 @@
 //  点击表情弹出的提示控件
 
 #import <UIKit/UIKit.h>
-@class HWEmotion;
+@class HWEmotion, HWEmotionButton;
 
 @interface HWEmotionPopView : UIView
 +(instancetype)popView;
-@property (nonatomic, strong) HWEmotion *emotion;
+-(void)popBtnFrom:(HWEmotionButton *)button;
 @end

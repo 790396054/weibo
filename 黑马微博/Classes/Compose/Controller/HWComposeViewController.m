@@ -196,7 +196,7 @@
     
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
     param[@"access_token"] = [HWAccountTool account].access_token;
-    param[@"status"] = self.textView.text;
+    param[@"status"] = self.textView.fullText;
     
     [mgr POST:@"https://api.weibo.com/2/statuses/upload.json" parameters:param constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         // 拼接文件数据
@@ -220,7 +220,7 @@
     
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
     param[@"access_token"] = [HWAccountTool account].access_token;
-    param[@"status"] = self.textView.text;
+    param[@"status"] = self.textView.fullText;
     
     [mgr POST:@"https://api.weibo.com/2/statuses/update.json" parameters:param progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         HWLog(@"发送成功");

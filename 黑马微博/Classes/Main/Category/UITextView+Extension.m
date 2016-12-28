@@ -21,7 +21,7 @@
     
     // 拼接属性文字
     NSUInteger loc = self.selectedRange.location;
-    [attrStr insertAttributedString:text atIndex:loc];
+    [attrStr replaceCharactersInRange:self.selectedRange withAttributedString:text];
     
     if(settingBlock){
         settingBlock(attrStr);

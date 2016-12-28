@@ -30,14 +30,60 @@
 - (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
+        // 初始化删除按钮
         UIButton *deleteButton = [[UIButton alloc] init];
         [deleteButton setImage:[UIImage imageNamed:@"compose_emotion_delete"] forState:UIControlStateNormal];
         [deleteButton setImage:[UIImage imageNamed:@"compose_emotion_delete_highlighted"] forState:UIControlStateHighlighted];
         [deleteButton addTarget:self action:@selector(deleteClick) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:deleteButton];
         self.deleteButton = deleteButton;
+        
+        // 添加手势
+        [self addGestureRecognizer:[[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressPageView:)]];
     }
     return self;
+}
+
+/**
+ 在这个方法中处理手势长按
+ */
+-(void)longPressPageView:(UILongPressGestureRecognizer *)recognizer{
+    // 获得手指所在的位置
+    CGPoint location = [recognizer locationInView:recognizer.view];
+    HWEmotionButton *btn = [self emotionButtonWithLocation:location];
+    switch (recognizer.state) {
+        case UIGestureRecognizerStateBegan:
+        case UIGestureRecognizerStateChanged: // 手势开始
+            [self.popView popBtnFrom: btn];
+            break;
+        case UIGestureRecognizerStateEnded:
+        case UIGestureRecognizerStateCancelled: // 手势结束
+            // 移除 popView
+            [self.popView removeFromSuperview];
+            // 发出通知
+            if (btn) {
+                [self sendNotification:btn];
+            }
+            break;
+        default:
+            break;
+    }
+}
+
+/**
+ 根据手指位置返回所在表情按钮
+ */
+-(HWEmotionButton *)emotionButtonWithLocation:(CGPoint)location{
+    NSUInteger count = self.emotions.count;
+    for (int i = 0; i < count; i++) {
+        HWEmotionButton *btn = self.subviews[i + 1];
+        if (CGRectContainsPoint(btn.frame, location)) {
+            // 已经找到表情所在的位置
+            return btn;
+        }
+    }
+    return nil;
+
 }
 
 -(void)setEmotions:(NSArray *)emotions{
@@ -88,19 +134,8 @@
  @param btn 按钮
  */
 -(void)btnClick:(HWEmotionButton *)btn{
-    HWLog(@"%@",NSStringFromCGRect(self.deleteButton.frame));
-    // 赋值
-    self.popView.emotion = btn.emotion;
-    
-    // 取得最上面的 window
-    UIWindow *window = [[UIApplication sharedApplication].windows lastObject];
-    [window addSubview:self.popView];
-    
-    // 计算出被点击的按钮在 window 中的 frame(转换坐标系)
-    CGRect btnFrame = [btn convertRect:btn.bounds toView:window];
-    
-    self.popView.y = CGRectGetMidY(btnFrame) - self.popView.height;
-    self.popView.centerX = CGRectGetMidX(btnFrame);
+    // 弹出 popView
+    [self.popView popBtnFrom:btn];
     
     // 过会儿将 popView 自动消失
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -108,6 +143,11 @@
     });
     
     // 发出通知
+    [self sendNotification:btn];
+}
+
+// 发出通知
+-(void)sendNotification:(HWEmotionButton *)btn{
     NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
     userInfo[SelectedEmotion] = btn.emotion;
     [[NSNotificationCenter defaultCenter] postNotificationName:HWEmotionDidSelectedNotification object:nil userInfo:userInfo];
