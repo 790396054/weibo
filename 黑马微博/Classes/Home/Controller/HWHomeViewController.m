@@ -11,7 +11,7 @@
 #import "HWDropdownMenu.h"
 #import "HWTitleTableViewController.h"
 #import "HWAccountTool.h"
-#import "AFNetworking.h"
+#import "HWHttpTool.h"
 #import "HWTitleButton.h"
 #import "UIImageView+WebCache.h"
 #import "HWUser.h"
@@ -20,6 +20,7 @@
 #import "HWLoadFooterView.h"
 #import "HWStatusCell.h"
 #import "HWStatusFrame.h"
+#import "MJRefresh.h"
 
 @interface HWHomeViewController () <HWDropdownMenuDelegate>
 
@@ -68,17 +69,14 @@
  获得未读数
  */
 -(void)setupUnreadCount{
-    AFHTTPSessionManager *mgr = [AFHTTPSessionManager manager];
-    
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     HWAccount *account = [HWAccountTool account];
     dict[@"access_token"] = account.access_token;
     dict[@"uid"] = account.uid;
     
-    [mgr GET:@"https://rm.api.weibo.com/2/remind/unread_count.json" parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        HWLog(@"success:%@",responseObject);
+    [HWHttpTool get:@"https://rm.api.weibo.com/2/remind/unread_count.json" params:dict success:^(id json) {
         // 设置未读数
-        NSString *status = [responseObject[@"status"] description];
+        NSString *status = [json[@"status"] description];
         if ([status isEqualToString:@"0"]) {
             self.tabBarItem.badgeValue = nil;
             [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
@@ -86,7 +84,7 @@
             self.tabBarItem.badgeValue = status;
             [UIApplication sharedApplication].applicationIconBadgeNumber = [status intValue];
         }
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } failure:^(NSError *error) {
         
     }];
 }
@@ -95,24 +93,20 @@
  集成上拉加载刷新控件
  */
 -(void)setupUpRefresh{
-    HWLoadFooterView *footer = [HWLoadFooterView footer];
-    footer.hidden = YES;
-    self.tableView.tableFooterView = footer;
+//    HWLoadFooterView *footer = [HWLoadFooterView footer];
+//    footer.hidden = YES;
+//    self.tableView.tableFooterView = footer;
+    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreStatus)];
+    
 }
 
 /**
  集成下拉刷新控件
  */
 -(void)setupDownRefresh{
-    // 添加刷新控件
-    UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
-    [refresh addTarget:self action:@selector(refreshStatus:) forControlEvents:UIControlEventValueChanged];
-    [self.tableView addSubview:refresh];
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshStatus:)];
     
-    // 马上进入刷新状态（仅仅是显示刷新状态，并不会触发UIControlEventValueChanged事件）
-    [refresh beginRefreshing];
-    // 马上加载数据
-    [self refreshStatus:refresh];
+    [self.tableView.mj_header beginRefreshing];
 }
 
 -(NSArray *)statusChangeStatusFrame:(NSArray *)statuses{
@@ -131,30 +125,28 @@
  @param control 刷新控件
  */
 -(void)refreshStatus:(UIRefreshControl *)control{
-    AFHTTPSessionManager *mgr = [AFHTTPSessionManager manager];
-    
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
     HWAccount *account = [HWAccountTool account];
     HWStatusFrame *statusFrame = [self.statuseFrames firstObject];
     param[@"access_token"] = account.access_token;
     param[@"since_id"] = statusFrame.status.idstr;
     
-    [mgr GET:@"https://api.weibo.com/2/statuses/friends_timeline.json" parameters:param progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [HWHttpTool get:@"https://api.weibo.com/2/statuses/friends_timeline.json" params:param success:^(id json) {
         // 字典转模型
-        NSArray *array = [HWStatus objectArrayWithKeyValuesArray:responseObject[@"statuses"]];
+        NSArray *array = [HWStatus objectArrayWithKeyValuesArray:json[@"statuses"]];
         NSArray *statusFrame = [self statusChangeStatusFrame:array];
         NSRange range = NSMakeRange(0, statusFrame.count);
         NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:range];
         [self.statuseFrames insertObjects:statusFrame atIndexes:indexSet];
         // 刷新表格
         [self.tableView reloadData];
-        // 取消刷新加载图标
-        [control endRefreshing];
+        // 结束刷新
+        [self.tableView.mj_header endRefreshing];
         // 显示最新的微博数量
         [self showNewsStatusCount:array.count];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } failure:^(NSError *error) {
         // 结束刷新
-        [control endRefreshing];
+        [self.tableView.mj_header endRefreshing];
     }];
 }
 
@@ -162,10 +154,7 @@
  加载更多的微博数据
  */
 -(void)loadMoreStatus{
-    // 1.请求管理者
-    AFHTTPSessionManager *mgr = [AFHTTPSessionManager manager];
-    
-    // 2.拼接请求参数
+    // 1.拼接请求参数
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
     HWAccount *account = [HWAccountTool account];
     param[@"access_token"] = account.access_token;
@@ -177,22 +166,24 @@
         long long maxId = lastStatusFrame.status.idstr.longLongValue - 1;
         param[@"max_id"] = @(maxId);
     }
-    // 3.发送请求
-    [mgr GET:@"https://api.weibo.com/2/statuses/friends_timeline.json" parameters:param progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
+    
+    // 2. 发送请求
+    [HWHttpTool get:@"https://api.weibo.com/2/statuses/friends_timeline.json" params:param success:^(id json) {
         // 字典转模型
-        NSArray *newStatus = [HWStatus objectArrayWithKeyValuesArray:responseObject[@"statuses"]];
+        NSArray *newStatus = [HWStatus objectArrayWithKeyValuesArray:json[@"statuses"]];
         
         // 将更多的微博数据，添加到总数组的最后面，
         [self.statuseFrames addObjectsFromArray:[self statusChangeStatusFrame:newStatus]];
         // 刷新表格
         [self.tableView reloadData];
         // 结束刷新（隐藏footer）
-        self.tableView.tableFooterView.hidden = YES;
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+//        self.tableView.tableFooterView.hidden = YES;
+        [self.tableView.mj_footer endRefreshing];
+    } failure:^(NSError *error) {
         // 结束刷新
-        self.tableView.tableFooterView.hidden = YES;
+//        self.tableView.tableFooterView.hidden = YES;
+        [self.tableView.mj_footer endRefreshing];
     }];
-    
 }
 
 /**
@@ -243,24 +234,23 @@
  设置用户信息
  */
 -(void)setUserInfo{
-    // 获得管理者
-    AFHTTPSessionManager *mgr = [AFHTTPSessionManager manager];
     // 拼接参数
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
     HWAccount *account = [HWAccountTool account];
     param[@"access_token"] = account.access_token;
     param[@"uid"] = account.uid;
+    
     // 发送请求
-    [mgr GET:@"https://api.weibo.com/2/users/show.json" parameters:param progress:nil success:^(NSURLSessionDataTask * _Nonnull task,NSDictionary *responseObject) {
+    [HWHttpTool get:@"https://api.weibo.com/2/users/show.json" params:param success:^(id json) {
         UIButton *titleBtn = (UIButton *)self.navigationItem.titleView;
-        HWUser *user = [HWUser objectWithKeyValues: responseObject];
+        HWUser *user = [HWUser objectWithKeyValues: json];
         [titleBtn setTitle:user.name forState:UIControlStateNormal];
         
         // 存储昵称
         account.name = user.name;
         [HWAccountTool saveAccount:account];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-
+    } failure:^(NSError *error) {
+        
     }];
 }
 
@@ -330,32 +320,32 @@
     return cell;
 }
 
--(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    // 如果 tableView 还没有数据，就直接返回
-    if (self.statuseFrames.count == 0 || self.tableView.tableFooterView.hidden == NO) {
-        return;
-    }
-    
-    CGFloat offsetY = scrollView.contentOffset.y;
-    // 当最后一个 cell 完全显示在眼前时，contentOffset 的 y 值
-    CGFloat judgeOffsetY = scrollView.contentSize.height + scrollView.contentInset.bottom - scrollView.height - self.tableView.tableFooterView.height;
-    
-   // CGFloat judgeOffsetY1 = scrollView.contentSize.height + scrollView.contentInset.bottom - scrollView.height - self.tableView.tableFooterView.height;
-    if (offsetY >= judgeOffsetY) { // 最后一个 cell 完全进入视线内
-        // 显示footer
-        self.tableView.tableFooterView.hidden = NO;
-        // 加载更多微博数据
-        [self loadMoreStatus];
-        NSLog(@"加载更多");
-    }
-    /**
-     contentInset: 除具体内容以外的边框尺寸
-     contetnSize: 里面的具体内容（hander,cell,footer），除掉 contentInset以外的尺寸
-     contetnOffset: 
-     1.他可以用来判断 scrollView 滚动到什么位置
-     2.指 scrollView 的内容超出了scrollView顶部的距离（除掉contentInset以外的尺寸）
-     */
-}
+//-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+//    // 如果 tableView 还没有数据，就直接返回
+//    if (self.statuseFrames.count == 0 || self.tableView.tableFooterView.hidden == NO) {
+//        return;
+//    }
+//    
+//    CGFloat offsetY = scrollView.contentOffset.y;
+//    // 当最后一个 cell 完全显示在眼前时，contentOffset 的 y 值
+//    CGFloat judgeOffsetY = scrollView.contentSize.height + scrollView.contentInset.bottom - scrollView.height - self.tableView.tableFooterView.height;
+//    
+//   // CGFloat judgeOffsetY1 = scrollView.contentSize.height + scrollView.contentInset.bottom - scrollView.height - self.tableView.tableFooterView.height;
+//    if (offsetY >= judgeOffsetY) { // 最后一个 cell 完全进入视线内
+//        // 显示footer
+//        self.tableView.tableFooterView.hidden = NO;
+//        // 加载更多微博数据
+//        [self loadMoreStatus];
+//        NSLog(@"加载更多");
+//    }
+//    /**
+//     contentInset: 除具体内容以外的边框尺寸
+//     contetnSize: 里面的具体内容（hander,cell,footer），除掉 contentInset以外的尺寸
+//     contetnOffset: 
+//     1.他可以用来判断 scrollView 滚动到什么位置
+//     2.指 scrollView 的内容超出了scrollView顶部的距离（除掉contentInset以外的尺寸）
+//     */
+//}
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     HWStatusFrame *statusframe = self.statuseFrames[indexPath.row];

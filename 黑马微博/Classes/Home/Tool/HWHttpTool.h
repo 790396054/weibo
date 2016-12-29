@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class AFMultipartFormData;
+
 @interface HWHttpTool : NSObject
 
 /**
@@ -29,4 +31,5 @@
  @param failure 失败回调
  */
 +(void)post:(NSString *)url params:(NSDictionary *)params success:(void (^)(id json))success failure:(void (^)(NSError *error))failure;
+
 @end
