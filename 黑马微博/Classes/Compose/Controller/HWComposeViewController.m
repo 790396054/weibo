@@ -15,6 +15,7 @@
 #import "HWComposePhotosView.h"
 #import "HWEmotionKeyboard.h"
 #import "HWEmotion.h"
+#import "HWHttpTool.h"
 
 @interface HWComposeViewController ()<UITextViewDelegate, HWComposeToolBarDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 /**输入控件*/
@@ -216,17 +217,15 @@
 
 // 发送文字微博
 -(void)sendWithoutImage{
-    AFHTTPSessionManager *mgr = [AFHTTPSessionManager manager];
-    
+    // 1.拼接请求参数
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
     param[@"access_token"] = [HWAccountTool account].access_token;
     param[@"status"] = self.textView.fullText;
     
-    [mgr POST:@"https://api.weibo.com/2/statuses/update.json" parameters:param progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        HWLog(@"发送成功");
+    // 2.发送请求
+    [HWHttpTool post:@"https://api.weibo.com/2/statuses/update.json" params:param success:^(id json) {
         [MBProgressHUD showSuccess:@"发送成功"];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        HWLog(@"发送失败");
+    } failure:^(NSError *error) {
         [MBProgressHUD showError:@"发送失败"];
     }];
 }
