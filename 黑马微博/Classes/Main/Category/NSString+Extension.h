@@ -9,7 +9,21 @@
 #import <Foundation/Foundation.h>
 
 @interface NSString (Extension)
+
+/**
+ 根据传入的字体计算占用位置的尺寸
+
+ @param font 字体
+ @return 尺寸
+ */
 -(CGSize)sizeWithFont:(UIFont *)font;
 
 -(CGSize)sizeWithFont:(UIFont *)font maxWidth:(CGFloat)maxWidth;
+
+/**
+ 计算文件/文件夹的大小
+
+ @return byte字节大小
+ */
+-(NSInteger)fileSize;
 @end
