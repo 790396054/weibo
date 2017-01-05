@@ -50,6 +50,14 @@
 		B73F241D1DEC686700CF028D /* NSObject+MJKeyValue.m in Sources */ = {isa = PBXBuildFile; fileRef = B73F24111DEC686700CF028D /* NSObject+MJKeyValue.m */; };
 		B73F241E1DEC686700CF028D /* NSObject+MJMember.m in Sources */ = {isa = PBXBuildFile; fileRef = B73F24131DEC686700CF028D /* NSObject+MJMember.m */; };
 		B745A71B1E0994110038850F /* HWStatusPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = B745A71A1E0994110038850F /* HWStatusPhotoView.m */; };
+		B75024071E1DD035003CC408 /* HWStatusTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B75024061E1DD035003CC408 /* HWStatusTool.m */; };
+		B750240A1E1DD074003CC408 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B75024091E1DD074003CC408 /* libsqlite3.0.tbd */; };
+		B75024181E1DD09A003CC408 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = B750240D1E1DD09A003CC408 /* FMDatabase.m */; };
+		B75024191E1DD09A003CC408 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B750240F1E1DD09A003CC408 /* FMDatabaseAdditions.m */; };
+		B750241A1E1DD09A003CC408 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = B75024111E1DD09A003CC408 /* FMDatabasePool.m */; };
+		B750241B1E1DD09A003CC408 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = B75024131E1DD09A003CC408 /* FMDatabaseQueue.m */; };
+		B750241C1E1DD09A003CC408 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = B75024161E1DD09A003CC408 /* FMResultSet.m */; };
+		B750241D1E1DD09A003CC408 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B75024171E1DD09A003CC408 /* Info.plist */; };
 		B7533F751E115A080076D432 /* HWEmotionPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7533F741E115A080076D432 /* HWEmotionPageView.m */; };
 		B7533F781E116B0F0076D432 /* NSString+Emoji.m in Sources */ = {isa = PBXBuildFile; fileRef = B7533F771E116B0F0076D432 /* NSString+Emoji.m */; };
 		B75952211DEBB842008318BF /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B75952151DEBB842008318BF /* AFHTTPSessionManager.m */; };
@@ -231,6 +239,21 @@
 		B73F24131DEC686700CF028D /* NSObject+MJMember.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MJMember.m"; sourceTree = "<group>"; };
 		B745A7191E0994110038850F /* HWStatusPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWStatusPhotoView.h; sourceTree = "<group>"; };
 		B745A71A1E0994110038850F /* HWStatusPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWStatusPhotoView.m; sourceTree = "<group>"; };
+		B75024051E1DD035003CC408 /* HWStatusTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWStatusTool.h; sourceTree = "<group>"; };
+		B75024061E1DD035003CC408 /* HWStatusTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWStatusTool.m; sourceTree = "<group>"; };
+		B75024091E1DD074003CC408 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		B750240C1E1DD09A003CC408 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		B750240D1E1DD09A003CC408 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		B750240E1E1DD09A003CC408 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		B750240F1E1DD09A003CC408 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		B75024101E1DD09A003CC408 /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		B75024111E1DD09A003CC408 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		B75024121E1DD09A003CC408 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		B75024131E1DD09A003CC408 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		B75024141E1DD09A003CC408 /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
+		B75024151E1DD09A003CC408 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		B75024161E1DD09A003CC408 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		B75024171E1DD09A003CC408 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B7533F731E115A080076D432 /* HWEmotionPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWEmotionPageView.h; sourceTree = "<group>"; };
 		B7533F741E115A080076D432 /* HWEmotionPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWEmotionPageView.m; sourceTree = "<group>"; };
 		B7533F761E116B0F0076D432 /* NSString+Emoji.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Emoji.h"; sourceTree = "<group>"; };
@@ -384,6 +407,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B750240A1E1DD074003CC408 /* libsqlite3.0.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -538,6 +562,33 @@
 			path = ../Controller/MJExtension;
 			sourceTree = "<group>";
 		};
+		B75024081E1DD073003CC408 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B75024091E1DD074003CC408 /* libsqlite3.0.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B750240B1E1DD09A003CC408 /* fmdb */ = {
+			isa = PBXGroup;
+			children = (
+				B750240C1E1DD09A003CC408 /* FMDatabase.h */,
+				B750240D1E1DD09A003CC408 /* FMDatabase.m */,
+				B750240E1E1DD09A003CC408 /* FMDatabaseAdditions.h */,
+				B750240F1E1DD09A003CC408 /* FMDatabaseAdditions.m */,
+				B75024101E1DD09A003CC408 /* FMDatabasePool.h */,
+				B75024111E1DD09A003CC408 /* FMDatabasePool.m */,
+				B75024121E1DD09A003CC408 /* FMDatabaseQueue.h */,
+				B75024131E1DD09A003CC408 /* FMDatabaseQueue.m */,
+				B75024141E1DD09A003CC408 /* FMDB.h */,
+				B75024151E1DD09A003CC408 /* FMResultSet.h */,
+				B75024161E1DD09A003CC408 /* FMResultSet.m */,
+				B75024171E1DD09A003CC408 /* Info.plist */,
+			);
+			path = fmdb;
+			sourceTree = "<group>";
+		};
 		B75952131DEBB842008318BF /* AFNetworking */ = {
 			isa = PBXGroup;
 			children = (
@@ -615,6 +666,7 @@
 				B76926B71DE3396D00EC9088 /* 黑马微博Tests */,
 				B76926C21DE3396D00EC9088 /* 黑马微博UITests */,
 				B769269C1DE3396D00EC9088 /* Products */,
+				B75024081E1DD073003CC408 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -807,6 +859,7 @@
 		B7745D301DE678A40095E495 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				B750240B1E1DD09A003CC408 /* fmdb */,
 				B77CA1861E14A2F8005B0CF6 /* MJRefresh */,
 				B73F23FC1DEC686700CF028D /* MJExtension */,
 				B73F23C01DEC545800CF028D /* SDWebImage */,
@@ -1009,6 +1062,8 @@
 			children = (
 				B78BCACF1E14181D0036CF44 /* HWHttpTool.h */,
 				B78BCAD01E14181D0036CF44 /* HWHttpTool.m */,
+				B75024051E1DD035003CC408 /* HWStatusTool.h */,
+				B75024061E1DD035003CC408 /* HWStatusTool.m */,
 			);
 			name = Tool;
 			path = ../Home/Tool;
@@ -1172,6 +1227,7 @@
 			files = (
 				B76926AE1DE3396D00EC9088 /* LaunchScreen.storyboard in Resources */,
 				B78FD9CD1DED1DA8003F4AB9 /* HWLoadFooterView.xib in Resources */,
+				B750241D1E1DD09A003CC408 /* Info.plist in Resources */,
 				B75952331DEBCE10008318BF /* MBProgressHUD.bundle in Resources */,
 				B7B2140A1E1201C500DB4FA3 /* HWEmotionPopView.xib in Resources */,
 				B71EB2291E10C68100604A51 /* EmotionIcons in Resources */,
@@ -1220,6 +1276,7 @@
 				B77CA1C11E14A2F8005B0CF6 /* MJRefreshNormalHeader.m in Sources */,
 				B7B2140D1E120E0400DB4FA3 /* HWEmotionButton.m in Sources */,
 				B73F24141DEC686700CF028D /* MJArgument.m in Sources */,
+				B75024071E1DD035003CC408 /* HWStatusTool.m in Sources */,
 				B77CA1C41E14A2F8005B0CF6 /* MJRefreshConst.m in Sources */,
 				B759522B1DEBC8EF008318BF /* HWAccount.m in Sources */,
 				B71C37CB1E07C29E00F59AEC /* NSDate+Extension.m in Sources */,
@@ -1230,8 +1287,10 @@
 				B77CA1B51E14A2F8005B0CF6 /* MJRefreshAutoFooter.m in Sources */,
 				B75952211DEBB842008318BF /* AFHTTPSessionManager.m in Sources */,
 				B75952251DEBB842008318BF /* AFURLResponseSerialization.m in Sources */,
+				B75024191E1DD09A003CC408 /* FMDatabaseAdditions.m in Sources */,
 				B765EE5D1E0B5AC200735CAA /* HWComposeViewController.m in Sources */,
 				B73F23F81DEC5DC400CF028D /* HWUser.m in Sources */,
+				B75024181E1DD09A003CC408 /* FMDatabase.m in Sources */,
 				B73F241E1DEC686700CF028D /* NSObject+MJMember.m in Sources */,
 				B71CB8EF1E134A950050B9E3 /* HWEmotionAttachment.m in Sources */,
 				B73F23EE1DEC545800CF028D /* UIImage+WebP.m in Sources */,
@@ -1246,6 +1305,7 @@
 				B77CA1C71E14A2F8005B0CF6 /* UIScrollView+MJRefresh.m in Sources */,
 				B7745D441DE678A40095E495 /* HWHomeViewController.m in Sources */,
 				B75952221DEBB842008318BF /* AFNetworkReachabilityManager.m in Sources */,
+				B750241C1E1DD09A003CC408 /* FMResultSet.m in Sources */,
 				B73F23E51DEC545800CF028D /* SDWebImageCompat.m in Sources */,
 				B75952341DEBCE10008318BF /* MBProgressHUD.m in Sources */,
 				B745A71B1E0994110038850F /* HWStatusPhotoView.m in Sources */,
@@ -1272,6 +1332,8 @@
 				B73F241B1DEC686700CF028D /* MJTypeEncoding.m in Sources */,
 				B73F24181DEC686700CF028D /* MJMember.m in Sources */,
 				B7533F781E116B0F0076D432 /* NSString+Emoji.m in Sources */,
+				B750241B1E1DD09A003CC408 /* FMDatabaseQueue.m in Sources */,
+				B750241A1E1DD09A003CC408 /* FMDatabasePool.m in Sources */,
 				B77CA1C51E14A2F8005B0CF6 /* NSBundle+MJRefresh.m in Sources */,
 				B759523D1DEC0C23008318BF /* Foundation+Log.m in Sources */,
 				B73F24161DEC686700CF028D /* MJFoundation.m in Sources */,
