@@ -86,10 +86,6 @@
     [self.view addSubview:toolbar];
     toolbar.delegate = self;
     self.toolbar = toolbar;
-    // inputAccessoryView 设置显示在键盘顶部的内容
-//    self.textView.inputAccessoryView = toolbar;
-    // inputView 设置键盘
-    //self.textView.inputView = [UIButton buttonWithType:UIButtonTypeContactAdd];
 }
 
 /**
@@ -119,7 +115,6 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    
     [self.textView becomeFirstResponder];
 }
 
@@ -169,6 +164,7 @@
     // 添加表情
     [self.textView insertEmotion:emotion];
 }
+
 /**
  * 取消
  */
@@ -241,9 +237,6 @@
  * 键盘的frame 发生改变时调用（显示、隐藏）
  */
 -(void)keyboardWillChangeFrame:(NSNotification *)notification{
-    
-    //if(self.isSwitchKeyboard) return; // 正在切换键盘，直接返回
-    
     /**
      notification.userInfo = {
      // 键盘弹出/隐藏后的 frame
@@ -261,7 +254,6 @@
     CGRect keyFrame = [userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
     [UIView animateWithDuration:duration animations:^{
         self.toolbar.y = keyFrame.origin.y - self.toolbar.height;
-        
     }];
 }
 
@@ -318,7 +310,6 @@
         [self.textView becomeFirstResponder];
         self.isSwitchKeyboard = NO;
     });
-
 }
 
 // 打开相机
