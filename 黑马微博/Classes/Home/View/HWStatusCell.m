@@ -235,6 +235,7 @@
     [originalView addSubview:contentLabel];
     contentLabel.font = HWStatusCellContentFont;
     contentLabel.numberOfLines = 0;
+    contentLabel.backgroundColor = [UIColor orangeColor];
     self.contentLabel = contentLabel;
     
     /**图片*/
