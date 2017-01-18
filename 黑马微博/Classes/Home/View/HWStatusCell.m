@@ -127,7 +127,7 @@
     
     /**正文*/
     self.contentLabel.frame = statusFrame.contentLabelF;
-    self.contentLabel.text = status.text;
+    self.contentLabel.attributedText = status.attributedText;
     
     /**图片*/
     if (status.pic_urls.count) {

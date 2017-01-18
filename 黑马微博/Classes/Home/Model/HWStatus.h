@@ -14,6 +14,8 @@
 @property (nonatomic, copy) NSString *idstr;
 /** 微博信息内容*/
 @property (nonatomic, copy) NSString *text;
+/**微博消息内容 --带有属性的（表情/ 超链接等）*/
+@property (nonatomic, copy) NSAttributedString *attributedText;
 /** 微博作者的用户信息*/
 @property (nonatomic, strong) HWUser *user;
 /**时间*/

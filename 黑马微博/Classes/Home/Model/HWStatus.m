@@ -15,6 +15,22 @@
     return @{@"pic_urls" : [HWPhoto class]};
 }
 
+-(void)setText:(NSString *)text{
+    _text = [text copy];
+    
+    NSMutableAttributedString *attrText = [[NSMutableAttributedString alloc] initWithString:text];
+    [attrText addAttribute:NSForegroundColorAttributeName value:[UIColor blueColor] range:NSMakeRange(0, 2)];
+    
+    self.attributedText = attrText;
+    
+    // 正则表达式
+    NSString *pattern = @"[0-9]";
+    NSRegularExpression *regex = [[NSRegularExpression alloc] initWithPattern:pattern options:0 error:nil];
+    NSString *str = @"hdhdsjisdodj9234829382 isod";
+    NSArray *results = [regex matchesInString:str options:0 range:NSMakeRange(0, str.length)];
+    NSLog(@"%zd", results.count);
+}
+
 /*
  1.今年
  
