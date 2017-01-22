@@ -22,6 +22,7 @@
 #import "HWStatusFrame.h"
 #import "MJRefresh.h"
 #import "HWStatusTool.h"
+#import <UserNotifications/UserNotifications.h>
 
 @interface HWHomeViewController () <HWDropdownMenuDelegate>
 
@@ -60,9 +61,14 @@
     float version = [[[UIDevice currentDevice] systemVersion] floatValue];
     
     if(version >= 8.0) {
-        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge categories:nil];
-        
-        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+        UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+        [center requestAuthorizationWithOptions:UNAuthorizationOptionBadge completionHandler:^(BOOL granted, NSError * _Nullable error) {
+            if (granted) {
+                NSLog(@"获取图标请求授权失败");
+            } else {
+                NSLog(@"获取图标请求授权失败");
+            }
+        }];
     }
 }
 

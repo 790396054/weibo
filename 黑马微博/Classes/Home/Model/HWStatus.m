@@ -16,12 +16,12 @@
 }
 
 -(void)setText:(NSString *)text{
-    _text = [text copy];
+//    _text = [text copy];
     
-    NSMutableAttributedString *attrText = [[NSMutableAttributedString alloc] initWithString:text];
-    [attrText addAttribute:NSForegroundColorAttributeName value:[UIColor blueColor] range:NSMakeRange(0, 2)];
+//    NSMutableAttributedString *attrText = [[NSMutableAttributedString alloc] initWithString:text];
+//    [attrText addAttribute:NSForegroundColorAttributeName value:[UIColor blueColor] range:NSMakeRange(0, 2)];
     
-    self.attributedText = attrText;
+//    self.attributedText = attrText;
     
     // 正则表达式
 //    NSString *pattern = @"[0-9]";

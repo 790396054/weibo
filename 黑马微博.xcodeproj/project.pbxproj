@@ -1183,6 +1183,7 @@
 				TargetAttributes = {
 					B769269A1DE3396D00EC9088 = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = S2TFHBVX2A;
 						ProvisioningStyle = Automatic;
 					};
 					B76926B31DE3396D00EC9088 = {
@@ -1511,7 +1512,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = S2TFHBVX2A;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/黑马微博/PrefixHeader.pch";
 				INFOPLIST_FILE = "黑马微博/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
@@ -1526,7 +1527,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = S2TFHBVX2A;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/黑马微博/PrefixHeader.pch";
 				INFOPLIST_FILE = "黑马微博/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
