@@ -4,7 +4,7 @@
 //
 //  Created by 弓苗苗 on 2016/12/28.
 //  Copyright © 2016年 弓苗苗. All rights reserved.
-//
+//  网络请求工具类
 
 #import "HWHttpTool.h"
 #import "AFNetworking.h"
