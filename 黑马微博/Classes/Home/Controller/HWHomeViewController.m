@@ -168,10 +168,11 @@
     };
     
     // 2.先尝试从数据库中加载微博数据
-    NSArray *statuses = [HWStatusTool statusesWithParams:param];
-    if (statuses.count) {
-        dealingResult(statuses);
-    } else {
+//    NSArray *statuses = [HWStatusTool statusesWithParams:param];
+   
+//    if (statuses.count) {
+//        dealingResult(statuses);
+//    } else {
         [HWHttpTool get:@"https://api.weibo.com/2/statuses/friends_timeline.json" params:param success:^(id json) {
             // 将微博数据添加到缓存中
             [HWStatusTool saveStatuses:json[@"statuses"]];
@@ -181,7 +182,7 @@
             // 结束刷新
             [self.tableView.mj_header endRefreshing];
         }];
-    }
+//    }
 }
 
 /**
@@ -219,10 +220,10 @@
     };
     
     // 2.加载沙盒中的数据
-    NSArray *statuses = [HWStatusTool statusesWithParams:param];
-    if (statuses.count) { // 将 HWStatus数组 转为 HWStatusFrame数组
-        dealingResult(statuses);
-    } else { // 没有缓存数据
+    //NSArray *statuses = [HWStatusTool statusesWithParams:param];
+   // if (statuses.count) { // 将 HWStatus数组 转为 HWStatusFrame数组
+    //    dealingResult(statuses);
+    //} else { // 没有缓存数据
         // 2. 发送请求
         [HWHttpTool get:@"https://api.weibo.com/2/statuses/friends_timeline.json" params:param success:^(id json) {
             
@@ -234,7 +235,7 @@
             // 结束刷新
             [self.tableView.mj_footer endRefreshing];
         }];
-    }
+   // }
 }
 
 /**

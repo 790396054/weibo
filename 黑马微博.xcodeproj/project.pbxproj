@@ -95,6 +95,8 @@
 		B7745D531DE6C4F30095E495 /* HWSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = B7745D521DE6C4F30095E495 /* HWSearchBar.m */; };
 		B7745D561DE6E5310095E495 /* HWDropdownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = B7745D551DE6E5310095E495 /* HWDropdownMenu.m */; };
 		B7745D591DE6F5A10095E495 /* HWTitleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7745D581DE6F5A10095E495 /* HWTitleTableViewController.m */; };
+		B77A42F31E35DC040023D5AB /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = B77A42F21E35DC040023D5AB /* RegexKitLite.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B77A42F51E35DC5A0023D5AB /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B77A42F41E35DC5A0023D5AB /* libicucore.tbd */; };
 		B77CA1B51E14A2F8005B0CF6 /* MJRefreshAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = B77CA1891E14A2F8005B0CF6 /* MJRefreshAutoFooter.m */; };
 		B77CA1B61E14A2F8005B0CF6 /* MJRefreshBackFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = B77CA18B1E14A2F8005B0CF6 /* MJRefreshBackFooter.m */; };
 		B77CA1B71E14A2F8005B0CF6 /* MJRefreshComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = B77CA18D1E14A2F8005B0CF6 /* MJRefreshComponent.m */; };
@@ -328,6 +330,9 @@
 		B7745D551DE6E5310095E495 /* HWDropdownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWDropdownMenu.m; sourceTree = "<group>"; };
 		B7745D571DE6F5A10095E495 /* HWTitleTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWTitleTableViewController.h; sourceTree = "<group>"; };
 		B7745D581DE6F5A10095E495 /* HWTitleTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWTitleTableViewController.m; sourceTree = "<group>"; };
+		B77A42F11E35DC040023D5AB /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexKitLite.h; sourceTree = "<group>"; };
+		B77A42F21E35DC040023D5AB /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
+		B77A42F41E35DC5A0023D5AB /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
 		B77CA1881E14A2F8005B0CF6 /* MJRefreshAutoFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshAutoFooter.h; sourceTree = "<group>"; };
 		B77CA1891E14A2F8005B0CF6 /* MJRefreshAutoFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshAutoFooter.m; sourceTree = "<group>"; };
 		B77CA18A1E14A2F8005B0CF6 /* MJRefreshBackFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBackFooter.h; sourceTree = "<group>"; };
@@ -407,6 +412,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B77A42F51E35DC5A0023D5AB /* libicucore.tbd in Frameworks */,
 				B750240A1E1DD074003CC408 /* libsqlite3.0.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -565,6 +571,7 @@
 		B75024081E1DD073003CC408 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B77A42F41E35DC5A0023D5AB /* libicucore.tbd */,
 				B75024091E1DD074003CC408 /* libsqlite3.0.tbd */,
 			);
 			name = Frameworks;
@@ -859,6 +866,7 @@
 		B7745D301DE678A40095E495 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				B77A42F01E35DC040023D5AB /* RegexKitLite */,
 				B750240B1E1DD09A003CC408 /* fmdb */,
 				B77CA1861E14A2F8005B0CF6 /* MJRefresh */,
 				B73F23FC1DEC686700CF028D /* MJExtension */,
@@ -960,6 +968,15 @@
 				B7745D421DE678A40095E495 /* TestViewController.xib */,
 			);
 			path = Temp;
+			sourceTree = "<group>";
+		};
+		B77A42F01E35DC040023D5AB /* RegexKitLite */ = {
+			isa = PBXGroup;
+			children = (
+				B77A42F11E35DC040023D5AB /* RegexKitLite.h */,
+				B77A42F21E35DC040023D5AB /* RegexKitLite.m */,
+			);
+			path = RegexKitLite;
 			sourceTree = "<group>";
 		};
 		B77CA1861E14A2F8005B0CF6 /* MJRefresh */ = {
@@ -1360,6 +1377,7 @@
 				B7745D561DE6E5310095E495 /* HWDropdownMenu.m in Sources */,
 				B77CA1B61E14A2F8005B0CF6 /* MJRefreshBackFooter.m in Sources */,
 				B71EB2371E10CD6A00604A51 /* HWComposePhotosView.m in Sources */,
+				B77A42F31E35DC040023D5AB /* RegexKitLite.m in Sources */,
 				B7B7BFDA1DEEC67900FF0FAA /* HWStatusFrame.m in Sources */,
 				B77CA1BF1E14A2F8005B0CF6 /* MJRefreshBackStateFooter.m in Sources */,
 				B73F23E31DEC545800CF028D /* NSData+ImageContentType.m in Sources */,

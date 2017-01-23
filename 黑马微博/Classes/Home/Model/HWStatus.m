@@ -9,6 +9,7 @@
 #import "HWStatus.h"
 #import "MJExtension.h"
 #import "HWPhoto.h"
+#import "RegexKitLite.h"
 
 @implementation HWStatus
 -(NSDictionary *)objectClassInArray{
@@ -16,19 +17,9 @@
 }
 
 -(void)setText:(NSString *)text{
-//    _text = [text copy];
+    _text = [text copy];
     
-//    NSMutableAttributedString *attrText = [[NSMutableAttributedString alloc] initWithString:text];
-//    [attrText addAttribute:NSForegroundColorAttributeName value:[UIColor blueColor] range:NSMakeRange(0, 2)];
-    
-//    self.attributedText = attrText;
-    
-    // 正则表达式
-//    NSString *pattern = @"[0-9]";
-//    NSRegularExpression *regex = [[NSRegularExpression alloc] initWithPattern:pattern options:0 error:nil];
-//    NSString *str = @"hdhdsjisdodj9234829382 isod";
-//    NSArray *results = [regex matchesInString:str options:0 range:NSMakeRange(0, str.length)];
-//    NSLog(@"%zd", results.count);
+    self.attributedText = [self attributedTextWithText:text];
 }
 
 /*
@@ -106,6 +97,34 @@
     }else {
         _source = @"来自 未知来源";
     }
-   // HWLog(@"%@",source);
+}
+
+
+/**
+ 普通文字--->属性文字
+
+ @param text 普通文字
+ @return 属性文字
+ */
+-(NSAttributedString *)attributedTextWithText:(NSString *)text{
+    NSMutableAttributedString *attrText = [[NSMutableAttributedString alloc] initWithString:text];
+    
+    // 正则表达式
+    // 表情的规则
+    NSString *emotionPattern = @"\\[[0-9a-zA-Z\\u4e00-\\u9fa5]+\\]";
+    // @的规则
+    NSString *atPattern = @"@[0-9a-zA-Z\\u4e00-\\u9fa5-_]+";
+    // #话题#的规则
+    NSString *topicPattern = @"#[0-9a-zA-Z\\u4e00-\\u9fa5]+#";
+    // url链接的规则
+    NSString *urlPattern = @"\\b(([\\w-]+://?|www[.])[^\\s()<>]+(?:\\([\\w\\d]+\\)|([^[:punct:]\\s]|/)))";
+    NSString *pattern = [NSString stringWithFormat:@"%@|%@|%@|%@", emotionPattern, atPattern, topicPattern, urlPattern];
+    
+    // 遍历所有的特殊字符串
+    [text enumerateStringsMatchedByRegex:pattern usingBlock:^(NSInteger captureCount, NSString *const __unsafe_unretained *capturedStrings, const NSRange *capturedRanges, volatile BOOL *const stop) {
+        [attrText addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:*capturedRanges];
+    }];
+    
+    return attrText;
 }
 @end
