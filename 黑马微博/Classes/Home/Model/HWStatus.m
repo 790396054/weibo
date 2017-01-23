@@ -107,6 +107,7 @@
  @return 属性文字
  */
 -(NSAttributedString *)attributedTextWithText:(NSString *)text{
+    // 根据普通文字生成带有属性的文字
     NSMutableAttributedString *attrText = [[NSMutableAttributedString alloc] initWithString:text];
     
     // 正则表达式
